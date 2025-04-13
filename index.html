@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
+         :root {
+            /* ... (variables CSS sin cambios) ... */
             --bg-color: #0D1117; --bg-color-rgb: 13, 17, 23; --container-bg: #161b22b7;
             --fg-color: #C9D1D9; --hacker-green: #39D353; --hacker-cyan: #58A6FF;
             --comment-color: #8B949E; --line-num-color: #484F58; --keyword-color: #FF7B72;
@@ -32,19 +33,33 @@
             --nf-value-indent: calc(var(--nf-label-width) + var(--nf-label-padding));
         }
 
-        html { box-sizing: border-box; }
+        html {
+            box-sizing: border-box;
+            overflow-y: scroll; /* <<--- AÑADIDO AQUÍ: Evita el salto por la barra de scroll */
+        }
         *, *:before, *:after { box-sizing: inherit; }
 
         body {
+            /* ... (body styles sin cambios) ... */
             background-color: var(--bg-color); color: var(--fg-color);
             font-family: var(--mono-font); margin: 0; padding: 0;
             font-size: 15px;
             line-height: 1.6;
             display: flex; justify-content: center; align-items: flex-start;
             min-height: 100vh; padding: 3em 0;
+            transition: filter 0.3s ease;
+        }
+
+        body.lightbox-active > #code-background,
+        body.lightbox-active > .code-editor-look {
+            /* ... (lightbox blur styles sin cambios) ... */
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+            pointer-events: none;
         }
 
         #code-background {
+            /* ... (code-background styles sin cambios) ... */
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             overflow: hidden; z-index: -1;
             background-image: url('images/background.jpg');
@@ -53,22 +68,39 @@
             font-family: var(--mono-font); font-size: 11px; line-height: 1.3;
             user-select: none; pointer-events: none;
             counter-reset: bg-line-number;
+            transition: filter 0.3s ease;
         }
         #code-background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(var(--bg-color-rgb), 0.85); z-index: 0; }
 
-        .bg-line-list { position: relative; z-index: 1; list-style: none; padding: 0 1em; margin: 0; }
-        .bg-line-list li { position: relative; padding-left: 3.5em; min-height: 1.3em; white-space: pre; counter-increment: bg-line-number; color: var(--line-num-color); }
-        .bg-line-list li::before { content: counter(bg-line-number); position: absolute; left: 0; top: 0; width: 3em; padding-right: 0.5em; text-align: right; color: var(--bg-line-num-color); font-size: 0.9em; }
-        .bg-line-list li .comment { color: #586069; font-style: italic; } .bg-line-list li .keyword { color: #b35b56; } .bg-line-list li .function { color: #4c8ed8; } .bg-line-list li .string { color: #56a367; } .bg-line-list li .variable { color: #b37c47; } .bg-line-list li .number { color: #5f8eb3; } .bg-line-list li .operator { color: #4c8ed8; } .bg-line-list li .bracket { color: var(--comment-color); } .bg-line-list li .class-name { color: var(--constant-color); }
+        .bg-line-list { /* ... (sin cambios) ... */ position: relative; z-index: 1; list-style: none; padding: 0 1em; margin: 0; }
+        .bg-line-list li { /* ... (sin cambios) ... */ position: relative; padding-left: 3.5em; min-height: 1.3em; white-space: pre; counter-increment: bg-line-number; color: var(--fg-color); margin-bottom: 2px; overflow: visible; }
+        .bg-line-list li::before { /* ... (sin cambios) ... */ content: counter(bg-line-number); position: absolute; left: 0; top: 0; width: 3em; padding-right: 0.5em; text-align: right; color: var(--bg-line-num-color); font-size: 0.9em; user-select: none; }
+        /* ... (estilos de sintaxis .comment, .keyword, etc. sin cambios) ... */
+        .bg-line-list li .comment { color: #586069; font-style: italic; }
+        .bg-line-list li .keyword { color: #b35b56; }
+        .bg-line-list li .function { color: #4c8ed8; }
+        .bg-line-list li .string { color: #56a367; }
+        .bg-line-list li .variable { color: #b37c47; }
+        .bg-line-list li .number { color: #5f8eb3; }
+        .bg-line-list li .operator { color: #4c8ed8; }
+        .bg-line-list li .bracket { color: var(--comment-color); }
+        .bg-line-list li .class-name { color: var(--constant-color); }
+
 
         .code-editor-look {
-            max-width: 100ch; width: 95%; padding: 1.5em 2em;
+            /* ... (code-editor-look styles sin cambios) ... */
+             max-width: 100ch; width: 95%; padding: 1.5em 2em;
             counter-reset: line-number; overflow-x: auto; border: 1px solid var(--line-num-color);
             background-color: var(--container-bg); position: relative; z-index: 1; margin: 0 auto;
             box-shadow: 0 0 20px rgba(88, 166, 255, 0.15); border-radius: 4px;
+            transition: filter 0.3s ease;
         }
 
+        /* ... (resto de estilos @keyframes, .line-list, etc. sin cambios) ... */
         @keyframes fadeInLine { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInLightbox { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomInLightbox { from { transform: scale(0.9); } to { transform: scale(1); } }
+
         .reveal-anim { animation: fadeInLine 0.3s ease-out forwards; }
 
         .line-list { list-style: none; padding-left: 0; margin: 0; }
@@ -94,7 +126,11 @@
         .nf-color-blocks span { display: inline-block; width: 1.8em; height: 1.1em; margin-right: 0.4em; vertical-align: middle; }
 
         .image-gallery { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; padding: 1.5em 0; gap: 1em; }
-        .gallery-image { display: block; max-width: 27%; height: auto; border: 1px solid var(--line-num-color); border-radius: 4px; opacity: 0.85; transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+        .gallery-image {
+            display: block; max-width: 27%; height: auto; border: 1px solid var(--line-num-color); border-radius: 4px;
+            opacity: 0.85; transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+         }
         .gallery-image:hover { opacity: 1; transform: scale(1.03) translateY(-2px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
         .image-labels { display: flex; justify-content: space-around; align-items: flex-start; padding: 0.5em 0 1.5em 0; gap: 1em; }
         .label-container { text-align: center; flex: 1; color: var(--label-color); font-size: 0.9em; white-space: normal; }
@@ -102,10 +138,49 @@
         .label-container a:hover { color: var(--hacker-green); border-bottom-color: var(--hacker-green); transform: translateY(-1px); display: inline-block; }
 
         @keyframes blink { 50% { opacity: 0; } }
-        .typing-cursor { display: inline-block; background-color: var(--cursor-color); width: 9px; height: 1.1em; margin-left: 1px; animation: blink 1s step-end infinite; vertical-align: baseline; position: relative; top: 0.1em; }
+        .typing-cursor {
+            display: inline-block; background-color: var(--cursor-color);
+            width: 9px; height: 1.1em; margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: baseline; position: relative; top: 0.1em;
+         }
         .typing-cursor::after { content: ""; }
 
         .hidden-initially { display: none; opacity: 0; }
+
+        #lightbox-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; cursor: pointer;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+            animation: fadeInLightbox 0.3s ease forwards;
+        }
+        #lightbox-overlay.active {
+            opacity: 1; visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+        #lightbox-image {
+            display: block; max-width: 90%; max-height: 90vh;
+            object-fit: contain; border: 3px solid var(--fg-color);
+            border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            cursor: default; animation: zoomInLightbox 0.3s ease forwards;
+            pointer-events: auto;
+        }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 30px;
+            font-size: 2em; color: var(--fg-color);
+            cursor: pointer; transition: color 0.2s ease;
+            user-select: none;
+        }
+        .lightbox-close:hover { color: var(--hacker-red); }
+
+        #random-jp-word {
+            font-family: var(--jp-font), var(--mono-font);
+            color: var(--string-color);
+            vertical-align: baseline;
+        }
 
     </style>
 </head>
@@ -116,8 +191,9 @@
 </div>
 
 <div class="code-editor-look">
-    <ol class="line-list">
-        <li id="nf-userhost" class="nf-line hidden-initially"><span class="user">arch</span><span class="text">@</span><span class="host">snowf</span></li>
+     <ol class="line-list">
+        <!-- ... (Contenido principal sin cambios) ... -->
+         <li id="nf-userhost" class="nf-line hidden-initially"><span class="user">arch</span><span class="text">@</span><span class="host">snowf</span></li>
         <li id="nf-separator" class="nf-line hidden-initially"><span class="nf-separator">--------------------</span></li>
         <li id="nf-os" class="nf-line hidden-initially"><span class="nf-label">OS:</span> <span class="nf-value variable">Arch Linux CachyOS x86_64</span></li>
         <li id="nf-kernel" class="nf-line hidden-initially"><span class="nf-label">Kernel:</span> <span class="nf-value string">Linux 6.14.1-2-cachyos</span></li>
@@ -132,11 +208,9 @@
         <li id="nf-colors" class="nf-line hidden-initially nf-color-blocks">
              <span style="background-color: var(--nf-color-1)"></span> <span style="background-color: var(--nf-color-2)"></span> <span style="background-color: var(--nf-color-3)"></span> <span style="background-color: var(--nf-color-4)"></span> <span style="background-color: var(--nf-color-5)"></span> <span style="background-color: var(--nf-color-6)"></span> <span style="background-color: var(--nf-color-7)"></span> <span style="background-color: var(--nf-color-8)"></span>
         </li>
-
         <li id="line-title-jp" class="no-line-number hidden-initially"><span class="title-jp">スラ グ</span></li>
         <li id="gallery-block" class="no-line-number hidden-initially">
             <div class="image-gallery">
-                <!-- Ensure these image paths are correct relative to the HTML file -->
                 <img src="images/image1.jpg" alt="Gallery Image 1" class="gallery-image">
                 <img src="images/image2.jpg" alt="Gallery Image 2" class="gallery-image">
                 <img src="images/image3.jpg" alt="Gallery Image 3" class="gallery-image">
@@ -148,23 +222,31 @@
         <li id="labels-block" class="no-line-number hidden-initially">
              <div class="image-labels">
                  <div class="label-container"><span class="comment">// User Alias</span><br><span class="variable">SNOWF</span> スラグ</div>
-                 <div class="label-container"></div> <!-- Empty container for spacing -->
+                 <div class="label-container"></div>
                  <div class="label-container"><span class="comment">// External Profile</span><br><a href="https://steamcommunity.com/id/SnowF/" target="_blank" rel="noopener noreferrer">STEAM PROFILE</a></div>
              </div>
         </li>
-
         <li id="command-prompt" class="hidden-initially">
             <span class="user">arch</span><span class="text">@</span><span class="host">snowf</span> <span class="path">~</span> <span class="prompt">$</span> <span id="command-line-input"></span>
         </li>
         <li id="output-line-1" class="hidden-initially"><span class="output">System Status: <span class="success">Nominal</span></span></li>
         <li id="output-line-2" class="hidden-initially"><span class="output">Active Modules: <span class="variable">Interface</span>, <span class="variable">Logger</span>, <span class="variable">Display</span></span></li>
         <li id="output-line-3" class="hidden-initially"><span class="output">Pending Actions: <span class="constant">None</span></span></li>
-
-        <li id="line-final-prompt" class="nf-line hidden-initially"><span class="prompt">$ </span><span class="typing-cursor"></span></li>
+        <li id="line-final-prompt" class="nf-line hidden-initially">
+            <span class="prompt">$ </span><span id="random-jp-word"></span><span class="typing-cursor"></span>
+        </li>
     </ol>
 </div>
 
+<!-- Lightbox Structure -->
+<div id="lightbox-overlay">
+    <span class="lightbox-close" title="Close">&times;</span>
+    <img id="lightbox-image" src="" alt="Enlarged image">
+</div>
+
+
 <script>
+    // --- Constantes y variables globales (sin cambios, excepto las velocidades BG) ---
     const codeBackgroundContainer = document.getElementById('code-background');
     const bgCodeList = codeBackgroundContainer?.querySelector('.bg-line-list');
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789(){}[]<>+-=*;:.,\'"`/\\|&^%$#@! ';
@@ -175,295 +257,124 @@
     const commonFuncs = ['init', 'update', 'render', 'fetchData', 'handleError', 'process', 'validate', 'parse', 'stringify', 'log', 'debug', 'connect', 'disconnect', 'send', 'receive'];
     const commentSnippets = ['Initialize', 'Update state', 'Render component', 'Fetch data from API', 'Handle error response', 'Process incoming data', 'Validate input', 'Check condition', 'Loop iteration', 'Cleanup', 'TODO:', 'FIXME:', 'Optimize this', 'Temporary solution'];
     let globalIndent = 0;
-    const MAX_BG_LINES = 80;
-    let codeInterval;
+    const MAX_BG_LINES = 60;
+    const BG_CODE_TYPING_SPEED = 25;
+    const BG_LINE_INTERVAL_DELAY = 50;
+    let isBgCodeActive = true;
+    let bgCodeTimeoutId = null;
+    const japaneseWords = [ "こんにちは", "ありがとう", "さようなら", "すみません", "はい", "いいえ", "おはよう", "こんばんは", "おやすみ", "食べる", "飲む", "見る", "聞く", "読む", "書く", "話す", "行く", "来る", "する", "猫", "犬", "空", "海", "山", "川", "花", "雨", "雪", "風", "月", "星", "太陽", "時間", "友達", "家族", "愛", "平和", "夢", "希望", "未来", "過去", "現在", "美しい", "楽しい", "嬉しい", "悲しい", "面白い", "すごい", "可愛い", "静か", "元気", "テクノロジー", "プログラミング", "サイバー", "データ", "コード", "システム", "ネットワーク", "エラー", "成功", "確認", "実行", "待機" ];
+    const MAX_PHRASE_WORDS = 5; const MIN_PHRASE_WORDS = 2;
+    const JP_TYPING_SPEED = 150; const JP_DELETE_SPEED = 100;
+    const PHRASE_INTERVAL = 10000;
+    let randomWordInterval = null;
+    const randomJpWordElement = document.getElementById('random-jp-word');
+    const finalPromptCursor = document.querySelector('#line-final-prompt .typing-cursor');
 
-    function getRandomName(type = 'var') {
-        const list = type === 'func' ? commonFuncs : commonVars;
-        let name = list[Math.floor(Math.random() * list.length)];
-        if (Math.random() < 0.3) {
-            name += Math.random() < 0.5 ? Math.floor(Math.random() * 10) : (Math.random() < 0.7 ? 'Data' : 'Handler');
-        }
-        return name;
-    }
+    // --- Funciones auxiliares (getRandomName, getRandomStrLiteral, generateCodeLineContent sin cambios) ---
+    function getRandomName(type = 'var') { const list = type === 'func' ? commonFuncs : commonVars; let name = list[Math.floor(Math.random() * list.length)]; if (Math.random() < 0.3) { name += Math.random() < 0.5 ? Math.floor(Math.random() * 10) : (Math.random() < 0.7 ? 'Data' : 'Handler'); } return name; }
+    function getRandomStrLiteral(length) { let result = ''; const chars = 'abcdefghijklmnopqrstuvwxyz /.-_'; for (let i = 0; i < length; i++) { result += chars.charAt(Math.floor(Math.random() * chars.length)); } const quote = Math.random() < 0.5 ? "'" : '"'; return `<span class="string">${quote}${result}${quote}</span>`; }
+    function generateCodeLineContent() { let lineContent = ''; const indentChar = '  '; if (Math.random() < 0.15 && globalIndent > 0) { globalIndent--; } const currentIndentStr = indentChar.repeat(globalIndent); if (Math.random() < 0.10 && globalIndent < 5) { globalIndent++; } const lineType = Math.random(); if (lineType < 0.03) { return ''; } else if (lineType < 0.15) { lineContent += `<span class="comment">// ${commentSnippets[Math.floor(Math.random() * commentSnippets.length)]}...</span>`; } else if (lineType < 0.35) { const keyword = Math.random() < 0.6 ? 'const' : 'let'; lineContent += `<span class="keyword">${keyword}</span> <span class="variable">${getRandomName('var')}</span> <span class="operator">=</span> `; const valueType = Math.random(); if (valueType < 0.3) { lineContent += `<span class="number">${Math.floor(Math.random() * 1000)}</span>`; } else if (valueType < 0.6) { lineContent += getRandomStrLiteral(Math.floor(Math.random() * 10) + 5); } else if (valueType < 0.8) { lineContent += `<span class="keyword">${Math.random() < 0.5 ? 'true' : 'false'}</span>`; } else { lineContent += `<span class="keyword">null</span>`; } lineContent += '<span class="operator">;</span>'; } else if (lineType < 0.50) { lineContent += `<span class="function">${getRandomName('func')}</span><span class="bracket">()</span><span class="operator">;</span>`; } else if (lineType < 0.60) { lineContent += `<span class="keyword">function</span> <span class="function">${getRandomName('func')}</span><span class="bracket">(</span><span class="variable">param1</span><span class="bracket">) {</span>`; globalIndent++; } else if (lineType < 0.70) { lineContent += `<span class="keyword">if</span> <span class="bracket">(</span><span class="variable">${getRandomName('var')}</span> <span class="operator">${operators[Math.floor(Math.random() * 10)]}</span> <span class="number">${Math.floor(Math.random()*100)}</span><span class="bracket">) {</span>`; globalIndent++; } else if (lineType < 0.75 && globalIndent > 0) { globalIndent--; return indentChar.repeat(globalIndent) + `<span class="bracket">}</span>`; } else { lineContent += `<span class="variable">${getRandomName('var')}</span> <span class="operator">${operators[Math.floor(Math.random()*operators.length)]}</span> `; lineContent += Math.random() < 0.5 ? `<span class="number">${(Math.random()*50).toFixed(2)}</span>` : getRandomStrLiteral(5); if (Math.random() < 0.6) lineContent += `<span class="operator">;</span>`; } return currentIndentStr + lineContent; }
 
-    function getRandomStrLiteral(length) {
-        let result = '';
-        const chars = 'abcdefghijklmnopqrstuvwxyz /.-_';
-        for (let i = 0; i < length; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        const quote = Math.random() < 0.5 ? "'" : '"';
-        return `<span class="string">${quote}${result}${quote}</span>`;
-    }
-
-    function generateCodeLineContent() {
-        let lineContent = '';
-        const indentChar = '  ';
-        if (Math.random() < 0.15 && globalIndent > 0) { globalIndent--; }
-        const currentIndentStr = indentChar.repeat(globalIndent);
-        if (Math.random() < 0.10 && globalIndent < 5) { globalIndent++; }
-
-        const lineType = Math.random();
-        if (lineType < 0.03) {
-            return ''; // Empty line
-        } else if (lineType < 0.15) {
-            lineContent += `<span class="comment">// ${commentSnippets[Math.floor(Math.random() * commentSnippets.length)]}...</span>`;
-        } else if (lineType < 0.35) {
-            const keyword = Math.random() < 0.6 ? 'const' : 'let';
-            lineContent += `<span class="keyword">${keyword}</span> <span class="variable">${getRandomName('var')}</span> <span class="operator">=</span> `;
-            const valueType = Math.random();
-            if (valueType < 0.3) { lineContent += `<span class="number">${Math.floor(Math.random() * 1000)}</span>`; }
-            else if (valueType < 0.6) { lineContent += getRandomStrLiteral(Math.floor(Math.random() * 10) + 5); }
-            else if (valueType < 0.8) { lineContent += `<span class="keyword">${Math.random() < 0.5 ? 'true' : 'false'}</span>`; }
-            else { lineContent += `<span class="keyword">null</span>`; }
-            lineContent += '<span class="operator">;</span>';
-        } else if (lineType < 0.50) {
-            lineContent += `<span class="function">${getRandomName('func')}</span><span class="bracket">()</span><span class="operator">;</span>`;
-        } else if (lineType < 0.60) {
-            lineContent += `<span class="keyword">function</span> <span class="function">${getRandomName('func')}</span><span class="bracket">(</span><span class="variable">param1</span><span class="bracket">) {</span>`;
-            globalIndent++;
-        } else if (lineType < 0.70) {
-            lineContent += `<span class="keyword">if</span> <span class="bracket">(</span><span class="variable">${getRandomName('var')}</span> <span class="operator">${operators[Math.floor(Math.random() * 10)]}</span> <span class="number">${Math.floor(Math.random()*100)}</span><span class="bracket">) {</span>`;
-            globalIndent++;
-        } else if (lineType < 0.75 && globalIndent > 0) {
-            globalIndent--;
-            return indentChar.repeat(globalIndent) + `<span class="bracket">}</span>`;
-        } else {
-            lineContent += `<span class="variable">${getRandomName('var')}</span> <span class="operator">${operators[Math.floor(Math.random()*operators.length)]}</span> `;
-            lineContent += Math.random() < 0.5 ? `<span class="number">${(Math.random()*50).toFixed(2)}</span>` : getRandomStrLiteral(5);
-            if (Math.random() < 0.6) lineContent += `<span class="operator">;</span>`;
-        }
-        return currentIndentStr + lineContent;
-    }
-
-    function addBgCodeLine() {
-        if (!bgCodeList) return;
-        const lineContent = generateCodeLineContent();
-        if (lineContent.trim() === '' && Math.random() < 0.7) return; // Reduce blank lines slightly
-
-        const newLine = document.createElement('li');
-        newLine.innerHTML = lineContent;
-        bgCodeList.appendChild(newLine);
-
-        while (bgCodeList.children.length > MAX_BG_LINES) {
-            bgCodeList.removeChild(bgCodeList.firstChild);
-        }
-    }
-
-    function startBgCode() {
-        if (codeInterval) clearInterval(codeInterval);
-        codeInterval = setInterval(addBgCodeLine, 150); // Speed of background code generation
-    }
-
+    // --- Type Effect (Versión robusta para HTML) ---
     function typeEffect(element, htmlContent, speed = 50, callback) {
-        if (!element) return;
-        element.innerHTML = ''; // Clear existing content
+        if (!element) { if (callback) callback(); return; }
+        element.innerHTML = '';
         const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = htmlContent;
-        const nodesToType = Array.from(tempDiv.childNodes);
+        try {
+            tempDiv.innerHTML = htmlContent ? htmlContent.trim() : ''; // Handle potential null/empty content
+        } catch (e) {
+            console.error("Error parsing HTML for typeEffect:", htmlContent, e);
+            if (callback) callback(); return;
+        }
 
-        let currentNodeIndex = 0;
-        let currentTextIndex = 0;
-        let currentTextNode = null;
-        let currentWrapperSpan = null; // To handle nested spans correctly
+        const nodesToProcess = Array.from(tempDiv.childNodes);
 
-        const cursorSpan = document.createElement('span');
-        cursorSpan.className = 'typing-cursor';
-        element.appendChild(cursorSpan);
+        function processNodesRecursive(nodes, targetElement, onComplete) {
+             // Comprobación de pausa para el código de fondo
+             const isBackground = element.closest('#code-background');
+            if (isBackground && !isBgCodeActive) {
+                 if (onComplete) onComplete(false); // Indicar interrupción
+                 return;
+            }
 
-        function type() {
-            if (currentNodeIndex < nodesToType.length) {
-                const currentNode = nodesToType[currentNodeIndex];
+            if (nodes.length === 0) {
+                if (onComplete) onComplete(true); // Lista vacía, completado
+                return;
+            }
 
-                if (!currentTextNode) { // Need to find the next text to type
-                    if (currentNode.nodeType === Node.TEXT_NODE) {
-                        currentTextNode = currentNode;
-                        currentTextIndex = 0;
-                        currentWrapperSpan = null; // Typing directly into the main element
-                    } else if (currentNode.nodeType === Node.ELEMENT_NODE) {
-                        // Clone the node without children to start wrapping
-                        currentWrapperSpan = currentNode.cloneNode(false);
-                        element.insertBefore(currentWrapperSpan, cursorSpan);
-                        // Find the first text node inside this element
-                        if (currentNode.firstChild && currentNode.firstChild.nodeType === Node.TEXT_NODE) {
-                            currentTextNode = currentNode.firstChild;
-                            currentTextIndex = 0;
-                        } else {
-                            // Element might be empty or contain other elements, skip to next node
-                            currentTextNode = null;
-                            currentNodeIndex++;
-                            setTimeout(type, 10); // Small delay before proceeding
-                            return;
-                        }
+            const currentNode = nodes.shift(); // Tomar el siguiente nodo
+
+            if (currentNode.nodeType === Node.TEXT_NODE) {
+                let text = currentNode.textContent || "";
+                let charIndex = 0;
+                function typeChar() {
+                    // Comprobar pausa *antes* de escribir cada caracter
+                    if (isBackground && !isBgCodeActive) {
+                         if (onComplete) onComplete(false); return;
+                    }
+                    if (charIndex < text.length) {
+                        targetElement.appendChild(document.createTextNode(text[charIndex]));
+                        charIndex++;
+                        setTimeout(typeChar, speed);
                     } else {
-                        // Skip non-text/non-element nodes
-                        currentNodeIndex++;
-                        setTimeout(type, 10);
-                        return;
+                        processNodesRecursive(nodes, targetElement, onComplete); // Texto terminado
                     }
                 }
+                 if (text.length > 0) typeChar();
+                 else processNodesRecursive(nodes, targetElement, onComplete); // Texto vacío
 
-                // Type the next character
-                if (currentTextNode && currentTextIndex < currentTextNode.textContent.length) {
-                    const char = currentTextNode.textContent.charAt(currentTextIndex);
-                    const textNode = document.createTextNode(char);
-                    const targetElement = currentWrapperSpan || element; // Append to wrapper or main element
-                    targetElement.insertBefore(textNode, currentWrapperSpan ? null : cursorSpan); // Append within span or before cursor
-                    currentTextIndex++;
-                    setTimeout(type, speed);
+            } else if (currentNode.nodeType === Node.ELEMENT_NODE) {
+                const newElement = document.createElement(currentNode.nodeName);
+                for (let i = 0; i < currentNode.attributes.length; i++) {
+                    newElement.setAttribute(currentNode.attributes[i].name, currentNode.attributes[i].value);
+                }
+                targetElement.appendChild(newElement);
+
+                const childNodes = Array.from(currentNode.childNodes);
+                // Función para continuar con hermanos una vez hijos terminen
+                const continueProcessingSiblings = (completedSuccessfully) => {
+                     if (completedSuccessfully) {
+                        // Si los hijos terminaron (o no había), procesar hermanos
+                        processNodesRecursive(nodes, targetElement, onComplete);
+                     } else {
+                        // Si los hijos fueron interrumpidos, propagar interrupción
+                        if (onComplete) onComplete(false);
+                     }
+                };
+
+                if (childNodes.length > 0) {
+                    // Procesar hijos recursivamente dentro del nuevo elemento
+                    processNodesRecursive(childNodes, newElement, continueProcessingSiblings);
                 } else {
-                    // Finished typing current text node, move to the next top-level node
-                    currentTextNode = null;
-                    currentNodeIndex++;
-                    setTimeout(type, speed); // Continue typing next node
+                    // Sin hijos, continuar con hermanos inmediatamente
+                    continueProcessingSiblings(true);
                 }
             } else {
-                // Typing complete
-                if (callback) {
-                    callback();
-                }
+                // Saltar otros tipos de nodos
+                processNodesRecursive(nodes, targetElement, onComplete);
             }
         }
-        type(); // Start the typing process
-    }
 
-    function startCommandTyping() {
-        const commandInputEl = document.getElementById('command-line-input');
-        const outputLines = [
-            document.getElementById('output-line-1'),
-            document.getElementById('output-line-2'),
-            document.getElementById('output-line-3')
-        ];
-
-        if (commandInputEl && outputLines.every(el => el)) {
-            const commandText = '<span class="keyword">status</span> --verbose';
-            const typingSpeed = 75; // Speed of command typing
-
-            typeEffect(commandInputEl, commandText, typingSpeed, () => {
-                // After typing finishes, reveal output lines sequentially
-                let outputDelay = 100; // Initial delay for first output line
-                outputLines.forEach((line) => {
-                    if (!line) {
-                         console.error("Output line element not found during reveal!");
-                         return;
-                    }
-                    setTimeout(() => {
-                        line.style.display = ''; // Make visible
-                        line.style.opacity = '1';
-                        line.classList.remove('hidden-initially');
-                        line.classList.add('reveal-anim'); // Apply fade-in
-                        line.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, outputDelay);
-                    outputDelay += 150; // Stagger subsequent lines
-                });
-
-                // Hide the typing cursor inside the command line input
-                const cursor = commandInputEl.querySelector('.typing-cursor');
-                if (cursor) cursor.style.display = 'none';
-            });
-        } else {
-            console.error("Could not find command input or one of the output line elements.");
-        }
-    }
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize dynamic data placeholders
-        const visitorCountElement = document.getElementById('visitor-count');
-        const initialCount = 7260; // Starting base count
-        const storageKey = 'simulatedVisitorCount';
-        let currentCount = localStorage.getItem(storageKey);
-
-        if (currentCount === null) {
-            currentCount = initialCount;
-        } else {
-            currentCount = parseInt(currentCount, 10) + Math.floor(Math.random() * 3) + 1; // Increment semi-randomly
-            if (isNaN(currentCount) || currentCount < initialCount) { // Reset if invalid
-                 currentCount = initialCount;
-            }
-        }
-        localStorage.setItem(storageKey, currentCount);
-
-        if (visitorCountElement) {
-            visitorCountElement.textContent = currentCount.toString().padStart(7, '0');
-        }
-
-        const userIpElement = document.getElementById('user-ip');
-        if (userIpElement) {
-            // Simulate a plausible private/internal IP
-            const octet4 = Math.floor(Math.random() * 253) + 2; // Avoid .0, .1, .255
-            const simulatedIP = `172.16.${Math.floor(Math.random()*256)}.${octet4}`;
-            userIpElement.textContent = simulatedIP;
-        }
-
-        const sessionIdElement = document.getElementById('session-id');
-        if(sessionIdElement) {
-            const randomHex = Math.random().toString(16).substring(2, 10).toUpperCase();
-            sessionIdElement.textContent = `SES-${randomHex}`;
-        }
-
-        const memoryElement = document.getElementById('nf-memory-value');
-        if (memoryElement) {
-            // Simulate plausible memory usage
-            const usedMem = Math.floor(Math.random() * 8000) + 8000; // Between 8GB and 16GB used
-            memoryElement.textContent = `${usedMem}MiB / 32056MiB`; // Assuming 32GB total
-        }
-
-        // Start the dynamic background code generation
-        startBgCode();
-        window.addEventListener('blur', () => { if (codeInterval) clearInterval(codeInterval); });
-        window.addEventListener('focus', () => { startBgCode(); });
-
-
-        // Define the sequence for revealing elements
-        const revealSequence = [
-            { id: 'nf-userhost', delay: 300, animate: true },
-            { id: 'nf-separator', delay: 100, animate: true },
-            { id: 'nf-os', delay: 80, animate: true },
-            { id: 'nf-kernel', delay: 80, animate: true },
-            { id: 'nf-shell', delay: 80, animate: true },
-            { id: 'nf-term', delay: 80, animate: true },
-            { id: 'nf-cpu', delay: 80, animate: true },
-            { id: 'nf-gpu', delay: 80, animate: true },
-            { id: 'nf-memory', delay: 80, animate: true },
-            { id: 'line-ip', delay: 100, animate: true },
-            { id: 'line-session', delay: 100, animate: true },
-            { id: 'line-counter', delay: 100, animate: true },
-            { id: 'nf-colors', delay: 150, animate: true },
-            { id: 'line-title-jp', delay: 300, animate: true },
-            { id: 'gallery-block', delay: 400, animate: true },
-            { id: 'labels-block', delay: 150, animate: true },
-            { id: 'command-prompt', delay: 500, animate: true, action: startCommandTyping },
-            // Output lines are revealed by startCommandTyping callback
-            { id: 'line-final-prompt', delay: 1500, animate: true } // Delay accounts for command typing + output reveal
-        ];
-
-        // Execute the reveal sequence
-        let cumulativeDelay = 0;
-        revealSequence.forEach(step => {
-            cumulativeDelay += step.delay;
-            setTimeout(() => {
-                const element = document.getElementById(step.id);
-                if (element) {
-                    element.style.display = ''; // Make visible
-                    element.style.opacity = '1';
-                    element.classList.remove('hidden-initially');
-                    if (step.animate) {
-                        element.classList.add('reveal-anim'); // Apply fade-in animation
-                    }
-                    // Scroll the element into view if needed
-                    element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                    if (step.action) {
-                        step.action(); // Execute associated action (like typing)
-                    }
-                } else {
-                    console.error(`Element with ID '${step.id}' not found for reveal sequence.`);
-                }
-            }, cumulativeDelay);
+        // Iniciar
+        processNodesRecursive(nodesToProcess, element, (completed) => {
+             if (completed && callback) {
+                 callback(); // Llamar callback final solo si se completó
+             }
         });
-    });
+    }
+
+    // --- Resto de funciones JS (deleteEffect, startCommandTyping, getJapanesePhrase, replaceRandomJapanesePhrase, startRandomPhraseTyping, typeNextBgLine, startBgCode, pauseBgCode, resumeBgCode, DOMContentLoaded, Lightbox) sin cambios ---
+    function deleteEffect(element, speed = 60, callback) { if (!element || !element.textContent) { if (callback) callback(); return; } let text = element.textContent; function deleteChar() { if (text.length > 0) { text = text.slice(0, -1); element.textContent = text; setTimeout(deleteChar, speed); } else { if (callback) callback(); } } if (finalPromptCursor) finalPromptCursor.style.display = 'inline-block'; deleteChar(); }
+    function startCommandTyping() { const commandInputEl = document.getElementById('command-line-input'); const outputLines = [ document.getElementById('output-line-1'), document.getElementById('output-line-2'), document.getElementById('output-line-3') ]; if (commandInputEl && outputLines.every(el => el)) { const commandText = '<span class="keyword">status</span> --verbose'; const typingSpeed = 75; typeEffect(commandInputEl, commandText, typingSpeed, () => { let outputDelay = 100; outputLines.forEach((line) => { if (!line) { console.error("Output line element not found!"); return; } setTimeout(() => { line.style.display = ''; line.style.opacity = '1'; line.classList.remove('hidden-initially'); line.classList.add('reveal-anim'); line.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, outputDelay); outputDelay += 150; }); }); } else { console.error("Could not find command input or one of the output line elements."); } }
+    function getJapanesePhrase() { const phraseLength = Math.floor(Math.random() * (MAX_PHRASE_WORDS - MIN_PHRASE_WORDS + 1)) + MIN_PHRASE_WORDS; let phrase = ''; for (let i = 0; i < phraseLength; i++) { const randomIndex = Math.floor(Math.random() * japaneseWords.length); phrase += japaneseWords[randomIndex]; } return phrase; }
+    function replaceRandomJapanesePhrase() { if (!randomJpWordElement || !finalPromptCursor) { console.error("Cannot find elements for random phrase replacement."); if (randomWordInterval) clearInterval(randomWordInterval); return; } deleteEffect(randomJpWordElement, JP_DELETE_SPEED, () => { const phraseToType = getJapanesePhrase(); typeEffect(randomJpWordElement, phraseToType, JP_TYPING_SPEED, () => { if (finalPromptCursor) finalPromptCursor.style.display = 'inline-block'; }); }); }
+    function startRandomPhraseTyping() { if (randomWordInterval) { clearInterval(randomWordInterval); } if (!randomJpWordElement || !finalPromptCursor) { console.error("Cannot find elements to start random phrase typing."); return; } const firstPhrase = getJapanesePhrase(); typeEffect(randomJpWordElement, firstPhrase, JP_TYPING_SPEED, () => { if (finalPromptCursor) finalPromptCursor.style.display = 'inline-block'; randomWordInterval = setInterval(replaceRandomJapanesePhrase, PHRASE_INTERVAL); }); }
+    function typeNextBgLine() { if (!isBgCodeActive || !bgCodeList) { return; } if (bgCodeTimeoutId) { clearTimeout(bgCodeTimeoutId); bgCodeTimeoutId = null; } while (bgCodeList.children.length >= MAX_BG_LINES) { if (bgCodeList.firstChild) bgCodeList.removeChild(bgCodeList.firstChild); else break; } const newLine = document.createElement('li'); newLine.style.setProperty('--bg-line-num-color', 'transparent'); bgCodeList.appendChild(newLine); //newLine.scrollIntoView({ behavior: 'smooth', block: 'end' });//
+    const lineContentHTML = generateCodeLineContent(); if (!lineContentHTML || lineContentHTML.trim() === '') { if (bgCodeList.contains(newLine)) bgCodeList.removeChild(newLine); bgCodeTimeoutId = setTimeout(typeNextBgLine, 50); return; } newLine.style.setProperty('--bg-line-num-color', ''); typeEffect(newLine, lineContentHTML, BG_CODE_TYPING_SPEED, () => { if (isBgCodeActive) { bgCodeTimeoutId = setTimeout(typeNextBgLine, BG_LINE_INTERVAL_DELAY); } }); }
+    function startBgCode() { isBgCodeActive = true; if (bgCodeTimeoutId) clearTimeout(bgCodeTimeoutId); typeNextBgLine(); }
+    function pauseBgCode() { isBgCodeActive = false; if (bgCodeTimeoutId) { clearTimeout(bgCodeTimeoutId); bgCodeTimeoutId = null; } }
+    function resumeBgCode() { if (!isBgCodeActive) { isBgCodeActive = true; if (!bgCodeTimeoutId) { typeNextBgLine(); } } }
+    document.addEventListener('DOMContentLoaded', () => { const visitorCountElement = document.getElementById('visitor-count'); const initialCount = 7260; const storageKey = 'simulatedVisitorCount'; let currentCount = localStorage.getItem(storageKey); if (currentCount === null) { currentCount = initialCount; } else { currentCount = parseInt(currentCount, 10) + Math.floor(Math.random() * 3) + 1; if (isNaN(currentCount) || currentCount < initialCount) { currentCount = initialCount; } } localStorage.setItem(storageKey, currentCount); if (visitorCountElement) { visitorCountElement.textContent = currentCount.toString().padStart(7, '0'); } const userIpElement = document.getElementById('user-ip'); if (userIpElement) { const octet4 = Math.floor(Math.random() * 253) + 2; const simulatedIP = `172.16.${Math.floor(Math.random()*256)}.${octet4}`; userIpElement.textContent = simulatedIP; } const sessionIdElement = document.getElementById('session-id'); if(sessionIdElement) { const randomHex = Math.random().toString(16).substring(2, 10).toUpperCase(); sessionIdElement.textContent = `SES-${randomHex}`; } const memoryElement = document.getElementById('nf-memory-value'); if (memoryElement) { const usedMem = Math.floor(Math.random() * 8000) + 8000; memoryElement.textContent = `${usedMem}MiB / 32056MiB`; } startBgCode(); window.addEventListener('blur', pauseBgCode); window.addEventListener('focus', resumeBgCode); const revealSequence = [ { id: 'nf-userhost', delay: 300, animate: true }, { id: 'nf-separator', delay: 100, animate: true }, { id: 'nf-os', delay: 80, animate: true }, { id: 'nf-kernel', delay: 80, animate: true }, { id: 'nf-shell', delay: 80, animate: true }, { id: 'nf-term', delay: 80, animate: true }, { id: 'nf-cpu', delay: 80, animate: true }, { id: 'nf-gpu', delay: 80, animate: true }, { id: 'nf-memory', delay: 80, animate: true }, { id: 'line-ip', delay: 100, animate: true }, { id: 'line-session', delay: 100, animate: true }, { id: 'line-counter', delay: 100, animate: true }, { id: 'nf-colors', delay: 150, animate: true }, { id: 'line-title-jp', delay: 300, animate: true }, { id: 'gallery-block', delay: 400, animate: true }, { id: 'labels-block', delay: 150, animate: true }, { id: 'command-prompt', delay: 500, animate: true, action: startCommandTyping }, { id: 'line-final-prompt', delay: 1500, animate: true, action: startRandomPhraseTyping } ]; let cumulativeDelay = 0; revealSequence.forEach(step => { cumulativeDelay += step.delay; setTimeout(() => { const element = document.getElementById(step.id); if (element) { element.style.display = ''; element.style.opacity = '1'; element.classList.remove('hidden-initially'); if (step.animate) { element.classList.add('reveal-anim'); } element.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); if (step.action) { step.action(); } } else { console.error(`Element with ID '${step.id}' not found.`); } }, cumulativeDelay); }); const lightboxOverlay = document.getElementById('lightbox-overlay'); const lightboxImage = document.getElementById('lightbox-image'); const galleryImages = document.querySelectorAll('.gallery-image'); const lightboxCloseButton = document.querySelector('.lightbox-close'); function openLightbox(event) { const clickedImage = event.target; lightboxImage.src = clickedImage.src; lightboxImage.alt = clickedImage.alt || 'Enlarged image'; lightboxOverlay.classList.add('active'); document.body.classList.add('lightbox-active'); } function closeLightbox() { lightboxOverlay.classList.remove('active'); document.body.classList.remove('lightbox-active'); setTimeout(() => { lightboxImage.src = ''; }, 300); } galleryImages.forEach(img => { img.addEventListener('click', openLightbox); }); lightboxOverlay.addEventListener('click', (event) => { if (event.target === lightboxOverlay) { closeLightbox(); } }); lightboxCloseButton.addEventListener('click', closeLightbox); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && lightboxOverlay.classList.contains('active')) { closeLightbox(); } }); });
 </script>
 
 </body>
