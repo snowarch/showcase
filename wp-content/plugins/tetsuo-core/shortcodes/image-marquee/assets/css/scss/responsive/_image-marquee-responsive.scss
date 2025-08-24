@@ -1,0 +1,68 @@
+/* ==========================================================================
+	Image Marquee shortcode responsive style - begin
+  ========================================================================== */
+    .edgtf-image-marquee-holder {
+		@include ipad-portrait {
+	        &.edgtf-im-with-content {
+	        	.edgtf-im-content-holder {
+	        		.edgtf-im-title {
+	        			font-size: 8vw;
+						line-height: 1.8em;
+
+						.edgtf-im-bold-title {
+							font-size: 54px;
+						}
+	        		}
+	        	}
+	        }
+
+	        &:not(.edgtf-im-full-height) {
+	        	.edgtf-image {
+	        	    img {
+	        	        max-width: 300vmin;
+	        	    }
+	        	}
+	        }
+		}
+
+		@media only screen and (max-width: 812px) and (orientation:landscape) {
+			&.edgtf-im-with-content {
+				.edgtf-im-content-holder {
+					.edgtf-im-title {
+						font-size: 4vw;
+					}
+
+					img {
+						max-width: 30%;
+						margin: 0 auto;
+					}
+				}
+			}
+
+			&.edgtf-im-full-height {
+			    height: 120vh;
+			    
+			    .edgtf-image {
+			        height: 120vh;
+
+			        img {
+			            height: 120vh;
+			        }
+			    }
+			}
+		}
+
+		@include phone-portrait {
+			&.edgtf-im-with-content {
+				.edgtf-im-title {
+					.edgtf-im-regular-title {
+						line-height: 35px;
+					}
+				}
+			}
+
+		}
+    }
+/* ==========================================================================
+  	Image Marquee shortcode responsive style - begin
+  ========================================================================== */

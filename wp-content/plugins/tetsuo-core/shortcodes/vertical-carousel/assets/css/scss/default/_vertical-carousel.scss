@@ -1,0 +1,225 @@
+/* ==========================================================================
+   Vertical Carousel shortcode style - begin
+   ========================================================================== */
+#edgtf-vertical-carousel {
+    position: relative;
+    display: flex;
+    padding: 0 15%;
+    visibility: hidden;
+
+    &.edgtf-initialized {
+        visibility: visible;
+    }
+
+    .edgtf-vc-images-holder {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .edgtf-vc-item-image {
+        margin: 7% 0;
+    }
+
+    .edgtf-touch-link {
+        @include edgtfAbsoluteHolderLayout;
+
+        .no-touch & {
+            display: none;
+        }
+    }
+
+    img {
+        display: block;
+        border: 3px solid #575757;
+        box-sizing: border-box;
+        @include edgtfTransition(border-color .3s);
+    }
+
+    .swiper-slide-active .edgtf-vc-item-image img {
+        border-color: #fff;
+    }
+
+    .edgtf-vc-content-holder {
+        flex: 1;
+        position: relative;
+        margin-left: 7%;
+    }
+
+    .edgtf-vc-item-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        visibility: hidden;
+
+        .edgtf-vc-item-content-inner {
+            margin-top: -13px;
+        }
+
+        &.edgtf-active {
+            visibility: visible;
+            z-index: 100;
+
+            .edgtf-vc-item-title {
+                opacity: 1;
+                @include edgtfTransform(translateX(0));
+            }
+        }
+    }
+
+    .edgtf-vc-item-description {
+        font-size: 20px;
+    }
+
+    .edgtf-vc-item-title {
+        margin-left: -0.04em;
+        @include edgtfTransform(translateX(100px));
+        @include edgtfTransition(.3s);
+        opacity: 0;
+    }
+
+    .edgtf-vc-btns {
+        margin-top: 25px;
+
+        .edgtf-btn {
+
+            margin-top: 20px;
+
+            &:first-child {
+                margin-right: 30px;
+            }
+
+            &:last-child {
+                border-color: $first-main-color !important;
+                background-color: transparent !important;
+
+                .edgtf-btn-overlay {
+                    background-color: $first-main-color;
+                }
+
+                .edgtf-btn-text {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .edgtf-vc-nav {
+        position: absolute;
+        top: calc(50% - 32px);
+        right: 85%;
+        height: 90px;
+        display: flex;
+        align-items: center;
+    }
+
+    .edgtf-vc-arrows {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 93px;
+
+        >span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            cursor: pointer;
+
+            path {
+                @include edgtfTransition(fill .2s);
+            }
+
+            &:hover path {
+                fill: $first-main-color;
+            }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #575757;
+        }
+    }
+
+    .edgtf-vc-counter {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    &.edgtf-vc-skin-dark {
+
+        .edgtf-vc-item-title,
+        .edgtf-vc-item-description,
+        .edgtf-vc-counter span {
+            color: $default-text-color-light;
+        }
+
+        .edgtf-separator {
+            border-color: $default-text-color-light;
+        }
+
+        .edgtf-vc-arrows path {
+            fill: $default-text-color-light;
+        }
+
+        .edgtf-vc-btns {
+            .edgtf-btn:first-child {
+                border-color: $default-text-color-light;
+                color: $default-text-color-light;
+
+                .edgtf-btn-overlay {
+                    background-color: $default-text-color-light;
+                }
+
+                &:hover {
+                    border-color: $default-text-color-light !important;
+                    color: #fff !important;
+                }
+            }
+
+            .edgtf-btn:last-child {
+                .edgtf-btn-text {
+                    color: $first-main-color;
+                }
+
+                &:hover {
+                    .edgtf-btn-text {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .edgtf-vc-widget-bottom {
+            .widget {
+                &.edgtf-social-icons-group-widget .edgtf-social-icon-widget-holder {
+                    color: $default-text-color-light;
+
+                    &:hover {
+                        color: rgba($default-text-color-light, 0.3);
+                    }
+                }
+            }
+        }
+    }
+
+    .swiper-slide-active .edgtf-vci-item-image img {
+        border-color: #000;
+    }
+}
+
+/* ==========================================================================
+   Vertical Carousel shortcode style - end
+   ========================================================================== */

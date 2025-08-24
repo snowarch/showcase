@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Portfolio list tooltip shortcode style - begin
+   ========================================================================== */
+
+.edgtf-portfolio-list-tooltip-holder {
+
+	.edgtf-plt-inner {
+		line-height: 1.23em;
+
+		.edgtf-plt-item {
+			position: relative;
+			display: inline-block;
+			margin-right: 24px;
+		}
+
+		.edgtf-image-tooltip {
+			position: relative;
+			display: block;
+
+			.edgtf-plti-title-holder {
+				display: block;
+			}
+
+			img {
+				position: absolute;
+				height: 0;
+				opacity: 0;
+				visibility: hidden;
+				width: 0;
+				pointer-events: none;
+			}
+
+			&:hover {
+				+ .tooltip {
+					display: block;
+
+					img {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.tooltip {
+			position: absolute !important;
+
+			img {
+				opacity: 0;
+				@include edgtfTransition(opacity .2s ease-in-out);
+			}
+		}
+	}
+
+	&.edgtf-plt-with-split-hover {
+        .edgtf-split-item-prim {
+            display: block;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+            -webkit-transition: -webkit-clip-path .3s, -webkit-transform .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: clip-path .3s, transform .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        
+        .edgtf-split-item-sec {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+            opacity: 0;
+            -webkit-transition: -webkit-clip-path .0s .3s, -webkit-transform .3s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: clip-path .0s .3s, transform .3s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .edgtf-plt-item:hover {
+            .edgtf-split-item-prim {
+                -webkit-clip-path: inset(0 0 56% 0);
+                clip-path: inset(0 0 56% 0);
+                @include edgtfTransform(translateX(-2%) translateY(-2%));
+                @include edgtfTransitionTransform(.2s cubic-bezier(0.215, 0.61, 0.355, 1));
+            }
+            
+            .edgtf-split-item-sec {
+                opacity: 1;
+                -webkit-clip-path: inset(48% 0 0 0);
+                clip-path: inset(48% 0 0 0);
+                @include edgtfTransform(translateY(2%));
+                @include edgtfTransitionTransform(.2s cubic-bezier(0.215, 0.61, 0.355, 1));
+            }
+		}
+	}
+}
+
+/* ==========================================================================
+   Portfolio list tooltip shortcode style - end
+   ========================================================================== */

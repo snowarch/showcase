@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Sticky header style - begin
+   ========================================================================== */
+
+$sticky-header-height: 70px;
+
+.edgtf-sticky-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: $sticky-header-height;
+	width: 100%;
+    z-index: 100;
+	-webkit-backface-visibility: hidden;
+	@include edgtfTransform(translateY(-100%));
+	@include edgtfTransitionTransform(.6s ease);
+    
+    .edgtf-grid {
+        height: 100% !important; //override settings for other instances of this div
+    }
+    
+    &.header-appear {
+        transform: translateY(0%);
+    }
+	
+	.admin-bar &.header-appear {
+		top: 32px;
+	}
+    
+    .edgtf-sticky-holder {
+	    position: relative;
+	    height: 100%;
+        z-index: 2;
+		background-color: rgba(#0a0a0a, .9);
+		border-bottom: 1px solid #252525;
+        box-sizing: border-box;
+	
+	    .edgtf-logo-wrapper a {
+		    max-height: $sticky-header-height;
+	    }
+	    
+	    .edgtf-grid .edgtf-vertical-align-containers {
+		    padding: 0;
+	    }
+	    
+	    &.edgtf-menu-left {
+		
+		    .edgtf-main-menu {
+			    width: auto;
+			    padding: 0 0 0 20px;
+		    }
+		
+		    .edgtf-vertical-align-containers {
+			
+			    .edgtf-position-left-inner {
+				    height: 100%;
+			    }
+			
+			    .edgtf-position-right {
+				
+				    &:before {
+					    display: none;
+				    }
+			    }
+			
+			    .edgtf-position-right-inner {
+				    display: -webkit-flex; /* Safari */
+				    -webkit-align-items: center; /* Safari 7.0+ */
+				    display: flex;
+				    align-items: center;
+				    height: 100%;
+			    }
+		    }
+	    }
+	
+	    &.edgtf-menu-center {
+		
+		    .edgtf-vertical-align-containers {
+			
+			    .edgtf-position-center-inner {
+				    height: 100%;
+			    }
+			
+			    .edgtf-position-right {
+				
+				    &:before {
+					    display: none;
+				    }
+			    }
+			
+			    .edgtf-position-right-inner {
+				    display: -webkit-flex; /* Safari */
+				    -webkit-align-items: center; /* Safari 7.0+ */
+				    display: flex;
+				    align-items: center;
+				    height: 100%;
+			    }
+		    }
+	    }
+	
+	    &.edgtf-menu-right {
+		
+		    .edgtf-main-menu {
+			    width: auto;
+		    }
+		
+		    .edgtf-vertical-align-containers {
+			
+			    .edgtf-position-right-inner {
+				    height: 100%;
+			    }
+		    }
+	    }
+    }
+	
+	.widget {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0;
+	}
+}
+
+.edgtf-theme-light-skin .edgtf-sticky-header .edgtf-sticky-holder .edgtf-logo-wrapper a {
+	color: $default-text-color-light;
+}
+/* ==========================================================================
+   Sticky header style - end
+   ========================================================================== */

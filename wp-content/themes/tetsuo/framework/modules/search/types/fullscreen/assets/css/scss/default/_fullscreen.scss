@@ -1,0 +1,291 @@
+/* ==========================================================================
+# Fullscreen search - start
+========================================================================== */
+
+
+/* Fullscreen search general style - start
+========================================================================== */
+
+.edgtf-fullscreen-search-holder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 105;
+    opacity: 0;
+
+    .edgtf-fullscreen-search-table {
+        background-image: url('../../../../../assets/img/background_pattern.png');
+        background-repeat: repeat;
+        background-position: 0 0;
+
+        body.edgtf-theme-light-skin & {
+            background-image: url('../../../../../assets/img/background_pattern_light.png');
+        }
+    }
+	
+    .edgtf-fullscreen-search-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .edgtf-fullscreen-search-cell {
+        @include edgtfTableCellLayout();
+        text-align: center;
+    }
+
+    .edgtf-form-holder-inner {
+        position: relative;
+        width: 68%;
+        margin: auto;
+
+        .edgtf-line {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            width: 0;
+            border-bottom: 2px solid #252525;
+            @include edgtfTransition(all .3s .2s);
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 0;
+                border-bottom: 2px solid $first-main-color;
+                @include edgtfTransition(all .3s .2s);
+            }
+
+            .edgtf-fullscreen-search-opened & {
+                width: 100%;
+                @include edgtfTransition(width 0.5s ease .6s);
+
+                &:after {
+                    width: 100%;
+                    @include edgtfTransition(width 0.5s ease .6s);
+                }
+            }
+        }
+    }
+
+    .edgtf-field-holder {
+        display: block;
+        position: relative;
+    }
+
+    .edgtf-search-field {
+        position: relative;
+        height: 102px;
+        width: 100%;
+        margin: 0;
+        padding: 0 0 0 25px;
+        font-size: 80px;
+        font-family: $default-heading-font;
+        font-weight: 700;
+        color: $default-heading-color;
+        line-height: 1.2em; //Fixes Safari bug
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        outline: none;
+        letter-spacing: -0.04em;
+
+        @include edgtfPlaceholder {
+            text-transform: uppercase;
+        }
+
+        body.edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+        }
+    }
+
+    .edgtf-search-submit {
+        position: absolute;
+        right: 0;
+        bottom: -20px;
+        width: auto;
+        color: $default-text-color;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+        @include edgtfTransition(all .3s .2s);
+    
+        &:hover {
+            color: $default-heading-color;
+        }
+
+        body.edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    
+        .edgtf-fullscreen-search-opened & {
+            opacity: 1;
+            bottom: 30px;
+            right: 21px;
+            @include edgtfTransition(color 0.2s ease, opacity .2s ease-out 1.1s, bottom .4s ease-out .9s);
+        }
+
+        &.edgtf-search-submit-icon-pack {
+            font-size: 18px;
+            line-height: 1em;
+        }
+
+        &.edgtf-search-submit-svg-path {
+            
+            > *,
+            path {
+                fill: currentColor;
+            }
+
+            > svg {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
+
+    .edgtf-search-close {
+        position: absolute;
+        top: 37px;
+        right: 162px;
+        color: $default-text-color;
+        opacity: 0;
+        visibility: hidden;
+	    z-index: 1;
+
+        @include laptop-landscape-mac {
+            right: 138px;
+        }
+        
+        .admin-bar & {
+            top: 72px;
+        }
+    
+        &:hover {
+            color: $default-heading-color;
+        }
+
+        body.edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        &.edgtf-search-close-icon-pack {
+            font-size: 25px;
+            line-height: 1em;
+
+            * {
+                display: block;
+                line-height: inherit;
+                
+                &:before {
+                    display: block;
+                    line-height: inherit;
+                }
+            }
+        }
+
+        &.edgtf-search-close-svg-path {
+
+            > * {
+                vertical-align: middle;
+            }
+
+            > *,
+            path,
+            rect {
+                fill: currentColor;
+            }
+        }
+    }
+}
+/* Fullscreen search general style - end
+========================================================================== */
+
+/* Fullscreen search fade style - start
+========================================================================== */
+
+.edgtf-search-fade .edgtf-fullscreen-search-holder {
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    opacity: 0;
+    z-index: 112;
+    box-sizing: border-box;
+}
+
+.edgtf-search-fade-out.edgtf-search-fade .edgtf-fullscreen-search-holder {
+    @include edgtfAnimation(search_fade_out .2s ease-out both);
+}
+
+.edgtf-search-fade-in.edgtf-search-fade .edgtf-fullscreen-search-holder.edgtf-animate {
+    @include edgtfAnimation(search_fade_in .3s ease both);
+}
+
+.edgtf-search-fade .edgtf-fullscreen-search-holder.edgtf-animate .edgtf-search-close {
+    opacity: 1;
+    visibility: visible;
+}
+
+@-webkit-keyframes search_fade_out {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes search_fade_out {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes search_fade_in {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes search_fade_in {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Fullscreen search fade style - end
+========================================================================== */
+
+/* ==========================================================================
+# Fullscreen search - end
+========================================================================== */

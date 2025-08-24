@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Header Vertical style - begin
+   ========================================================================== */
+$vertical-menu-width: 458px;
+
+@import 'blocks/header-vertical-navigation.scss';
+@import 'blocks/header-vertical-widgets.scss';
+
+.edgtf-header-vertical {
+	
+	&.admin-bar {
+		
+		.edgtf-vertical-menu-area {
+			top: 32px;
+			height: calc(100% - 32px);
+		}
+	}
+
+    .edgtf-content,
+    footer {
+        padding-left: $vertical-menu-width;
+        box-sizing: border-box;
+    }
+
+    .edgtf-vertical-menu-area {
+        position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: $vertical-menu-width;
+        height: 100%;
+		padding: 60px 45px;
+        background-color: transparent;
+        outline: none;
+        z-index: 101;
+        -webkit-backface-visibility: hidden;
+        box-sizing: border-box;
+	    
+	    &.edgtf-with-scroll {
+		    overflow: hidden;
+	    }
+    }
+
+    .edgtf-vertical-menu-area-inner {
+        @include edgtfRelativeHolderLayout();
+        height: 100%;
+
+        &.edgtf-vertical-align-left {
+            text-align: left;
+        }
+
+        &.edgtf-vertical-align-center {
+            text-align: center;
+
+            .edgtf-logo-wrapper img {
+                margin: 0 auto;
+            }
+        }
+    }
+	
+	.edgtf-logo-wrapper {
+		@include edgtfRelativeHolderLayout();
+		z-index: 100;
+		text-align: center;
+		
+		margin-top: 25px;
+		
+		a {
+			display: block;
+			position: relative;
+			height: 100%;
+		}
+		
+		img {
+			display: block;
+			height: auto;
+			max-height: 100%;
+			@include edgtfTransition(opacity 0.3s ease);
+		}
+	}
+
+    .edgtf-vertical-area-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: $vertical-menu-width;
+        height: 100%;
+        background-color: $default-background-color;
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: cover;
+		border-right: 2px solid #333;
+        z-index: 0;
+        opacity: 1;
+        @include edgtfTransition(opacity 0.5s ease, background-color 0.5s ease);
+    }
+    
+    &.edgtf-header-vertical-shadow-disable .edgtf-vertical-area-background {
+        box-shadow: none;
+    }
+    
+    &.edgtf-header-vertical-border-disable .edgtf-vertical-area-background {
+        border: none;
+    }
+}
+
+.edgtf-light-header {
+	
+	.edgtf-vertical-menu-area {
+		
+		.edgtf-logo-wrapper {
+			
+			.edgtf-light-logo {
+				opacity: 1;
+			}
+			
+			.edgtf-normal-logo,
+			.edgtf-dark-logo {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+.edgtf-dark-header {
+	
+	.edgtf-vertical-menu-area {
+		
+		.edgtf-logo-wrapper {
+
+			a {
+				color: $default-text-color-light;
+			}
+			
+			.edgtf-dark-logo {
+				opacity: 1;
+			}
+			
+			.edgtf-normal-logo,
+			.edgtf-light-logo {
+				opacity: 0;
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Header Vertical style - end
+   ========================================================================== */

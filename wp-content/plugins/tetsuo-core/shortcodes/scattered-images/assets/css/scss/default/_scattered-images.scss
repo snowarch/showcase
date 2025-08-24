@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Scattered Images shortcode start styles
+   ========================================================================== */
+
+.edgtf-scattered-images {
+	display: table;
+	
+	.edgtf-si-images-holder {
+		position: relative;
+		display: table-cell;
+		vertical-align: top;
+		width: 52%;
+
+	    img {
+	    	vertical-align: middle;
+	    }
+
+		.edgtf-si-hero-image-holder {
+			position: relative;
+			text-align: left;
+			margin: 0 0 0 66px;
+			z-index: 100;
+
+			.edgtf-si-hero-inner-image-holder {
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+
+				&:after {
+					content:'';
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					background: transparent;
+					@include edgtfTransition(background .2s);
+				}
+
+				&:hover {
+					&:after {
+						background: rgba(255,255,255,.1);
+					}
+				}
+			}
+		}
+
+		.edgtf-si-aux-image-holder {
+			position: absolute;
+
+			.edgtf-si-aux-inner-image-holder {
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+
+				&:after {
+					content:'';
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					background: transparent;
+					@include edgtfTransition(background .2s);
+				}
+
+				&:hover {
+					&:after {
+						background: rgba(255,255,255,.1);
+					}
+				}
+			}
+		}
+
+		.edgtf-si-aux-image-1 {
+			top: 51.7%;
+		}
+
+		.edgtf-si-aux-image-2 {
+			bottom: -12.2%;
+			z-index: 200;
+		}
+	}
+
+	.edgtf-si-text-content-holder {
+		display: table-cell;
+		vertical-align: top;
+		width: 48%;
+
+		.edgtf-si-title-holder {
+			margin-bottom: 57px;
+
+			.edgtf-si-title {
+				position: relative;
+
+				&:after {
+					content: '';
+					display: block;
+					background-color: currentColor;
+					width: 60px;
+					height: 5px;
+					position: absolute;
+					left: 2px;
+					bottom: -27px;
+				}
+			}
+		}
+
+		.edgtf-si-text-holder {
+
+			.edgtf-si-text {
+				font-size: 20px;
+				line-height: 29px;
+				letter-spacing: -.02em;
+			}
+		}
+
+		.edgtf-si-button {
+			margin-top: 45px;
+		}
+	}
+
+	&.edgtf-si-left {
+		.edgtf-si-text-content-holder {
+			padding: 5.3% 0 0 9.2%;
+		}
+
+		.edgtf-si-aux-image-1 {
+			left: 0;
+		}
+
+		.edgtf-si-aux-image-2 {
+			left: 64.3%;
+		}
+	}
+
+	&.edgtf-si-right {
+		.edgtf-si-text-content-holder {
+			padding: 5.3% 9.2% 0 0;
+			text-align: right;
+
+			.edgtf-si-title-holder {
+
+				.edgtf-si-title {
+
+					&:after {
+						right: 2px;
+						left: auto;
+					}
+				}
+			}
+		}
+
+		.edgtf-si-images-holder {
+
+			.edgtf-si-hero-image-holder {
+				text-align: right;
+				margin: 0 66px 0 0;
+			}
+		}
+
+		.edgtf-si-aux-image-1 {
+			right: 0;
+		}
+
+		.edgtf-si-aux-image-2 {
+			right: 64.3%;
+		}
+	}
+
+	&.edgtf-dark-skin {
+		.edgtf-si-text-content-holder {
+			.edgtf-si-title-holder {
+				.edgtf-si-title {
+					color: $default-text-color-light;
+				}
+			}
+
+			.edgtf-si-text-holder .edgtf-si-text {
+				color: $default-text-color-light;
+			}
+
+			.edgtf-btn-overlay {
+				background-color: $default-text-color-light;
+			}
+
+			.edgtf-si-button {
+				.edgtf-btn {
+					color: $default-text-color-light !important;
+					border-color:  $default-text-color-light !important;
+					background-color:  transparent !important;
+
+					&:hover {
+						color: #fff !important;
+					}
+				}
+			}
+		}
+
+	}
+
+	&.edgtf-has-shadow {
+		.edgtf-si-hero-image-holder {
+
+			.edgtf-si-hero-inner-image-holder {
+				box-shadow: 1px 1px 25.85px 3px rgba(0,0,0,.19);
+			}
+		}
+
+		.edgtf-si-aux-image-holder {
+
+			.edgtf-si-aux-inner-image-holder {
+				box-shadow: 1px 1px 25.85px 3px rgba(0,0,0,.19);
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Scattered Images shortcode end styles
+   ========================================================================== */

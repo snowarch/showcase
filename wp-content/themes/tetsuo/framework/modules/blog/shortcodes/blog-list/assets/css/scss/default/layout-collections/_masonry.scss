@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Blog List shortcode - Masonry type style - begin
+   ========================================================================== */
+
+.edgtf-blog-list-holder {
+	
+	&.edgtf-bl-masonry {
+		transition: none !important;
+		overflow: visible !important;
+		
+		.edgtf-bl-item {
+			z-index: 100;
+		}
+	}
+}
+/* ==========================================================================
+   Blog List shortcode - Masonry type style - end
+   ========================================================================== */

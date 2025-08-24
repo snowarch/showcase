@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Standard With Breadcrumbs Title type style - begin
+   ========================================================================== */
+
+.edgtf-title-holder {
+	
+	&.edgtf-standard-with-breadcrumbs-type {
+		
+		.edgtf-title-info,
+		.edgtf-breadcrumbs-info {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		
+		.edgtf-title-info {
+			width: 99%;
+		}
+		
+		.edgtf-breadcrumbs-info {
+			width: 1%;
+			text-align: right;
+			white-space: nowrap;
+		}
+		
+		.edgtf-page-title {
+			margin: 0;
+		}
+		
+		.edgtf-page-subtitle {
+			margin: 5px 0 0;
+		}
+		
+		.edgtf-breadcrumbs {
+			color: $default-text-color;
+			
+			&.edgtf-has-inline-style {
+				
+				a {
+					opacity: 1;
+					@include edgtfTransition(opacity .2s ease-out);
+					
+					&:hover {
+						color: inherit;
+						opacity: 0.9;
+					}
+				}
+			}
+			
+			a,
+			span {
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				color: inherit;
+			}
+			
+			a:hover {
+				color: $default-heading-color;
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Standard With Breadcrumbs Title type style - end
+   ========================================================================== */

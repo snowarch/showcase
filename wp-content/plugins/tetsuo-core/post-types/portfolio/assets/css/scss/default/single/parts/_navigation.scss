@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Portfolio Single navigation style - begin
+   ========================================================================== */
+
+.edgtf-ps-navigation {
+	position: relative;
+	display: table;
+	width: 100%;
+	vertical-align: middle;
+	padding: 0;
+	clear: both;
+    box-sizing: border-box;
+	margin-top: 42px;
+
+    .edgtf-ps-full-width-custom-layout & {
+        padding: 0 40px;
+    }
+	
+	.edgtf-ps-back-btn {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: inline-block;
+		vertical-align: middle;
+		@include edgtfTransform(translateX(-50%) translateY(-50%));
+		
+		a {
+			position: relative;
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+			cursor: pointer;
+			font-size: 23px;
+			line-height: 1;
+			
+			span {
+				display: block;
+				line-height: inherit;
+				
+				&:before,
+				&:after {
+					display: block;
+					line-height: 14px;
+				}
+				
+				&:after {
+					content: "\e0a6";
+				}
+			}
+		}
+	}
+	
+	.edgtf-ps-prev,
+	.edgtf-ps-next {
+		
+		display: table-cell;
+		
+		.edgtf-ps-navigation-holder {
+			@include edgtfDefaultHeadingStyle;
+		}
+	}
+	
+	.edgtf-ps-prev {
+		text-align: left;
+	}
+	
+	.edgtf-ps-next {
+		text-align: right;
+	}
+	
+	@media (min-width: $laptop-landscape-mac) {
+		.edgtf-ps-prev,
+		.edgtf-ps-next {
+			position: fixed;
+			display: block;
+			top: 50%;
+			width:230px;
+			height: 150px;
+			padding: 0;
+			box-sizing: border-box;
+			line-height: 0;
+			@include edgtfTransform(translateY(-50%));
+			@include edgtfTransition(all .25s ease-in-out);
+			
+			img {
+				position: relative;
+				height: 100%;
+				overflow: hidden;
+				border: 2px solid $default-border-color;
+				box-sizing: border-box;
+			}
+			
+			.edgtf-ps-navigation-holder {
+				position: absolute;
+				display: block;
+				top: 50%;
+				@include edgtfTransform(rotate(-90deg));
+				margin: 0;
+				text-align: center;
+				transform-origin: 50% 0;
+				min-width: 150px;
+				width: fit-content;
+				
+			}
+		}
+		
+		.edgtf-ps-prev {
+			left:-150px;
+			
+			.edgtf-ps-navigation-holder {
+				right: -55px;
+				@include edgtfTransition(right .15s ease-in-out .1s);
+			}
+			
+			&:hover {
+				left:1px;
+				
+				.edgtf-ps-navigation-holder {
+					right: -22px
+				}
+			}
+		}
+		
+		.edgtf-ps-next {
+			right:-150px;
+			text-align: right;
+			
+			.edgtf-ps-navigation-holder {
+				left: -55px;
+				@include edgtfTransition(left .15s ease-in-out .1s);
+			}
+			
+			&:hover {
+				right: 1px;
+				
+				.edgtf-ps-navigation-holder {
+					left: -22px;
+				}
+			}
+		}
+	}
+}
+
+.edgtf-theme-light-skin {
+	.edgtf-ps-navigation {
+		.edgtf-ps-next,
+		.edgtf-ps-prev {
+			.edgtf-ps-navigation-holder {
+				color: $default-text-color-light;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Portfolio Single navigation style - end
+   ========================================================================== */

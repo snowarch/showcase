@@ -1,0 +1,77 @@
+/* ==========================================================================
+   WooCommerce Onsale and Out of Stock styles - begin
+   ========================================================================== */
+
+.woocommerce {
+    
+    .edgtf-onsale,
+    .edgtf-out-of-stock,
+    .edgtf-new-product {
+        @include edgtfWooCommerceMarksGeneralStyle();
+
+        > div{
+            @include edgtfWooCommerceMarksGeneralStyleInside();
+        }
+
+    }
+    
+    .edgtf-onsale {
+        @include edgtfWooCommerceSaleStyle();
+
+        > div{
+            @include edgtfTransform( rotate(-45deg));
+            left: -35px;
+        }
+    }
+    
+    .edgtf-out-of-stock {
+        @include edgtfWooCommerceOutOfStockStyle();
+
+        > div{
+            @include edgtfTransform( rotate(45deg));
+            right: -35px;
+        }
+    }
+
+    .edgtf-new-product {
+        @include edgtfWooCommerceNewProductStyle();
+
+        > div{
+            @include edgtfTransform( rotate(45deg));
+            right: -35px;
+        }
+    }
+}
+
+.edgtf-woo-single-page {
+    
+    .edgtf-single-product-content {
+
+        .edgtf-onsale {
+            left: 10px;
+        }
+
+        .edgtf-out-of-stock,
+        .edgtf-new-product {
+            right: 10px;
+        }
+    }
+    
+    &.edgtf-woo-single-thumb-on-left-side {
+        
+        .edgtf-single-product-content {
+            
+            .edgtf-onsale {
+                left: 120px;
+            }
+            
+            .edgtf-out-of-stock,
+            .edgtf-new-product {
+                right: 0;
+            }
+        }
+    }
+}
+/* ==========================================================================
+   WooCommerce Onsale and Out of Stock styles - end
+   ========================================================================== */

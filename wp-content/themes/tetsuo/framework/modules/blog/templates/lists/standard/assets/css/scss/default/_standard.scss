@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Blog List - Standard style - begin
+   ========================================================================== */
+
+.edgtf-blog-holder {
+	
+    &.edgtf-blog-standard {
+	    
+        article {
+            margin: 0 0 80px;
+            padding: 0;
+	        border: 2px solid $default-border-color;
+	        
+	        @include phone-landscape {
+		        margin: 0 0 50px;
+	        }
+
+            &.edgtf-post-has-media {
+	            
+                .edgtf-post-heading {
+                    margin-bottom: 15px;
+                }
+            
+	            .edgtf-post-text {
+	                @include edgtfRelativeHolderLayout();
+	                box-sizing: border-box;
+	                padding: 20px;
+	            }
+	            
+	            .edgtf-post-info-bottom-left {
+		
+		            > div, span.edgtf-post-info-category-text {
+			
+			            display: inline-block;
+			            padding-right: 5px;
+			
+			            &.edgtf-post-info-comments-holder {margin-left: 33px}
+			
+			            a, span {
+				            opacity: .5;
+				            @include edgtfTransition(color .25s ease-out, opacity .25s ease-out);
+
+							.edgtf-theme-light-skin & {
+								opacity: .8;
+							}
+			            }
+			
+			            a span {
+				            opacity: 1;
+			            }
+			
+			            a:hover {
+				            opacity: 1;
+			            }
+		            }
+		            
+		            .edgtf-blog-like {
+			            margin-left: 17px;
+		            }
+	            }
+	
+	            @media only screen and (min-width: $ipad-portrait-plus-pixel) {
+		
+		            .edgtf-post-info-bottom-left,
+		            .edgtf-post-info-bottom-right {
+			            width: 50%;
+		            }
+		
+		            .edgtf-post-info-bottom-left {
+			            float: left;
+			            width:75%;
+		            }
+		
+		            .edgtf-post-info-bottom-right {
+			            float: right;
+			            text-align: right;
+			            width:25%;
+		            }
+	            }
+	
+	            .edgtf-post-info-bottom-right {
+		            > div {
+			            a, span {
+				            opacity: 1;
+			            }
+		            }
+	            }
+            }
+
+			&.format-link {
+				.edgtf-post-text {
+					padding: 36px;
+					
+					@include phone-landscape {
+						.edgtf-post-mark {
+							top: 14px;
+							left: -25px;
+						}
+					}
+				}
+			}
+
+			&.format-quote {
+				.edgtf-post-text {
+					padding: 40px 55px;
+				}
+			}
+	
+	        .edgtf-blog-share {
+		        margin-top: 50px;
+		
+		        h5 {
+			        display: inline-block;
+			        vertical-align: baseline;
+			        margin: 0;
+		        }
+		
+		        .edgtf-social-share-holder {
+			        vertical-align: baseline;
+			
+			        li {
+				        margin: 0 0 0 20px
+			        }
+		        }
+		
+		        a {
+			        font-size: 16px;
+		        }
+	        }
+        }
+    }
+}
+/* ==========================================================================
+   Blog List - Standard style - end
+   ========================================================================== */

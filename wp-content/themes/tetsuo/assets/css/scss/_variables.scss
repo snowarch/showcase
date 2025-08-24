@@ -1,0 +1,80 @@
+$breakpoints: (
+        laptop-landscape-large: 1440px,
+        laptop-landscape-mac: 1366px,
+        laptop-landscape-medium: 1280px,
+        laptop-landscape: 1200px,
+        ipad-landscape: 1024px,
+        ipad-portrait: 768px,
+        phone-landscape: 680px,
+        phone-portrait: 480px,
+        smaller-phone-portrait: 320px
+);
+
+$grid-width: 1100px;
+$grid-width-laptop-landscape: 950px;
+$grid-width-ipad-landscape: 768px;
+$grid-width-ipad-portrait: 600px;
+$grid-width-phone-landscape: 420px;
+$grid-width-phone-portrait: 300px;
+$grid-width-smaller-phone-portrait: 90%;
+
+$grid-width-boxed: 1150px;
+$grid-width-laptop-landscape-boxed: 1000px;
+$grid-width-ipad-landscape-boxed: 818px;
+$grid-width-ipad-portrait-boxed: 650px;
+$grid-width-phone-landscape-boxed: 470px;
+$grid-width-phone-portrait-boxed: 350px;
+$grid-width-smaller-phone-portrait-boxed: 92%;
+
+$grid-width-1300: 1300px;
+$grid-width-1200: 1200px;
+$grid-width-1000: 1000px;
+$grid-width-800: 800px;
+
+$default-heading-font: 'Rajdhani', sans-serif;
+$default-text-font: 'Roboto Condensed', sans-serif;
+$additional-font: 'Anton', sans-serif;
+
+$first-main-color: #ec4e00;
+$default-heading-color: #fff;
+$default-text-color: #fefefe;
+$default-text-color-light: #111;
+
+$default-background-color: #111;
+$default-background-color-light: #fff;
+$additional-background-color: #f6f6f6;
+$default-border-color: #272727;
+$default-box-shadow: 0 0 4.85px 0.15px rgba(#000, 0.09);
+
+$header-light-color: #fff;
+$header-light-hover-color: $first-main-color;
+$header-dark-color: #111;
+$header-dark-hover-color: $first-main-color;
+
+// input elements
+
+$input-height: 53px;
+$sselect-input-height: 57px;
+$input-vertical-padding: 13px;
+$input-horizontal-padding: 21px;
+$input-margin: 25px;
+
+// responsive breakpoints
+$laptop-landscape-large-plus-pixel: 1441px;
+$laptop-landscape-large: 1440px;
+$laptop-landscape-mac-plus-pixel: 1367px;
+$laptop-landscape-mac: 1366px;
+$laptop-landscape-medium-plus-pixel: 1281px;
+$laptop-landscape-medium: 1280px;
+$laptop-landscape-plus-pixel: 1201px;
+$laptop-landscape: 1200px;
+$ipad-landscape-plus-pixel: 1025px;
+$ipad-landscape: 1024px;
+$ipad-portrait-plus-pixel: 769px;
+$ipad-portrait: 768px;
+$phone-landscape-plus-pixel: 681px;
+$phone-landscape: 680px;
+$phone-portrait-plus-pixel: 481px;
+$phone-portrait: 480px;
+$smaller-phone-portrait-plus-pixel: 321px;
+$smaller-phone-portrait: 320px;

@@ -1,0 +1,49 @@
+/* ==========================================================================
+   WooCommerce Buttons styles - begin
+   ========================================================================== */
+
+.woocommerce-page .edgtf-content,
+div.woocommerce {
+
+    a.button,
+    a.added_to_cart,
+    input[type="submit"],
+    button[type="submit"]:not(.edgtf-search-submit),
+    .wc-forward:not(.added_to_cart):not(.checkout-button) {
+        @include edgtfButtonDefaultStyle();
+        @include edgtfButtonSize();
+        @include edgtfButtonSolidColor();
+        cursor: pointer;
+        z-index: 3;
+
+        &:hover {
+            @include edgtfButtonSolidHoverColor();
+            background-color: $first-main-color;
+        }
+    }
+
+    a.button.added {
+        display: none;
+    }
+}
+
+.edgtf-theme-light-skin.woocommerce-page .edgtf-content,
+.edgtf-theme-light-skin div.woocommerce {
+
+    a.button,
+    a.added_to_cart,
+    input[type="submit"],
+    button[type="submit"]:not(.edgtf-search-submit),
+    .wc-forward:not(.added_to_cart):not(.checkout-button) {
+        @include edgtfButtonSolidColorLight();
+
+        &:hover {
+            @include edgtfButtonSolidHoverColor();
+            background-color: $first-main-color;
+        }
+    }
+}
+
+/* ==========================================================================
+   WooCommerce Buttons styles - end
+   ========================================================================== */

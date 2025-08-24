@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Blog Single style - begin
+   ========================================================================== */
+
+.edgtf-blog-holder.edgtf-blog-single {
+	
+	article {
+		margin: 0 0 30px;
+		
+		.edgtf-post-heading {
+			margin-bottom: 34px;
+			border: 2px solid $default-border-color;
+		}
+		
+		.edgtf-post-text {
+			padding: 0 0 21px;
+		}
+		
+		&.format-quote,
+		&.format-link {
+			.edgtf-post-text {
+				padding: 53px 50px;
+			}
+
+			.edgtf-post-content {
+				margin: 0 0 23px;
+			}
+		}
+		
+		.edgtf-post-info-bottom {
+			
+			padding-top: 45px;
+			
+			> div {
+				display: inline-block;
+				padding-right: 10px;
+				color: grey;
+
+				&.edgtf-post-info-comments-holder {margin-left: 30px}
+				
+				a, span {
+					color: #fff;
+					opacity: .5;
+					@include edgtfTransition(all .25s);
+
+					.edgtf-theme-light-skin & {
+						color: $default-text-color-light;
+						opacity: .8;
+					}
+				}
+				
+				a span {
+					opacity: 1;
+				}
+				
+				a:hover {
+					color: $first-main-color;
+					opacity: 1;
+				}
+
+			}
+		}
+		
+		.edgtf-blog-share {
+			margin-top: 46px;
+			
+			h5 {
+				display: inline-block;
+				margin: 0;
+			}
+			
+			.edgtf-social-share-holder {
+				line-height: 1.9em;
+				
+				li {
+					margin: 0 0 0 20px;
+				}
+			}
+			
+			a {
+				font-size: 16px;
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Blog Single style - end
+   ========================================================================== */

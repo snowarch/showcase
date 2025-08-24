@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Scattered Images shortcode start responsive styles
+   ========================================================================== */
+
+@include laptop-landscape-mac {
+	.edgtf-scattered-images .edgtf-si-images-holder {
+		.edgtf-si-aux-image-1 {
+			top: 39%;
+		}
+
+		.edgtf-si-aux-image-2 {
+			bottom: 5%;
+		}
+		
+		.edgtf-si-hero-image-holder {
+			margin: 0 0 0 105px;
+		}
+	}
+	
+	.edgtf-scattered-images.edgtf-si-left {
+		.edgtf-si-text-content-holder {
+			padding: 0.3% 0 0 5.2%;
+		}
+		
+		.edgtf-si-aux-image-1 {
+			left: 20px;
+		}
+	}
+	
+	.edgtf-scattered-images.edgtf-si-right {
+		.edgtf-si-images-holder .edgtf-si-hero-image-holder {
+			margin: 0 105px 0 0;
+		}
+		
+		.edgtf-si-text-content-holder {
+			padding: 0.3% 5.2% 0 0;
+		}
+		
+		.edgtf-si-aux-image-1 {
+			right: 20px;
+		}
+	}
+}
+
+@include ipad-landscape {
+	.edgtf-scattered-images {
+		display: block;
+		.edgtf-si-images-holder {
+			display: block;
+			width: 100%;
+
+			.edgtf-si-aux-image-1 {
+				top: 62%;
+			}
+
+			.edgtf-si-aux-image-2 {
+				bottom: -47%;
+			}
+		}
+
+		.edgtf-si-text-content-holder {
+			display: block;
+			width: 100%;
+		}
+
+		&.edgtf-si-left {
+			.edgtf-si-text-content-holder {
+				padding: 300px 0 0;
+			}
+		}
+
+		&.edgtf-si-right {
+			.edgtf-si-images-holder {
+				padding: 70px 0 0;
+
+				.edgtf-si-aux-image-2 {
+					bottom: -27%;
+				}
+			}
+		}
+	}
+}
+
+@include ipad-portrait {
+	.edgtf-scattered-images {
+		.edgtf-si-images-holder {
+
+			.edgtf-si-aux-image-2 {
+				bottom: -57%;
+			}
+		}
+
+		&.edgtf-si-right {
+			.edgtf-si-images-holder {
+
+				.edgtf-si-aux-image-2 {
+					bottom: -37%;
+				}
+			}
+		}
+	}
+}
+
+@include phone-landscape {
+	.edgtf-scattered-images { 
+		.edgtf-si-images-holder {
+			.edgtf-si-hero-image-holder {
+				img {
+					max-width: 70%;
+				}
+
+				>a:after {
+					width: 70%;
+				}
+			}
+
+			.edgtf-si-aux-image-1 {
+				max-width: 28%;
+			}
+
+			.edgtf-si-aux-image-2 {
+				max-width: 35%;
+			}
+
+			.edgtf-si-aux-image-3 {
+				max-width: 40%;
+			}
+		}
+
+		&.edgtf-si-left {
+			.edgtf-si-images-holder {
+				.edgtf-si-aux-image-3 {
+					right: 10%;
+				}
+			}
+		}
+
+		&.edgtf-si-right {
+			.edgtf-si-images-holder {
+				.edgtf-si-aux-image-3 {
+					left: 10%;
+				}
+			}
+		}
+
+		&.edgtf-si-left {
+			.edgtf-si-text-content-holder {
+				padding: 120px 0 0;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Scattered Images shortcode end responsive styles
+   ========================================================================== */

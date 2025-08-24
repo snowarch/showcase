@@ -1,0 +1,32 @@
+/* ==========================================================================
+# Side area uncovering - begin
+========================================================================== */
+
+.edgtf-side-area-uncovered-from-content {
+
+	&.edgtf-right-side-menu-opened {
+
+		.edgtf-wrapper,
+		footer.edgtf-footer-uncover,
+		.edgtf-sticky-header,
+		.edgtf-fixed-wrapper.fixed,
+		.edgtf-mobile-header-inner,
+		.mobile-header-appear .edgtf-mobile-header-inner {
+			left: -530px;
+		}
+	}
+
+	.edgtf-side-menu {
+		right: 0;
+		z-index: 90;
+	}
+
+	.edgtf-sticky-header,
+	.edgtf-fixed-wrapper.fixed {
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+	}
+}
+
+/* ==========================================================================
+# Side area uncovering - end
+========================================================================== */

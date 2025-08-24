@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Image Marquee shortcode style - begin
+   ========================================================================== */
+.edgtf-image-marquee-holder {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+
+	&.edgtf-im-regular-title-dot {
+		.edgtf-im-regular-title {
+			.edgtf-im-regular-title-inner {
+				&:after {
+					content: '.';
+					color: $first-main-color;
+				}
+			}
+		}
+	}
+
+	.edgtf-image-marquee {
+		position: relative;
+	}
+
+	.edgtf-image {
+		display: inline-block;
+
+		img {
+			width: auto;
+			max-width: unset;
+			vertical-align: middle;
+		}
+
+		&.edgtf-original {
+			position: relative;
+		}
+
+		&.edgtf-aux {
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	&.edgtf-im-full-height {
+		height: 100vh;
+
+		.edgtf-image {
+			height: 100vh;
+
+			img {
+				height: 100vh;
+				width: auto;
+				max-width: unset;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	&.edgtf-im-with-content {
+		.edgtf-im-content-holder {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100vw;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			background-color: rgba(#1f1b2a, .92);
+			z-index: 10;
+		}
+
+		.edgtf-im-title {
+			color: #fff;
+			margin: 33px 0 40px;
+
+			.edgtf-im-bold-title {
+				font-size: 111px;
+				display: block;
+				margin-bottom: 29px;
+			}
+
+			.edgtf-im-regular-title {
+				font-size: 28px;
+				display: block;
+				text-transform: none;
+				margin-bottom: 10px;
+
+				.edgtf-im-regular-title-italic {
+					font-family: $default-heading-font;
+					font-weight: 400;
+					font-style: italic;
+				}
+			}
+		}
+
+		.edgtf-im-btn {
+			background-color: $first-main-color;
+			color: #fff;
+
+			&:hover {
+				color: #fff !important;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+	Image Marquee shortcode style - begin
+	========================================================================== */

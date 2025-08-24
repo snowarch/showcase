@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Grid System style - begin
+   ========================================================================== */
+
+.edgtf-two-columns-form-without-space {
+    
+    .edgtf-column-left {
+        display: table-cell;
+        width: 99%;
+        vertical-align: top;
+    }
+    
+    .edgtf-column-right {
+        display: table-cell;
+        width: 1%;
+        text-align: left;
+        vertical-align: top;
+    }
+}
+
+.edgtf-two-columns-form-with-space {
+	
+	.edgtf-column-left {
+		display: table-cell;
+		width: 99%;
+		vertical-align: top;
+		padding: 0 10px 0 0;
+		box-sizing: border-box;
+	}
+	
+	.edgtf-column-right {
+		display: table-cell;
+		width: 1%;
+		text-align: left;
+		vertical-align: top;
+		padding: 0 0 0 10px;
+		box-sizing: border-box;
+	}
+}
+
+/*
+* If you changed some value for space do the same thing in product-list-main-and-vc scss files
+*/
+$columns_space_label: ('no', 'tiny', 'small', 'normal', 'medium', 'large', 'huge' );
+$columns_space_width: (0, 5, 10, 15, 20, 25, 40);
+
+@for $i from 0 to length($columns_space_label) {
+	.edgtf-#{nth($columns_space_label,$i+1)}-space {
+		$column_width: nth($columns_space_width,$i+1);
+		$column_width_margin: $column_width * 2;
+		
+		.edgtf-outer-space {
+			@if($column_width == 0) {
+				margin: 0;
+			} @else {
+				margin: 0 -#{$column_width}px;
+			}
+			
+			.edgtf-item-space {
+				padding: 0 #{$column_width}px;
+				margin: 0 0 #{$column_width_margin}px;
+			}
+		}
+		
+		&.edgtf-disable-bottom-space {
+			@if($column_width == 0) {
+				margin-bottom: 0;
+			} @else {
+				margin-bottom: -#{$column_width_margin}px;
+			}
+		}
+		
+		&.edgtf-disable-item-bottom-space {
+			
+			.edgtf-item-space {
+				margin-bottom: 0;
+			}
+		}
+		
+		&.edgtf-columns-has-side-space {
+			padding: 0 #{$column_width_margin*2}px;
+		}
+	}
+}
+
+$list_columns_map: (
+	6 : $laptop-landscape-large-plus-pixel,
+	5 : $laptop-landscape-mac-plus-pixel,
+	4 : $ipad-landscape-plus-pixel,
+	3 : $ipad-portrait-plus-pixel,
+	2 : $phone-landscape-plus-pixel
+);
+
+$list_columns: ('one', 'two', 'three', 'four', 'five', 'six');
+
+.edgtf-grid-list {
+	
+	.edgtf-list-is-slider {
+		
+		.edgtf-outer-space {
+			margin: 0 !important;
+		}
+		
+		.edgtf-item-space {
+			width: auto !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			float: none !important;
+			clear: none !important;
+		}
+	}
+	
+	.edgtf-item-space {
+		@include edgtfRelativeHolderLayout(top);
+		box-sizing: border-box;
+	}
+	
+	&:not(.edgtf-one-columns) {
+		
+		.edgtf-item-space {
+			float: left;
+		}
+	}
+	
+	@for $i from 0 to length($list_columns) {
+		$step: $i + 1;
+		
+		&.edgtf-#{nth($list_columns, $step)}-columns {
+			$column_width: 100%/$step;
+			
+			.edgtf-masonry-grid-sizer {
+				width: $column_width;
+			}
+			
+			.edgtf-item-space {
+				width: $column_width;
+				
+				@if ($i > 0) {
+					
+					&.edgtf-masonry-size-large-width,
+					&.edgtf-masonry-size-large-width-height {
+						width: $column_width*2;
+					}
+					
+					@media only screen and (min-width: map-get($list_columns_map, $step)) {
+						
+						&:nth-child(#{$step}n+1) {
+							clear: both;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.edgtf-grid-masonry-list {
+	
+	&.edgtf-fixed-masonry-items {
+		
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+	
+	.edgtf-masonry-list-wrapper {
+		opacity: 0;
+	}
+	
+	.edgtf-masonry-grid-sizer {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.edgtf-masonry-grid-gutter {
+		width: 0;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.edgtf-item-space {
+		
+		&.edgtf-fixed-masonry-item {
+			
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+}
+
+@import 'grid-system-mixin';
+
+.edgtf-grid-row {
+    @include createGridRow();
+    @include edgtfClearfix();
+}
+
+//generate gutter spaces
+$columns_space_label: ('no', 'tiny', 'small', 'normal', 'medium', 'large', 'huge' );
+$columns_space: (0, 5, 10, 15, 20, 25, 40);
+
+@for $i from 0 to length($columns_space_label) {
+    .edgtf-grid-#{nth($columns_space_label,$i+1)}-gutter {
+        $item_space: nth($columns_space, $i+1);
+    
+        //generate holder margin
+        @include createGridRow($item_space);
+        
+        //generate columns padding
+        > div {
+            @include createGridColumnPadding($item_space);
+        }
+    }
+}
+
+//generate column classes
+@for $i from 1 to (map-get($gridConfig, numberOfCols) + 1) {
+    .edgtf-grid-col-#{$i} {
+        @include createGridColumn($i);
+        
+        @include createGridColumnResponsive(map-get($gridConfig, stackOn));
+    }
+}
+
+//generate push / pull classes
+@for $i from 1 to (map-get($gridConfig, numberOfCols) + 1) {
+    .edgtf-grid-col-push-#{$i} {
+        @include createGridColumnPush($i);
+    }
+    
+    .edgtf-grid-col-pull-#{$i} {
+        @include createGridColumnPull($i);
+    }
+}
+
+//generate responsive width column classes
+@for $i from 1 to (map-get($gridConfig, numberOfCols) + 1) {
+    @each $size, $width in $breakpoints {
+        .edgtf-grid-col-#{$size}-#{$i} {
+            $stack: false;
+            
+            //check if current column is max number of columns.
+            //if it is than we need to stack columns
+            @if($i == map-get($gridConfig, numberOfCols)) {
+                $stack: true;
+            }
+            
+            //if current column isn't the max number of columns
+            //than generate responsive for it.
+            @if($i < (map-get($gridConfig, numberOfCols) + 1)) {
+                @include createGridColumnResponsive($size, $i, $stack);
+            }
+        }
+    }
+}
+/* ==========================================================================
+   Grid System style - end
+   ========================================================================== */

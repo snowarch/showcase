@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Header logo styles - begin
+   ========================================================================== */
+
+.edgtf-logo-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+
+    a {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+
+        img {
+            height: 100%;
+			width: auto;
+            @include edgtfTransition(opacity 0.2s ease);
+
+            &.edgtf-normal-logo{
+                opacity: 1;
+            }
+
+            &.edgtf-dark-logo{
+                opacity: 0;
+                @include edgtfTransform(translateY(-100%));
+            }
+
+            &.edgtf-light-logo{
+                opacity: 0;
+                @include edgtfTransform(translateY(-200%));
+            }
+        }
+
+        .edgtf-logo-text {
+            vertical-align: middle;
+            display: inline-block;
+            line-height: 1em;
+            font-family: $additional-font;
+            letter-spacing: -0.04em;
+            font-size: 42px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .edgtf-dark-header .edgtf-page-header > div:not(.edgtf-sticky-header):not(.fixed) & {
+            color: #111;
+
+            &:hover {
+                color: $first-main-color;
+            }
+        }
+    }
+
+    .edgtf-animated-logo & {   
+        .edgtf-logo-text {
+            position:relative;
+            overflow: hidden;
+    
+            &:before,
+            &:after {
+                content:attr(data-text);
+                position: absolute;
+                top: 0;
+                height: 100%;
+                color: inherit;
+                -webkit-clip:rect(0,900px,0,0); 
+                clip:rect(0,900px,0,0); 
+                visibility: hidden;
+            }
+
+            &:not(.edgtf-pause) {
+                &:before {
+                    left: -1px;
+                    width: 50%;
+                    text-shadow: 1px 0 rgba($first-main-color, .3);
+                    @include edgtfAnimation(edgtfGlitch 3s infinite linear alternate-reverse);
+                }
+        
+                &:after {
+                    right: 3px;
+                    text-shadow: 3px 0 #000;
+                    @include edgtfAnimation(edgtfGlitch2 3s infinite linear alternate-reverse);
+                }
+            }
+        }
+    }
+}
+/* ==========================================================================
+   Header logo styles - end
+   ========================================================================== */

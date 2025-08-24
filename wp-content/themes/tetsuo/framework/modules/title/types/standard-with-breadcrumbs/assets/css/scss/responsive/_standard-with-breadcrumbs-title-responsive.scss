@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Standard With Breadcrumbs Title type responsive style - begin
+   ========================================================================== */
+
+@include ipad-landscape {
+	
+	.edgtf-title-holder {
+		
+		&.edgtf-standard-with-breadcrumbs-type {
+			
+			.edgtf-title-info,
+			.edgtf-breadcrumbs-info {
+				display: block;
+				width: 100%;
+			}
+			
+			.edgtf-breadcrumbs-info {
+				margin: 10px 0 0;
+				text-align: initial;
+				white-space: inherit;
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Standard With Breadcrumbs Title type responsive style - end
+   ========================================================================== */

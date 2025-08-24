@@ -1,0 +1,123 @@
+footer {
+    // widgets spacing
+    $widget-bottom-margin: 27px;
+
+    // list items dimensions
+    $widget-list-item-height: 20px;
+    $widget-list-item-padding: 15px;
+    
+    // widget color
+    $widget-background-color: transparent;
+    
+    // widget border
+    $widget-border-color: $default-border-color;
+    $widget-border-width: 2px;
+    $widget-border-style: solid;
+    
+    // list items color
+    $widget-list-item-background-color: #ffffff;
+    
+    // list items border
+    $widget-list-item-border-color: $default-border-color;
+    $widget-list-item-border-width: 2px;
+    $widget-list-item-border-style: solid;
+    
+    // text
+    $widget-text-color: inherit;
+    $widget-heading-color: inherit;
+    
+    // links
+    $widget-link-color: $default-text-color;
+    $widget-link-hover-color: $first-main-color;
+
+    // specific widgets
+    $widget-search-form-height: $input-height;
+    $widget-tag-cloud-height: 1em;
+
+    @import 'widgets/default-wordpress-widgets-flat';
+    @import 'widgets/standalone-widgets';
+
+    .footer-custom-menu {
+        margin-top: 85px;
+
+        ul {
+            li {
+                display: inline-block;
+                padding: 0 21px;
+                margin: 0;
+                border-bottom: 0;
+
+                @include phone-landscape {
+                    display: block;
+                    padding: 8px 0px;
+
+                    &.edgtf-split-item-prim {
+                        transform: none !important;
+                    }
+
+                    &.edgtf-split-item-sec {
+                        left: 50% !important;
+                        @include edgtfTransform(translateX(-50%) !important);
+                    }
+
+                }
+
+                a {
+                    color: $default-heading-color;
+                    position: relative;
+                    display: block;
+                    font-family: $default-heading-font;
+                    font-weight: 700;
+                    font-size: 17px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.11em;
+
+                    &:hover {
+                        color: $first-main-color;
+                    }
+                }
+            }
+        }
+
+        .edgtf-theme-light-skin & {
+            a {
+                color: $default-text-color-light;
+
+                &:hover {
+                    color: $first-main-color;
+                }
+            }
+        }
+    }
+
+    .footer-top-logo-text {
+        font-family: $additional-font;
+        letter-spacing: -.04em;
+        font-size: 80px;
+        text-transform: uppercase;
+        font-weight: 400;
+        line-height: 1em;
+        color: $default-heading-color;
+
+        .edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+        }
+    }
+
+    .footer-top-text {
+        color: $default-heading-color;
+        font-family: $default-heading-font;
+        font-size: 16px;
+        letter-spacing: .8em;
+        text-transform: uppercase;
+        font-weight: 400;
+
+        .edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+        }
+    }
+
+    .widget .edgtf-widget-title-holder {
+        margin-top: 40px;
+    }
+}

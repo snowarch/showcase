@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Clients Holder shortcode responsive style - begin
+   ========================================================================== */
+
+@media screen and (min-width: $ipad-portrait-plus-pixel) and (max-width: $ipad-landscape) {
+	.edgtf-clients-grid-holder {
+		&.edgtf-grid-list.edgtf-four-columns .edgtf-item-space {
+			width: 50%;
+
+			&:nth-child(2n+1) {
+				clear: both;
+			}
+
+			&:nth-child(3n+1) {
+				clear: none;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Clients Holder shortcode responsive style - end
+   ========================================================================== */

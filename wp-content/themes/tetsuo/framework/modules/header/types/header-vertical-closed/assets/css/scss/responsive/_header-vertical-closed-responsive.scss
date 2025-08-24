@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Header Vertical - Closed responsive style - begin
+   ========================================================================== */
+
+@media only screen and (min-width: $ipad-landscape-plus-pixel) {
+	
+	.error404.edgtf-header-vertical-closed .edgtf-content {
+		margin: 0 !important;
+	}
+}
+
+@include ipad-landscape {
+	
+	.edgtf-header-vertical-closed {
+		
+		.edgtf-vertical-menu-area {
+			display: none;
+		}
+		
+		.edgtf-content,
+		footer {
+			padding-left: 0;
+		}
+	}
+}
+/* ==========================================================================
+   Header Vertical - Closed responsive style - end
+   ========================================================================== */

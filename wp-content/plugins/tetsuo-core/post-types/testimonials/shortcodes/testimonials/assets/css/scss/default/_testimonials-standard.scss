@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Testimonials standard style - begin
+   ========================================================================== */
+
+.edgtf-testimonials-holder {
+    
+    &.edgtf-testimonials-standard {
+        text-align: center;
+
+        .edgtf-testimonial-image {
+            @include edgtfRelativeHolderLayout();
+            margin: 25px 0 0;
+
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .edgtf-testimonial-title {
+            margin: 0;
+        }
+
+        .edgtf-testimonial-author {
+            margin: 36px 0 0;
+        }
+
+        .edgtf-testimonial-text {
+            margin: 19px auto 0;
+            color: #fff;
+            font-size: 20px;
+            line-height: 29px;
+            letter-spacing: -.02em;
+            width: 85%;
+
+            @include phone-landscape {
+                width: 100%;
+            }
+        }
+
+        .edgtf-owl-slider.edgtf-slider-has-both-nav {
+            .owl-nav {
+                .owl-next,
+                .owl-prev {
+                    @include edgtfTransform(translateY(calc(-50% - 71px)));
+                }
+
+                @include phone-landscape {
+                    display: none;
+                }
+            }
+        }
+
+        /* Light/Dark styles */
+        &.edgtf-testimonials-dark {
+            
+            .edgtf-testimonial-title,
+            .edgtf-testimonial-text,
+            .edgtf-testimonial-author {
+                color: $default-text-color-light;
+            }
+
+            .owl-nav {
+                .owl-next,
+                .owl-prev {
+                    color: $default-text-color-light;
+
+                    &:hover {
+                        color: $first-main-color;
+                    }
+                }
+            }
+
+            .owl-dots {
+                
+                .owl-dot {
+
+                    span {
+                        background-color: $default-text-color-light;
+                    }
+                    
+                    &:hover,
+                    &.active {
+
+                        span {
+                            background-color: $first-main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* ==========================================================================
+   Testimonials standard style - end
+   ========================================================================== */

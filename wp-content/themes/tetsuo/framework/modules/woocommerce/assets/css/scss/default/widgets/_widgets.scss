@@ -1,0 +1,364 @@
+/* ==========================================================================
+   WooCommerce Widgets styles - begin
+   ========================================================================== */
+
+.widget.woocommerce {
+    $thumb: 70px;
+    $inner-padding: 20px; // distance between image and content
+    $widget-list-item-padding: 10px; // same as sidebar vars
+
+    clear: both;
+
+    li {
+        position: relative;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // title
+
+    .product-title {
+        @include edgtfH5();
+        margin-top: 3px;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // star rating
+
+    li:not(.wc-layered-nav-rating) {
+        .star-rating {
+            margin-bottom: 7px;
+            margin-top: 7px;
+
+            span {
+                max-width: 100px;
+            }
+        }
+    }
+
+    li.wc-layered-nav-rating {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .woocommerce-widget-layered-nav-dropdown {
+
+        li.select2-selection__choice{
+            margin: 7px 5px 0 5px;
+        }
+        .select2-container--default, .select2-selection--multiple {
+            height: auto;
+        }
+
+        .select2-selection__rendered{
+            padding: 35px 20px 0;
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // price
+
+    .amount {
+        color: inherit;
+
+        span { // currency symbol
+            color: inherit;
+        }
+    }
+
+    del,
+    ins {
+        display: block;
+
+        // currency symbol
+        span {
+            color: inherit;
+        }
+    }
+
+    ins {
+        text-decoration: none;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // layered nav
+
+    &.widget_layered_nav {
+        .chosen {
+            a {
+                color: $first-main-color;
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // price filter
+
+    &.widget_price_filter {
+        form {
+            margin-top: 27px;
+        }
+
+        .price_slider_wrapper {
+            .ui-widget-content {
+                background-color: $default-border-color;
+                height: 5px;
+                position: relative;
+
+                .ui-slider-handle {
+                    background-color: $first-main-color;
+                    cursor: pointer;
+                    height: 11px;
+                    margin: 0 0 0 -1px;
+                    outline: medium none;
+                    position: absolute;
+                    top: -5px;
+                    width: 1px;
+                    z-index: 2;
+
+                    &:last-child {
+                        @include edgtfTransform(translateX(-50%));
+                    }
+                }
+
+                .ui-slider-range {
+                    background-color: $first-main-color;
+                    display: block;
+                    height: 5px;
+                    position: absolute;
+                    top: 0;
+                    z-index: 1;
+                }
+            }
+        }
+
+        .price_slider_amount {
+            margin: 14px 0 0;
+
+            .button {
+                float: right;
+                color: #fff;
+                background-color: transparent !important;
+                border: 0;
+                line-height: 34px;
+                padding: 0 5px;
+
+                &:hover {
+                    color: $first-main-color;
+                }
+
+                body.edgtf-theme-light-skin & {
+                    color: $default-text-color-light;
+
+                    &:hover {
+                        color: $first-main-color;
+                    }
+                }
+            }
+
+            .price_label {
+                float: left;
+                line-height: 34px; // to match button height
+                color: #797979;
+                letter-spacing: -0.02em;
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // widgets with images
+
+    &.widget_shopping_cart,
+    &.widget_products,
+    &.widget_recently_viewed_products,
+    &.widget_recent_reviews,
+    &.widget_top_rated_products {
+        ul {
+            padding: 10px 0;
+
+            li {
+                min-height: $thumb;
+                position: relative;
+                padding: 12px 0;
+
+                .star-rating{
+                    display: none;
+                }
+
+                a {
+                    img {
+                        left: 0;
+                        max-width: $thumb;
+                        position: absolute;
+                        top: $widget-list-item-padding;
+                        width: 100%;
+                        border: 1px solid $default-border-color;
+                        box-sizing: border-box;
+                    }
+
+                    span {
+                        box-sizing: border-box;
+                        display: block;
+                        padding: 0 0 0 #{$thumb + $inner-padding};
+                        position: relative;
+                        font-family: $default-heading-font;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                }
+
+                > *:not(a) {
+                    float: left;
+                    margin: 0 0 0 #{$thumb + $inner-padding};
+                    color: #797979;
+                }
+
+                > ins{
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // widgets with images and plain text next to image
+
+    //&.widget_shopping_cart,
+    //&.widget_recent_reviews {
+    //    a {
+    //        display: block;
+    //        padding: 0 0 0 #{$thumb + $inner-padding};
+	//
+    //        @include edgtfH5();
+    //    }
+    //}
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // recent reviews
+
+    //&.widget_recent_reviews {
+    //    .reviewer {
+    //    }
+    //}
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // shopping cart
+
+    &.widget_shopping_cart {
+        .remove {
+            font-size: 0;
+            font-weight: normal;
+            line-height: 1;
+            position: absolute;
+            right: 0;
+            top: 5px;
+            text-decoration: none;
+
+            &:after {
+                content: "\4d";
+                display: block;
+                font-family: 'ElegantIcons';
+                font-size: 15px;
+                line-height: 15px;
+                position: relative;
+            }
+        }
+
+        .variation {
+            @include edgtfRelativeHolderLayout();
+
+            > * {
+                display: inline-block;
+                margin: 0;
+                vertical-align: middle;
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+
+        .total {
+            margin: 17px 0 13px;
+        }
+
+        .buttons {
+            .button {
+                @include edgtfButtonDefaultStyle();
+                @include edgtfButtonSize();
+                @include edgtfButtonSolidColor();
+
+                &:hover {
+                    @include edgtfButtonSolidHoverColor();
+                }
+
+                &:first-child {
+                    float: left;
+                }
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    &.widget_product_categories,
+    &.widget_layered_nav{
+        > ul{
+            padding: 5px 0;
+
+            > li{
+                font-size: 20px;
+            }
+
+        }
+    }
+
+    &.widget_product_categories {
+        ul {
+            li {
+                overflow: hidden;
+                a {
+                    display: inline;
+                    overflow: hidden;
+                    padding: 0;
+                    position: relative;
+                    @include edgtfTransition(padding .2s ease-in-out);
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: -15px;
+                        width: 2px;
+                        color: inherit;
+                        background-color: currentColor;
+                        height: calc(100% - 9px);
+                        top: 50%;
+                        @include edgtfTransform(translateY(-50%));
+                        font-size: 18px;
+                        line-height: inherit;
+                        font-weight: normal;
+                        font-style: normal;
+                        text-rendering: auto;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                        @include edgtfTransition(left .2s ease-in-out);
+                    }
+
+                    &:hover {
+                        padding-left: 15px;
+
+                        &:after {
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   WooCommerce Widgets styles - end
+   ========================================================================== */

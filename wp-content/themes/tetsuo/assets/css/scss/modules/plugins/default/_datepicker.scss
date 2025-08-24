@@ -1,0 +1,68 @@
+
+#ui-datepicker-div {
+
+    width: 260px;
+    z-index: 1000 !important; /* datepicker is hidden on z-index lower then 1000 */
+
+
+    .ui-widget-header {
+        background-color: $default-heading-color;
+        border-color: $default-heading-color;
+        padding: 10px 25px;
+        position: relative;
+
+        > * {
+            color: #fff;
+        }
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            @include edgtfTransform(translateY(-50%));
+
+            &:before {
+                display: block;
+                font-family: "linea-arrows-10";
+                font-size: 20px;
+                vertical-align: middle;
+            }
+
+            .ui-icon {
+                display: none;
+            }
+        }
+
+        .ui-datepicker-prev {
+
+            left: 20px;
+
+            &:before {
+                content: "\e03f";
+
+            }
+        }
+
+        .ui-datepicker-next {
+
+            right: 20px;
+
+            &:before {
+                content: "\e04b";
+            }
+
+        }
+
+        .ui-datepicker-title {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+    }
+
+    .ui-datepicker-calendar {
+        background-color: #fff;
+    }
+}

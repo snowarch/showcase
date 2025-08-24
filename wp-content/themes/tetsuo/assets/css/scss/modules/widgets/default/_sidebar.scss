@@ -1,0 +1,155 @@
+.edgtf-theme-light-skin aside.edgtf-sidebar {
+    .widget {
+        color: $default-text-color-light;
+    }
+}
+
+aside.edgtf-sidebar {
+    position: relative;
+    z-index: 11;
+    margin: 0 0 60px;
+
+    .widget {
+        color: $default-text-color;
+
+        &:last-child {
+            margin: 0 !important;
+        }
+    
+        .edgtf-disable-bottom-space {
+	        margin-bottom: 0
+        }
+	    .edgtf-outer-space {
+		    margin: 0;
+	    }
+    }
+}
+
+.wpb_widgetised_column {
+    position: relative;
+}
+
+aside.edgtf-sidebar,
+.wpb_widgetised_column {
+    // widgets spacing
+    $widget-bottom-margin: 40px;
+    $widget-bottom-padding: 26px;
+    $widget-inner-padding: 36px 22px;
+
+    // widget color
+    $widget-background-color: transparent;
+
+    // widget border
+    $widget-border-color: $default-border-color;
+    $widget-border-width: 2px;
+    $widget-border-style: solid;
+
+    // list items dimensions
+    $widget-list-item-height: 21px;
+    $widget-list-item-padding: 10px;
+
+    // list items color
+    $widget-list-item-background-color: #ffffff;
+
+    // list items border
+    $widget-list-item-border-color: $default-border-color;
+    $widget-list-item-border-width: 2px;
+    $widget-list-item-border-style: solid;
+
+    // text
+    $widget-text-color: inherit;
+    $widget-heading-color: inherit;
+
+    // links
+    $widget-link-color: $default-text-color;
+    $widget-link-hover-color: $first-main-color;
+
+    // specific widgets
+    $widget-search-form-height: $input-height;
+    $widget-tag-cloud-height: 16px;
+
+    @import 'widgets/default-wordpress-widgets-bordered';
+    @import 'widgets/standalone-widgets';
+
+    .widget {
+
+        &.edgtf-social-icons-group-widget{
+            .edgtf-widget-title-holder{
+                margin-bottom: 27px;
+            }
+
+        }
+
+        &.widget_pages,
+        &.widget_archive,
+        &.widget_categories,
+        &.widget_meta,
+        &.widget_recent_entries,
+        &.widget_nav_menu {
+            ul {
+                li {
+                    a {
+                        font-size: 20px;
+                        line-height: 19px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.edgtf-theme-light-skin aside.edgtf-sidebar,
+.edgtf-theme-light-skin .wpb_widgetised_column {
+
+    // widgets spacing
+    $widget-bottom-margin: 40px;
+    $widget-bottom-padding: 26px;
+    $widget-inner-padding: 36px 22px;
+
+    // widget color
+    $widget-background-color: transparent;
+
+    // widget border
+    $widget-border-color: $default-border-color;
+    $widget-border-width: 2px;
+    $widget-border-style: solid;
+
+    // list items dimensions
+    $widget-list-item-height: 21px;
+    $widget-list-item-padding: 10px;
+
+    // list items color
+    $widget-list-item-background-color: #ffffff;
+
+    // list items border
+    $widget-list-item-border-color: $default-border-color;
+    $widget-list-item-border-width: 2px;
+    $widget-list-item-border-style: solid;
+
+    // text
+    $widget-text-color: inherit;
+    $widget-heading-color: inherit;
+
+    // links
+    $widget-link-color: $default-text-color-light;
+    $widget-link-hover-color: $first-main-color;
+
+    // specific widgets
+    $widget-search-form-height: $input-height;
+    $widget-tag-cloud-height: 16px;
+
+    @import 'widgets/default-wordpress-widgets-bordered';
+    @import 'widgets/standalone-widgets';
+
+    .widget .tagcloud a {
+        color: $default-text-color-light;
+
+        &:after {
+            color: $default-text-color-light !important;
+        }
+
+        &:hover {
+            color: $first-main-color;
+        }
+    }
+}

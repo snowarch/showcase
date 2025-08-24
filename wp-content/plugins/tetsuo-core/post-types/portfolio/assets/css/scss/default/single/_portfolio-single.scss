@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Portfolio Single page style - begin
+   ========================================================================== */
+
+.edgtf-portfolio-single-holder {
+	@include edgtfRelativeHolderLayout();
+	margin: 0 0 50px;
+	
+    .edgtf-ps-image-holder {
+	    @include edgtfRelativeHolderLayout();
+	    
+	    .edgtf-ps-image {
+		    
+		    &:not(.edgtf-item-space) {
+			    @include edgtfRelativeHolderLayout();
+			    box-sizing: border-box;
+		    }
+		    
+		    a, img {
+			    position: relative;
+			    display: block;
+		    }
+	    }
+    }
+	
+	.edgtf-ps-info-holder {
+		@include edgtfRelativeHolderLayout();
+		margin-top: 19px;
+		margin-left: 18px;
+		
+		.edgtf-ps-info-item:not(.edgtf-ps-content-item) {
+			@include edgtfRelativeHolderLayout();
+			margin: 0 0 10px;
+			font-size: 20px;
+			
+			p, a {
+				margin: 0;
+				display: inline-block;
+			}
+		}
+		
+		.edgtf-ps-info-title {
+			display: inline-block;
+			margin: 0 15px 0 0;
+		}
+	}
+}
+
+.single-portfolio-item .edgtf-content .edgtf-content-inner > .edgtf-container > .edgtf-container-inner {
+	padding-top:95px;
+}
+
+/* ==========================================================================
+   Portfolio Single page style - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Portfolio Single page specific style for types - begin
+   ========================================================================== */
+
+.edgtf-portfolio-single-holder {
+	
+	.edgtf-ps-image-holder {
+		
+		&.edgtf-grid-masonry-list {
+			
+			.edgtf-ps-image {
+				
+				a {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Portfolio Single page specific style for types - end
+   ========================================================================== */

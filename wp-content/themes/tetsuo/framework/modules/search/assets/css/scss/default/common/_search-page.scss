@@ -1,0 +1,152 @@
+/* ==========================================================================
+# Search template style - begin
+========================================================================== */
+
+.edgtf-search-page-holder {
+    @include edgtfRelativeHolderLayout();
+    margin: 0 0 80px;
+    
+    .edgtf-search-page-form {
+        @include edgtfRelativeHolderLayout();
+        margin: 0 0 30px;
+        
+        .edgtf-search-title {
+            margin: 0 0 20px;
+        }
+        
+        .edgtf-search-label {
+            display: block;
+            font-size: 13px;
+        }
+        
+        .edgtf-form-holder {
+            @include edgtfRelativeHolderLayout();
+            margin: 0 0 10px;
+            clear: both;
+            border-bottom: 1px solid $default-border-color;
+            
+            .edgtf-column-left {
+                display: table-cell;
+                vertical-align: top;
+            }
+            
+            .edgtf-column-right {
+                display: table-cell;
+                width: 1%;
+                text-align: left;
+                vertical-align: top;
+            }
+            
+            .edgtf-search-field {
+                position: relative;
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                margin: 0;
+                padding: 0 20px 0 3px;
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+                background-color: transparent;
+                border: none;
+                outline: 0;
+                vertical-align: middle;
+                -webkit-appearance: none;
+                box-sizing: border-box;
+                
+                @include edgtfPlaceholder {
+                    color: inherit;
+                }
+            }
+            
+            .edgtf-search-submit {
+                position: relative;
+                display: inline-block;
+                width: auto;
+                height: 40px;
+                line-height: 40px;
+                padding: 0;
+                font-size: 18px;
+                color: $default-text-color;
+                background-color: transparent;
+                border: 0;
+                outline: 0;
+                cursor: pointer;
+                vertical-align: middle;
+                @include edgtfTransition(color .2s ease-in-out);
+                
+                &:hover {
+                    color: $default-heading-color;
+                }
+            }
+        }
+    }
+    
+    article {
+        @include edgtfRelativeHolderLayout();
+        padding: 30px 0;
+        margin: 0;
+        border-bottom: 1px solid $default-border-color;
+        
+        &.sticky {
+            
+            .edgtf-post-title a {
+                color: $first-main-color;
+            }
+        }
+        
+        &.page {
+            
+            .edgtf-post-title-area .edgtf-post-info > div.edgtf-post-info-category {
+                display: none;
+            }
+        }
+        
+        .edgtf-post-content {
+            @include edgtfRelativeHolderLayout();
+        }
+        
+        .edgtf-post-image {
+            display: block;
+            float: left;
+            width: 130px;
+            
+            a, img {
+                display: block;
+            }
+        }
+        
+        .edgtf-post-title-area {
+            min-height: 130px;
+            padding: 0 0 0 150px;
+            
+            &.edgtf-no-thumbnail{
+                padding: 0;
+                min-height: inherit;
+            }
+            
+            .edgtf-post-title-area-inner {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                box-sizing: border-box;
+                
+                .edgtf-post-title {
+                    margin: 0;
+                    word-wrap: break-word;
+                }
+                
+                .edgtf-post-excerpt {
+                    margin: 7px 0 0;
+                }
+            }
+        }
+    }
+    
+    .edgtf-blog-pagination {
+        margin: 50px 0 0;
+    }
+}
+/* ==========================================================================
+# Search template style - end
+========================================================================== */

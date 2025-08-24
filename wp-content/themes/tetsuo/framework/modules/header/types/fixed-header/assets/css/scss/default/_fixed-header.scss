@@ -1,0 +1,53 @@
+/* ==========================================================================
+   Fixed header style - begin
+   ========================================================================== */
+
+.edgtf-page-header {
+    
+    .edgtf-fixed-wrapper {
+        
+        &.fixed {
+	        position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+	        -webkit-backface-visibility: hidden;
+          
+	         .admin-bar & {
+		         top: 32px;
+	         }
+        }
+    }
+}
+
+.edgtf-theme-light-skin {
+	.edgtf-page-header {
+		.edgtf-fixed-wrapper {
+			&.fixed {
+				.edgtf-menu-area .edgtf-logo-wrapper a {
+					color: $default-text-color-light;
+
+					&:hover {
+						color: $first-main-color;
+					}
+				}
+
+				.edgtf-search-opener,
+				.edgtf-shopping-cart-holder .edgtf-header-cart,
+				.edgtf-side-menu-button-opener {
+					color: $default-text-color-light;
+
+					&:hover {
+						color: $first-main-color;
+					}
+				}
+
+			}
+		}
+	}
+}
+
+
+/* ==========================================================================
+   Fixed header style - end
+   ========================================================================== */

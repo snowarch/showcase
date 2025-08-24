@@ -1,0 +1,13 @@
+.edgtf-top-bar {
+    .widget {
+        color: #ffffff;
+
+        a {
+            color: #ffffff;
+
+            &:hover {
+                color: $first-main-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Grid System responsive style - begin
+   ========================================================================== */
+
+@include laptop-landscape-medium {
+	
+	/*
+	* If you changed some value for space do the same thing in product-list-main-and-vc scss files
+	*/
+	$columns_space_label: ('huge');
+	$columns_space_width: (25);
+	
+	@for $i from 0 to length($columns_space_label) {
+		.edgtf-#{nth($columns_space_label,$i+1)}-space {
+			$column_width: nth($columns_space_width,$i+1);
+			$column_width_margin: $column_width * 2;
+			
+			.edgtf-outer-space {
+				margin: 0 -#{$column_width}px;
+				
+				.edgtf-item-space {
+					padding: 0 #{$column_width}px;
+					margin: 0 0 #{$column_width_margin}px;
+				}
+			}
+			
+			&.edgtf-disable-bottom-space {
+				margin-bottom: -#{$column_width_margin}px;
+			}
+			
+			&.edgtf-columns-has-side-space {
+				padding: 0 #{$column_width_margin}px;
+			}
+		}
+	}
+}
+
+$responsive_list_columns_map: (
+	1440 : (
+		responsive_stage: $laptop-landscape-large,
+		responsive_break: $laptop-landscape-mac-plus-pixel,
+		columns_label: ('six'),
+		columns_size: 5
+	),
+	1366 : (
+		responsive_stage: $laptop-landscape-mac,
+		responsive_break: $ipad-landscape-plus-pixel,
+		columns_label: ('five', 'six'),
+		columns_size: 4
+	),
+	1024 : (
+		responsive_stage: $ipad-landscape,
+		responsive_break: $ipad-portrait-plus-pixel,
+		columns_label: ('four', 'five', 'six'),
+		columns_size: 3
+	),
+	768 : (
+		responsive_stage: $ipad-portrait,
+		responsive_break: $phone-landscape-plus-pixel,
+		columns_label: ('three', 'four', 'five', 'six'),
+		columns_size: 2
+	),
+	680 : (
+		responsive_stage: $phone-landscape,
+		responsive_break: 0,
+		columns_label: ('two', 'three', 'four', 'five', 'six'),
+		columns_size: 1
+	)
+);
+
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+	
+	@return $map;
+}
+
+.edgtf-grid-list {
+	
+	@each $key, $values in $responsive_list_columns_map {
+		
+		@media only screen and (max-width: map-deep-get($responsive_list_columns_map, $key, 'responsive_stage')) {
+			
+			@each $column in map-deep-get($responsive_list_columns_map, $key, 'columns_label') {
+				
+				&.edgtf-#{$column}-columns {
+					$responsive_break: map-deep-get($responsive_list_columns_map, $key, 'responsive_break');
+					$columns_size: map-deep-get($responsive_list_columns_map, $key, 'columns_size');
+					$column_width: 100% / $columns_size;
+					
+					.edgtf-masonry-grid-sizer {
+						width: $column_width;
+					}
+					
+					.edgtf-item-space {
+						width: $column_width;
+						
+						@if ($responsive_break != 0) {
+							
+							&.edgtf-masonry-size-large-width,
+							&.edgtf-masonry-size-large-width-height {
+								width: $column_width*2;
+							}
+							
+							@media only screen and (min-width: $responsive_break) {
+								
+								&:nth-child(#{$columns_size}n+1) {
+									clear: both;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Grid System responsive style - end
+   ========================================================================== */

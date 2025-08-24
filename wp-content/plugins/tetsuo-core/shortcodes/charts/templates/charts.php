@@ -1,0 +1,1 @@
+<canvas id="edgtf-charts-canvas-<?php echo rand(); ?>"></canvas>

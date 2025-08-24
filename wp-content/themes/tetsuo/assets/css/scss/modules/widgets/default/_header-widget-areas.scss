@@ -1,0 +1,34 @@
+.edgtf-page-header,
+.edgtf-top-bar,
+.edgtf-sticky-header,
+.edgtf-mobile-header {
+    .widget {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+
+        // prevent monster widget from displaying in our header widget areas
+        &.widget_pages,
+        &.widget_archive,
+        &.widget_categories,
+        &.widget_meta,
+        &.widget_recent_entries,
+        &.widget_recent_comments,
+        &.widget_rss,
+        &.widget_calendar,
+        &.widget_rss,
+        &.widget_archive,
+        &.widget_categories,
+        &.widget_tag_cloud,
+        &.widget_nav_menu,
+        &.widget_search {
+            display: none !important;
+        }
+
+        @for $i from 0 to 50 {
+            &#monster-widget-placeholder-#{$i} {
+                display: none;
+            }
+        }
+    }
+}

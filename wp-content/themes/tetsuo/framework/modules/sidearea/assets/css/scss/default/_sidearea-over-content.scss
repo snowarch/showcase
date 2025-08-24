@@ -1,0 +1,63 @@
+/* ==========================================================================
+# Side area slides over content style - begin
+========================================================================== */
+
+.edgtf-right-side-menu-opened {
+
+	.edgtf-wrapper,
+	footer.edgtf-footer-uncover,
+	.edgtf-fixed-wrapper.fixed,
+	.edgtf-sticky-header,
+	.mobile-header-appear .edgtf-mobile-header-inner {
+		left: 0;
+	}
+}
+
+.edgtf-side-menu-slide-from-right {
+
+	.edgtf-wrapper {
+		background-color: #111;
+		position: relative;
+		z-index: 1000;
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+
+		.edgtf-cover {
+			z-index: 0;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			opacity: 0;
+			background-color: rgba($default-text-color-light, .3);
+			@include edgtfTransition(opacity 0.2s ease-in-out, z-index 0.2s ease-in-out);
+		}
+	}
+
+	.edgtf-sticky-header,
+	.edgtf-fixed-wrapper.fixed {
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+	}
+
+	footer.edgtf-footer-uncover {
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+	}
+}
+
+.edgtf-side-menu-slide-from-right.edgtf-right-side-menu-opened {
+
+	.edgtf-cover {
+		z-index: 1002;
+		opacity: 1;
+	}
+
+	.edgtf-side-menu {
+		right: 0;
+		visibility: visible;
+	}
+}
+
+/* ==========================================================================
+# Side area slides over content style - end
+========================================================================== */

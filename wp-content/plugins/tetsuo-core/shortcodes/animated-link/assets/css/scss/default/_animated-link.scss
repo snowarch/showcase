@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Animated Link shortcode style - begin
+   ========================================================================== */
+
+.edgtf-animated-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    position: relative;
+	margin-left: 45px;
+
+	@include keyframes(edgtfALBlink) {
+		0%, 100% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+	}
+
+	.edgtf-al-text {
+		position: relative;
+		z-index: 10;
+		color: #000;
+		margin-left: 50px;
+
+		&:after {
+			content: '_';
+		}
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		width: 5px;
+		height: 20px;
+		background: #16ffff;
+		left: -106px;
+		top: 43%;
+		@include edgtfAnimation(edgtfBlink .7s infinite);
+	}
+
+	&.edgtf-al-appear {
+		.edgtf-al-rect {
+			width: 200px !important;
+		}
+
+		.edgtf-al-rect:nth-of-type(2) {
+			@include edgtfAnimation(edgtf-al-move 1s infinite steps(2));
+		}
+
+		.edgtf-al-rect:nth-of-type(3) {
+			@include edgtfAnimation(edgtf-al-move 1s infinite steps(1));
+		}
+
+		.edgtf-al-rect:nth-of-type(4)  {
+			@include edgtfAnimation(edgtf-al-move 3s infinite steps(2));
+		}
+
+		.edgtf-al-rect:nth-of-type(5) {
+			@include edgtfAnimation(edgtf-al-move 1.5s infinite);
+		}
+
+		.edgtf-al-rect:nth-of-type(6) {
+			@include edgtfAnimation(edgtf-al-move 1s infinite steps(2));
+		}
+
+		.edgtf-al-rect:nth-of-type(7) {
+			@include edgtfAnimation(edgtf-al-move 5s infinite);
+		}
+
+		.edgtf-al-bg {
+			width: 94%;
+		}
+	}
+
+	.edgtf-al-rect {
+		background-color: currentColor;
+	}
+
+	.edgtf-al-rect:nth-of-type(1) {
+		height: 16px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 21px;
+		@include edgtfTransition(.3s .2s);
+	}
+
+	.edgtf-al-rect:nth-of-type(2) {
+		height: 22px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 9px;
+		left: -17px;
+		@include edgtfTransition(.3s .1s);
+		box-shadow: -6px -1px 0 rgb(255, 0, 0);
+	}
+
+	.edgtf-al-rect:nth-of-type(3) {
+		height: 16px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 31px;
+		left: -58px;
+		@include edgtfTransition(.3s .1s);
+		box-shadow: -5px 0px 0px rgba(255, 0, 0, 0.7);
+	}
+
+	.edgtf-al-rect:nth-of-type(4) {
+		height: 2px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 31px;
+		left: -79px;
+		@include edgtfTransition(.3s);
+	}
+
+	.edgtf-al-rect:nth-of-type(5) {
+		height: 19px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 47px;
+		left: 7px;
+		@include edgtfTransition(.4s .2s);
+		box-shadow: -2px 2px 0px 0px rgba(255, 0, 0, 0.7);
+	}
+	.edgtf-al-rect:nth-of-type(6) {
+		height: 2px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 64px;
+		left: -21px;
+		@include edgtfTransition(.3s .1s);
+	}
+	.edgtf-al-rect:nth-of-type(7) {
+		height: 13px;
+		width: 0;
+		display: block;
+		position: absolute;
+		top: 62px;
+		left: 70px;
+		@include edgtfTransition(.2s .2s);
+	}
+
+	.edgtf-al-bg {
+		@include edgtfAbsoluteHolderLayout;
+		margin-left: 50px;
+		width: 0;
+		background-color: #fff;
+		@include edgtfTransition(width .7s .3s);
+	}
+
+	.edgtf-al-link {
+		@include edgtfAbsoluteHolderLayout();
+		z-index: 20;
+	}
+
+	@keyframes edgtf-al-move {
+		0% {
+			@include edgtfTransform(translateX(0));
+		}
+		50% {
+			@include edgtfTransform(translateX(-10px));
+		}
+		100% {
+			@include edgtfTransform(translateX(0));
+		}
+	}
+
+	&:hover {
+		.edgtf-al-text:after  {
+			@include edgtfAnimation(edgtfALBlink .8s infinite);
+		}
+	}
+}
+/* ==========================================================================
+   Animated Link shortcode style - end
+   ========================================================================== */

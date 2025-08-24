@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Header Centered style - begin
+   ========================================================================== */
+
+.edgtf-header-centered {
+	
+    .edgtf-page-header {
+	    
+        .edgtf-logo-area {
+	        overflow: visible;
+	        z-index: 2; //to be above menu area in order to cover shadow
+	        box-sizing: border-box;
+
+            .edgtf-logo-wrapper a .edgtf-logo-text {
+                position: relative;
+                top: 18px;
+            }
+        }
+
+        .edgtf-menu-area {
+	        z-index: 1;
+
+            .edgtf-vertical-align-containers {
+                .edgtf-vertical-align-containers-inner {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    border-bottom: 2px solid #4a4a4a;
+
+                    .edgtf-position-center-inner {
+                        height: 100%;
+                    }
+
+                    .edgtf-search-opener {
+                        margin: 0 0 0 1px;
+                    }
+                }
+            }
+        }
+
+        .edgtf-sticky-header {
+	        
+            .edgtf-position-left-inner {
+                height: auto;
+            }
+
+            .edgtf-position-right-inner {
+                height: 100%;
+            }
+        }
+    }
+
+    &.edgtf-menu-area-inner-border-disable {
+        .edgtf-page-header .edgtf-menu-area .edgtf-vertical-align-containers .edgtf-vertical-align-containers-inner {
+            border: none;
+        }
+    }
+}
+/* ==========================================================================
+   Header Centered style - end
+   ========================================================================== */

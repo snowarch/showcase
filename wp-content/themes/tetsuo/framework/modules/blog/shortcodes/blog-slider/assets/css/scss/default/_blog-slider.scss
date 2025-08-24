@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Blog Slider shortcode style - begin
+   ========================================================================== */
+
+.edgtf-blog-slider-holder {
+    
+    /***** Slider Type Style - begin *****/
+    
+    &.edgtf-bs-slider {
+        
+        .edgtf-blog-slider-item {
+            text-align: center;
+            
+            .touch & {
+                cursor: pointer;
+            }
+            
+            &:hover {
+                
+                .edgtf-item-text-wrapper {
+                    opacity: 1;
+                }
+            }
+        }
+        
+        .edgtf-post-title {
+            color: #fff;
+            
+            a {
+                
+                &:hover {
+                    color: rgba(#fff, .8);
+                }
+            }
+        }
+        
+        .edgtf-post-read-more-button {
+            
+            a {
+                color: #fff;
+                
+                &:hover {
+                    color: rgba(#fff, .8) !important;
+                }
+            }
+        }
+    }
+    
+    /***** Slider Type Style - end *****/
+    
+    /***** Carousel Type Style - begin *****/
+    
+    &.edgtf-bs-carousel {
+        
+        .edgtf-item-image {
+            
+            a {
+                @include edgtfImageOverlayHoverStyle();
+            }
+        }
+        
+        .edgtf-post-title {
+            margin: 29px 0 0;
+        }
+        
+        .edgtf-post-read-more-button {
+            margin: 15px 0 0;
+        }
+    }
+    
+    /***** Carousel Type Style - end *****/
+    
+    /***** Carousel Centered Type Style - begin *****/
+    
+    &.edgtf-bs-carousel-centered {
+        
+        .active.center {
+            
+            .edgtf-item-text-wrapper {
+                opacity: 1;
+            }
+        }
+        
+        .edgtf-blog-slider-item {
+            text-align: center;
+        }
+        
+        .edgtf-post-title {
+            color: #fff;
+            
+            a {
+                
+                &:hover {
+                    color: rgba(#fff, .8);
+                }
+            }
+        }
+        
+        .edgtf-post-read-more-button {
+            
+            a {
+                color: #fff;
+                
+                &:hover {
+                    color: rgba(#fff, .8) !important;
+                }
+            }
+        }
+    }
+    
+    /***** Carousel Centered Type Style - end *****/
+    
+    .edgtf-blog-slider-item {
+        @include edgtfRelativeHolderLayout();
+        list-style-type: none;
+    }
+    
+    .edgtf-item-image {
+        @include edgtfRelativeHolderLayout();
+    }
+    
+    .edgtf-item-text-wrapper {
+        @include edgtfAbsoluteHolderLayout();
+        background-color: rgba($first-main-color, .85);
+        opacity: 0;
+        @include edgtfTransition(opacity .45s ease-out);
+    }
+    
+    .edgtf-item-text-holder {
+        @include edgtfTableLayout();
+    }
+    
+    .edgtf-item-text-holder-inner {
+        @include edgtfTableCellLayout();
+        padding: 0 5%;
+    }
+    
+    .edgtf-item-info-section {
+        @include edgtfRelativeHolderLayout();
+        margin-bottom: 2px;
+        
+        > div {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            padding-right: 10px;
+            margin-right: 3px;
+            color: #fff;
+            font-size: 12px;
+            line-height: 24px;
+            
+            a {
+                @include edgtfTypographyLayout();
+                
+                &:hover {
+                    color: rgba(#fff, .8);
+                }
+            }
+            
+            &:after {
+                content: "/";
+                position: absolute;
+                top: 0;
+                right: 2px;
+            }
+            
+            &:last-child {
+                padding-right: 0;
+                margin-right: 0;
+                
+                &:after {
+                    content: '';
+                }
+            }
+        }
+    }
+    
+    .edgtf-post-title {
+        margin: 0;
+        word-wrap: break-word;
+    }
+    
+    .edgtf-bli-excerpt {
+        @include edgtfRelativeHolderLayout();
+        margin: 12px 0 0;
+        
+        p {
+            margin: 0;
+        }
+    }
+    
+    .edgtf-post-read-more-button {
+        margin: 5px 0 0;
+    }
+}
+/* ==========================================================================
+   Blog Slider shortcode style - end
+   ========================================================================== */

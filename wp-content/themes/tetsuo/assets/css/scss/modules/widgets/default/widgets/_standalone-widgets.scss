@@ -1,0 +1,84 @@
+.widget {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // search post type
+
+    &.edgtf-search-post-type-widget {
+        .edgtf-post-type-search-field {
+            background-color: transparent;
+            border-color: $widget-list-item-border-color;
+            border-radius: 3px;
+            border-style: $widget-list-item-border-style;
+            border-width: $widget-list-item-border-width;
+            box-sizing: border-box;
+            color: $widget-text-color;
+            display: inline-block;
+            float: left;
+            font-family: $default-text-font;
+            font-size: 12px;
+            font-weight: inherit;
+            height: $widget-search-form-height;
+            line-height: calc(#{$widget-search-form-height} - 2px);
+            outline: 0;
+            padding: 0 25px 0 20px;
+            position: relative;
+            vertical-align: top;
+            width: 100%; /* width of loading icon */
+
+            @include edgtfPlaceholder {
+                color: $widget-text-color;
+            }
+
+            @include edgtfTransition(color .2s ease-in-out);
+
+            -webkit-appearance: none;
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // recent posts
+
+    &.edgtf-recent-post-widget {
+        .edgtf-recent-posts {
+            .edgtf-rp-item {
+                margin: 0 0 10px;
+                padding: $widget-list-item-padding;
+
+                a {
+                    display: table;
+                    width: 100%;
+
+                    .edgtf-rp-image,
+                    .edgtf-rp-title {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+
+                    .edgtf-rp-title {
+                        @include edgtfTransition(color .2s ease-in-out);
+
+                        font-weight: 600;
+                    }
+
+                    .edgtf-rp-image {
+                        height: 56px;
+                        padding-right: 20px;
+                        width: 56px;
+
+                        img {
+                            display: block;
+                        }
+                    }
+
+                    &:hover {
+                        .edgtf-rp-title {
+                            color: $default-text-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}

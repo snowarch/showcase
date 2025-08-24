@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Search Post Type widget style - begin
+   ========================================================================== */
+
+@import '../../../../../../../assets/css/scss/variables';
+@import '../../../../../../../assets/css/scss/mixins';
+
+.widget.edgtf-search-post-type-widget {
+    @include edgtfRelativeHolderLayout();
+	line-height: 0;
+	
+    .edgtf-search-post-type {
+	    @include edgtfRelativeHolderLayout();
+    }
+
+    .edgtf-post-type-search-results {
+        position: absolute;
+	    top: 100%;
+	    left: 0;
+	    width: 100%;
+	    height: auto;
+	    display: none;
+	    background-color: #fff;
+	    z-index: 99;
+	    
+        ul {
+	        @include edgtfRelativeHolderLayout();
+            padding: 10px 20px;
+	        line-height: 0;
+            box-sizing: border-box;
+	        
+            li {
+                display: block;
+	            width: 100%;
+            }
+        }
+    }
+
+    .edgtf-search-icon,
+    .edgtf-search-loading {
+        position: absolute;
+        right: 20px;
+        top: calc(50% - 9px);
+        font-size: 18px;
+        color: $default-heading-color;
+	    opacity: 1;
+	    @include edgtfTransition(opacity 0.2s ease-out);
+
+        &.edgtf-hidden {
+            opacity: 0;
+        }
+    }
+}
+
+/* ==========================================================================
+   Search Post Type widget style - end
+   ========================================================================== */

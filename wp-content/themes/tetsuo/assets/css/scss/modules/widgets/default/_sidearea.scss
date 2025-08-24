@@ -1,0 +1,54 @@
+.edgtf-side-menu {
+    // widgets spacing
+    $widget-bottom-margin: 40px;
+    $widget-bottom-padding: 26px;
+    $widget-inner-padding: 36px 22px;
+
+    // widget color
+    $widget-background-color: transparent;
+
+    // widget border
+    $widget-border-color: $default-border-color;
+    $widget-border-width: 2px;
+    $widget-border-style: solid;
+
+    // list items dimensions
+    $widget-list-item-height: 20px;
+    $widget-list-item-padding: 11px;
+
+    // list items color
+    $widget-list-item-background-color: #ffffff;
+
+    // list items border
+    $widget-list-item-border-color: $default-border-color;
+    $widget-list-item-border-width: 2px;
+    $widget-list-item-border-style: solid;
+
+    // text
+    $widget-text-color: inherit;
+    $widget-heading-color: inherit;
+
+    // links
+    $widget-link-color: $default-text-color;
+    $widget-link-hover-color: $first-main-color;
+
+    // specific widgets
+    $widget-search-form-height: $input-height;
+    $widget-tag-cloud-height: 30px;
+
+    @import 'widgets/default-wordpress-widgets-flat';
+    @import 'widgets/standalone-widgets';
+
+    .widget {
+        &.widget_edgtf_instagram_widget {
+            margin: 0;
+
+            .edgtf-instagram-feed {
+
+                &.edgtf-instagram-gallery.edgtf-no-space {
+                    margin: 0 -66px;
+                }
+            }
+        }
+    }
+}

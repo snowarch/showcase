@@ -1,0 +1,232 @@
+/* ==========================================================================
+# Side area style - begin
+========================================================================== */
+
+.edgtf-light-header .edgtf-page-header > div:not(.edgtf-sticky-header):not(.fixed) .edgtf-side-menu-button-opener,
+.edgtf-light-header .edgtf-top-bar .edgtf-side-menu-button-opener {
+	color: $header-light-color !important; //Color can be set inline from widget opener;
+	
+	&.opened,
+	&:hover {
+		color: $header-light-hover-color !important; //Color can be set inline from widget opener;
+	}
+}
+
+.edgtf-dark-header .edgtf-page-header > div:not(.edgtf-sticky-header):not(.fixed) .edgtf-side-menu-button-opener,
+.edgtf-dark-header .edgtf-top-bar .edgtf-side-menu-button-opener {
+	color: $header-dark-color !important; //Color can be set inline from widget opener;
+	
+	&.opened,
+	&:hover {
+		color: $header-dark-hover-color !important; //Color can be set inline from widget opener;
+	}
+}
+
+.edgtf-side-menu-button-opener {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	
+	.edgtf-side-menu-title {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 8px 0 0;
+		color: currentColor;
+	}
+	
+	.edgtf-side-menu-icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	&.opened,
+	&:hover {
+		color: $first-main-color;
+	}
+	
+	&.edgtf-side-menu-button-opener-icon-pack {
+		
+		.edgtf-side-menu-icon {
+			font-size: 20px;
+			
+			* {
+				display: block;
+				line-height: inherit;
+				
+				&:before {
+					display: block;
+					line-height: inherit;
+				}
+			}
+		}
+	}
+	
+	&.edgtf-side-menu-button-opener-svg-path {
+		
+		.edgtf-side-menu-icon {
+			
+			> * {
+				vertical-align: middle;
+			}
+			
+			> *,
+			path,
+			polygon {
+				fill: currentColor;
+			}
+		}
+	}
+	
+	&.edgtf-side-menu-button-opener-predefined {
+		line-height: 1;
+		
+		.edgtf-hm-lines {
+			position: relative;
+			display: block;
+			width: 23px;
+			height: 17px;
+			
+			.edgtf-hm-line {
+				position: absolute;
+				left: 0;
+				height: 3px;
+				width: 100%;
+				background-color: currentColor;
+				border-radius: 12px;
+				@include edgtfTransition(width .3s ease);
+				
+				&.edgtf-line-1 {
+					top: 0;
+				}
+				
+				&.edgtf-line-2 {
+					top: 7px;
+				}
+				
+				&.edgtf-line-3 {
+					bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+.edgtf-side-menu {
+    position: fixed;
+    top: 0;
+	right: -530px;
+	width: 530px;
+    height: 100%;
+    min-height: 100%;
+	padding: 66px 65px 0;
+	background-image: url('../../../../../assets/img/background_pattern.png');
+	background-repeat: repeat;
+	background-position: 0 0;
+    text-align: left;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: 9999;
+    -webkit-backface-visibility: hidden;
+	box-sizing: border-box;
+	box-shadow: -5px 0px 49px 0px rgba(1, 1, 1, 0.75);
+	@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+
+    body.edgtf-theme-light-skin & {
+        background-image: url('../../../../../assets/img/background_pattern_light.png');
+        box-shadow: -5px 0px 49px 0px rgba(1, 1, 1, 0.15);
+
+        color: $default-text-color-light;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $default-text-color-light;
+        }
+
+    }
+
+	&.ps {
+
+		.ps__rail-y {
+			background-color: #252525;
+			opacity: 1;
+			width: 5px;
+			left: 0;
+			right: auto;
+
+			> .ps__thumb-y {
+				width: 5px;
+				background-color: $first-main-color;
+				border-radius: 0;
+				left: 0;
+				right: auto;
+			}
+		}
+
+		&:hover {
+			> .ps__rail-y {
+				opacity: 1;
+			}
+		}
+	}
+
+	a.edgtf-close-side-menu {
+		position: absolute;
+		top: 40px;
+        right: 92px;
+		display: block;
+		z-index: 1000;
+		color: $default-heading-color;
+
+        @include laptop-landscape-mac {
+            right: 65px;
+        }
+		
+		&:hover {
+			color: $default-text-color;
+		}
+
+        body.edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+
+            &:hover {
+                color: #000;
+            }
+        }
+		
+		.admin-bar & {
+			top: 68px;
+		}
+
+		&.edgtf-close-side-menu-icon-pack {
+			font-size: 20px;
+
+			* {
+				display: block;
+				line-height: inherit;
+
+				&:before {
+					display: block;
+					line-height: inherit;
+				}
+			}
+		}
+
+		&.edgtf-close-side-menu-svg-path {
+
+			> * {
+				vertical-align: middle;
+			}
+			
+			> *,
+            path,
+			rect {
+                fill: currentColor;
+            }
+		}
+	}
+}
+
+/* ==========================================================================
+# Side area style - end
+========================================================================== */

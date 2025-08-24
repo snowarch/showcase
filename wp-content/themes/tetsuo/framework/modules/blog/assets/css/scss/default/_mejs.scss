@@ -1,0 +1,262 @@
+$mejs-height: 40px;
+$mejs-rail-size: 6px;
+$mejs-volume-size: 100px;
+$mejs-color: #ffffff;
+$mejs-current-color: $first-main-color;
+$mejs-total-color: #ffffff;
+$mejs-background-color: $default-background-color;
+
+.edgtf-blog-audio-holder,
+.edgtf-blog-video-holder {
+    .mejs-container, .mejs-embed, .mejs-embed body, .mejs-container .mejs-controls {
+        background: none;
+    }
+
+    .mejs-container,
+    .mejs-container .mejs-controls {
+        height: $mejs-height !important;
+    }
+
+    .mejs-container .mejs-controls {
+        background: $mejs-background-color;
+        box-sizing: border-box;
+        font-family: $default-text-font;
+        padding: 0;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // buttons
+
+        .mejs-button {
+            height: $mejs-height;
+            width: $mejs-height;
+        }
+
+        button {
+            background-color: transparent;
+            background-image: none;
+            border: 0;
+            height: $mejs-height;
+            margin: 0;
+            outline: none;
+            position: relative;
+            top: 0;
+            width: $mejs-height;
+
+            &:before {
+                color: $mejs-color;
+                display: block;
+                font-family: 'ElegantIcons';
+                font-size: 15px;
+                height: $mejs-height;
+                left: 0;
+                line-height: $mejs-height;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: $mejs-height;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // playback
+
+        > .mejs-playpause-button {
+
+            // play/replay
+            &.mejs-play,
+            &.mejs-replay {
+                button {
+                    &:before {
+                        content: "\45";
+                        font-size: 25px;
+                    }
+                }
+            }
+
+            // pause
+            &.mejs-pause button {
+                &:before {
+                    content: "\60";
+                    font-size: 25px;
+                }
+            }
+
+            // stop
+            &.mejs-stop button {
+                &:before {
+                    content: "\5e";
+                    font-size: 25px;
+                }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // volume
+
+        > .mejs-volume-button {
+
+            // mute
+            &.mejs-mute button {
+                &:before {
+                    content: "\79";
+                }
+            }
+
+            // unmute
+            &.mejs-unmute button {
+                &:before {
+                    content: "\78";
+                }
+            }
+
+            // vertical volume slider
+            > a.mejs-volume-slider {
+                $offset: 15px;
+
+                background: rgba($mejs-background-color, 0.7);
+                height: #{$mejs-volume-size + (2 * $offset)};
+                width: #{$mejs-rail-size + (2 * $offset)};
+
+                .mejs-volume-total {
+                    background: $mejs-total-color;
+                    top: $offset;
+                    width: $mejs-rail-size;
+                }
+
+                .mejs-volume-current {
+                    background-color: $mejs-current-color;
+                }
+
+                .mejs-volume-handle {
+                    display: none;
+                }
+            }
+        }
+
+        // horizontal volume slider
+        > a.mejs-horizontal-volume-slider {
+            height: $mejs-height;
+            margin-right: 20px;
+            width: $mejs-volume-size;
+
+            .mejs-horizontal-volume-total,
+            .mejs-horizontal-volume-current {
+                height: $mejs-rail-size;
+            }
+
+            .mejs-horizontal-volume-total {
+                background: $mejs-total-color;
+                top: #{($mejs-height - $mejs-rail-size) / 2};
+                width: $mejs-volume-size;
+            }
+
+            .mejs-horizontal-volume-current {
+                background-color: $mejs-current-color;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // time
+
+        > .mejs-time {
+            color: $mejs-color;
+            font-family: $default-text-font;
+            font-size: 13px;
+            height: 100%;
+            line-height: $mejs-height;
+            padding: 0 20px;
+            width: $mejs-height;
+
+            > * {
+                font-family: inherit;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // rail
+
+        > .mejs-time-rail {
+            font-family: inherit;
+            height: $mejs-rail-size;
+            margin: 0;
+            padding: 0;
+            top: #{($mejs-height - $mejs-rail-size) / 2};
+
+            .mejs-time-total {
+                background: rgba($mejs-total-color, 0.7);
+                height: $mejs-rail-size;
+                margin: 0;
+
+                span {
+                    height: $mejs-rail-size;
+                }
+
+                .mejs-time-buffering,
+                .mejs-time-hovered,
+                .mejs-time-marker {
+                    background: transparent;
+                }
+
+                .mejs-time-loaded {
+                    background: $mejs-total-color;
+                }
+
+                .mejs-time-current {
+                    background: $mejs-current-color;
+                }
+
+                .mejs-time-hovered {
+                    background: rgba($mejs-current-color, 0.7);
+                }
+
+                .mejs-time-float,
+                .mejs-time-float-corner,
+                .mejs-time-float-current {
+                    background: none;
+                    border: 0;
+                    color: $mejs-color;
+                    top: -20px;
+                }
+            }
+
+            .mejs-time-handle,
+            .mejs-time-handle-content {
+                border: none;
+                height: $mejs-rail-size;
+                left: 0;
+                top: 0;
+                width: $mejs-rail-size;
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // fullscreen
+
+        > .mejs-fullscreen-button {
+
+            // fullscreen
+            button {
+                &:before {
+                    content: "\30";
+                }
+            }
+
+            // unfullscreen
+            &.mejs-unfullscreen button {
+                &:before {
+                    content: "\2f";
+                }
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.edgtf-self-hosted-video-holder {
+    overflow: hidden;
+
+    video {
+        object-fit: cover;
+    }
+}

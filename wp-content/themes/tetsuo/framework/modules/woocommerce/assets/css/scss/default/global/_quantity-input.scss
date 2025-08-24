@@ -1,0 +1,118 @@
+/* ==========================================================================
+   WooCommerce Quantity Inputs styles - begin
+   ========================================================================== */
+
+.edgtf-theme-light-skin.woocommerce-page .edgtf-content,
+.edgtf-theme-light-skin div.woocommerce {
+
+    .edgtf-quantity-buttons {
+
+        .edgtf-quantity-input,
+        .edgtf-quantity-minus,
+        .edgtf-quantity-plus {
+            color: $default-text-color-light;
+        }
+    }
+}
+
+.woocommerce-page .edgtf-content,
+div.woocommerce {
+
+    .edgtf-quantity-buttons {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        width: 150px;
+
+        .edgtf-quantity-input,
+        .edgtf-quantity-minus,
+        .edgtf-quantity-plus {
+            display: inline-block;
+            vertical-align: middle;
+            color: $default-text-color;
+            background-color: transparent;
+            border: 2px solid $default-border-color;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .edgtf-quantity-input {
+            position: relative;
+            height: 50px;
+            width: 50px;
+            padding: 0;
+            margin: 0 22px 0 0;
+            font-family: inherit;
+            line-height: 44px;
+            outline: 0;
+        }
+
+        .edgtf-quantity-minus,
+        .edgtf-quantity-plus {
+            position: absolute;
+            right: 0;
+            width: 50px;
+            height: 46px;
+            line-height: 44px;
+            cursor: pointer;
+            @include edgtfTransition(color .15s ease-in-out);
+            border-top: 0;
+            border-bottom: 0;
+            z-index: 101;
+
+            &:hover {
+                color: $first-main-color;
+            }
+        }
+
+        .edgtf-quantity-plus {
+            top: 2px;
+            right :0;
+            border-right: 0;
+        }
+
+        .edgtf-quantity-minus {
+            top: 2px;
+            left: 0;
+            border-left: 0;
+        }
+    }
+}
+
+.edgtf-theme-light-skin.woocommerce-page .edgtf-content,
+.edgtf-theme-light-skin div.woocommerce {
+
+    input[type="text"]:not(.select2-search__field),
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea {
+        color: $default-text-color-light;
+
+        &:focus {
+            color: $default-text-color-light;
+        }
+    }
+}
+
+.woocommerce-page .edgtf-content,
+div.woocommerce {
+
+    input[type="text"]:not(.select2-search__field),
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    textarea {
+        @extend %input-style;
+    }
+
+    .coupon {
+
+        input[type="text"] {
+            width: 200px;
+        }
+    }
+}
+/* ==========================================================================
+   WooCommerce Quantity Inputs styles - end
+   ========================================================================== */

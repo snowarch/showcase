@@ -1,0 +1,102 @@
+/* ==========================================================================
+   WooCommerce Cart page responsive styles - begin
+   ========================================================================== */
+
+@include ipad-portrait {
+	
+	.edgtf-woocommerce-page {
+		
+		table.cart {
+			
+			td.actions {
+				
+				.coupon {
+					
+					input[type="text"] {
+						width: 180px;
+						margin: 0 17px 0 0;
+					}
+				}
+				
+				.button {
+					padding-left:26px;
+					padding-right: 26px;
+				}
+			}
+		}
+	}
+}
+
+@include phone-landscape {
+	
+	.edgtf-woocommerce-page {
+		
+		table.cart {
+			
+			display: block;
+			
+			thead {
+				display: none;
+			}
+			
+			tbody, tr, td {
+				display: block;
+			}
+			
+			tr {
+				
+				&.cart_item {
+					
+					td {
+						
+						padding: 10px 0;
+						
+						&.product-thumbnail {
+							width:80px;
+							float: left;
+							padding-right: 20px;
+							
+							img {
+								display: block;
+							}
+						}
+						
+						&.product-name, &.product-subtotal {
+							font-size: 1.5em;
+						}
+					}
+					
+					.edgtf-quantity-buttons {
+						clear: both;
+					}
+				}
+			}
+			
+			td.actions {
+				
+				.button {
+					margin: 0;
+				}
+				
+				.coupon {
+					margin: 0 0 20px;
+					
+					input[type="text"] {
+						width: 160px;
+						padding: 9px 15px;
+						margin: 0 10px 20px 0;
+					}
+				}
+				
+				.coupon,
+				> input {
+					float: none;
+					display: block;
+				}
+			}
+		}
+	}
+}
+/* ==========================================================================
+   WooCommerce Cart page responsive styles - end
+   ========================================================================== */

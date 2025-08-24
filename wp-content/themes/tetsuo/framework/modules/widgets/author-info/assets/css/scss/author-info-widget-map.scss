@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Author Info widget style - begin
+   ========================================================================== */
+
+@import '../../../../../../../assets/css/scss/variables';
+@import '../../../../../../../assets/css/scss/mixins';
+
+.edgtf-author-info-widget {
+	@include edgtfRelativeHolderLayout();
+	box-sizing: border-box;
+	padding: 0;
+	
+	.edgtf-aiw-image {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		margin: -36px -22px 0;
+		width: calc(100% + 44px);
+		
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.edgtf-aiw-title {
+		margin: 28px 0 0;
+	}
+	
+	.edgtf-aiw-text {
+		display: block;
+		margin: 10px 0 0;
+	}
+}
+/* ==========================================================================
+   Author Info widget style - end
+   ========================================================================== */

@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Image Gallery widget style - begin
+   ========================================================================== */
+
+@import '../../../../../../../assets/css/scss/variables';
+@import '../../../../../../../assets/css/scss/mixins';
+
+.widget.edgtf-image-gallery-widget {
+	@include edgtfRelativeHolderLayout();
+	
+	img {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* ==========================================================================
+   Image Gallery widget style - end
+   ========================================================================== */

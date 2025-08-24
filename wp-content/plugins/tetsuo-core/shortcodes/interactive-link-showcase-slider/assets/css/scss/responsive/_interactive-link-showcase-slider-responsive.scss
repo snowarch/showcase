@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Interactive link showcase shortcode responsive style - begin
+   ========================================================================== */
+
+@media only screen and (max-width: 1366px) {
+	
+	.edgtf-ilss-holder {
+		&.edgtf-ils-type-slider {
+			.edgtf-ils-item-link {
+				font-size: 80px;
+			}
+		}
+	}
+}
+
+@include ipad-landscape {
+	
+	.edgtf-ilss-holder {
+		&.edgtf-ils-type-slider {
+			.edgtf-ils-widget-bottom {
+				bottom: 45px;
+			}
+		}
+	}
+}
+
+@include phone-landscape {
+	
+	.edgtf-ilss-holder {
+		&.edgtf-ils-type-slider {
+
+			.edgtf-ils-item-link {
+				font-size: 45px;
+				text-align: center;
+			}
+
+			.edgtf-ils-widget-bottom {
+				bottom: 6px;
+				right: 6px;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Interactive link showcase shortcode responsive style - end
+   ========================================================================== */

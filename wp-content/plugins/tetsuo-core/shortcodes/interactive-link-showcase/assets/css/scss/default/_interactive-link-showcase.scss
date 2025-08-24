@@ -1,0 +1,220 @@
+/* ==========================================================================
+   Interactive link showcase shortcode style - begin
+   ========================================================================== */
+.edgtf-ils {
+    visibility: hidden;
+
+    .touch & {
+        visibility: visible;
+    }
+
+    .edgtf-ils-holder {
+        position: relative;
+        height: 100vh;
+
+        .touch & {
+            height: auto;
+        }
+    }
+
+    .edgtf-ils-images-holder {
+        position: absolute;
+        top: 12%;
+        right: 0;
+        width: 57%;
+        height: 76%;
+        z-index: 20;
+        -webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .edgtf-ils-item-image {
+        @include edgtfAbsoluteHolderLayout;
+        @include edgtfTransform(translate3d((100%,0,0)));
+
+        .edgtf-ils-background-image {
+            @include edgtfAbsoluteHolderLayout;
+            background-size: cover;
+            left: 0px;
+        }
+
+        &.edgtf-active {
+            z-index: 100;
+            @include edgtfTransform(translate3d((0,0,0)));
+        }
+    }
+
+    .edgtf-ils-content-holder {
+       @include edgtfAbsoluteHolderLayout;
+       width: 43%;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       padding-left: 3.8%;
+    }
+
+    .edgtf-ils-item-content {
+        opacity: 0;
+        @include edgtfTransform(translate(0, 30px));
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                @include edgtfTransition(opacity .6s cubic-bezier(0.25, 0.46, 0.45, 0.94) .35s + 0.12s * $i, 
+                                        transform .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) .35s + 0.12s * $i);
+            }
+        }
+    }
+
+    .edgtf-ils-item-content-touch {
+        display: none;
+    }
+
+    .edgtf-ils-item-link {
+        position: relative;
+        display: inline-block;
+        font-size: 60px;
+        font-family: $default-heading-font;
+        line-height: 1em;
+        font-weight: 700;
+        letter-spacing: -.04em;
+        padding: 6px 0;
+        text-transform: uppercase;
+
+        &.edgtf-active {
+            color: $first-main-color;
+        }
+    }
+
+    &.edgtf-ils-with-split-hover {
+        .edgtf-split-item-prim {
+            display: block;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+            -webkit-transition: -webkit-clip-path .3s, -webkit-transform .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: clip-path .3s, transform .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        
+        .edgtf-split-item-sec {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            -webkit-clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0);
+            opacity: 0;
+            -webkit-transition: -webkit-clip-path .0s .3s, -webkit-transform .3s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: clip-path .0s .3s, transform .3s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .edgtf-ils-item-link.edgtf-active,
+        .edgtf-ils-item-link:hover {
+            .edgtf-split-item-prim {
+                -webkit-clip-path: inset(0 0 52% 0);
+                clip-path: inset(0 0 52% 0);
+                @include edgtfTransform(translateX(-1.5%) translateY(-1.5%));
+                @include edgtfTransitionTransform(.45s cubic-bezier(0.215, 0.61, 0.355, 1));
+            }
+            
+            .edgtf-split-item-sec {
+                opacity: 1;
+                -webkit-clip-path: inset(48% 0 0 0);
+                clip-path: inset(48% 0 0 0);
+                @include edgtfTransform(translateY(1.5%));
+                @include edgtfTransitionTransform(.45s cubic-bezier(0.215, 0.61, 0.355, 1));
+            }
+        }
+    }
+
+    .edgtf-ils-bgrnd {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background-color: transparent;
+        background-image: url('../img/gif-dark.gif');
+        background-repeat: repeat;
+    }
+
+    &.edgtf-loaded {
+        visibility: visible;
+
+        .edgtf-ils-item-content {
+            opacity: 1;
+            @include edgtfTransform(translate(0, 0));
+        }
+
+        .edgtf-ils-images-holder {
+            @include edgtfTransition(all .5s cubic-bezier(0.01, 0.71, 0.26, 0.94));
+
+            &.edgtf-changing-image {
+                -webkit-clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 100%);
+                clip-path: polygon(100% 0%, 100% 0, 100% 100%, 100% 100%);
+                @include edgtfTransition(all .1s ease);
+            }
+
+            .edgtf-ms-explorer &,
+            .edgtf-edge &{
+                opacity: 1;
+                @include edgtfTransition(opacity .25s cubic-bezier(0.01, 0.71, 0.26, 0.94));
+
+                &.edgtf-changing-image {
+                    opacity: 0;
+                    @include edgtfTransition(opacity .3s ease-in);
+                }
+            }
+        }
+    }
+
+    .edgtf-ils-widget-bottom {
+        position: absolute;
+        bottom: 35px;
+        right: 43px;
+        width: 100%;
+        text-align: right;
+        z-index: 111;
+
+        .widget {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+
+            &.edgtf-social-icons-group-widget .edgtf-social-icon-widget-holder {
+                margin: 0 22px 0 0;
+                color: #fff;
+
+                &:hover {
+                    color: $first-main-color;
+                }
+            }
+        }
+    }
+
+    &.edgtf-ils-skin-dark {
+        .edgtf-ils-bgrnd {
+            background-image: url('../img/gif-light.gif');
+        }
+
+        .edgtf-ils-item-link {
+            color: $default-text-color-light;
+
+            &.edgtf-active {
+                color: $first-main-color;
+            }
+        }
+
+        .edgtf-ils-widget-bottom {
+            .widget {
+                &.edgtf-social-icons-group-widget .edgtf-social-icon-widget-holder {
+                    color: $default-text-color-light;
+
+                    &:hover {
+                        color: rgba($default-text-color-light, 0.3);
+                    }
+                }
+            }
+        }
+    }
+}
+/* ==========================================================================
+   Interactive link showcase shortcode style - end
+   ========================================================================== */

@@ -1,0 +1,23 @@
+/* ==========================================================================
+# Side area responsive style - begin
+========================================================================== */
+
+@include laptop-landscape-large {
+	.edgtf-side-menu-slide-from-right {
+		.edgtf-side-menu {
+			padding: 65px 40px 0 40px;
+		}
+	}
+}
+
+@include laptop-landscape-medium {
+	.edgtf-side-menu-slide-from-right {
+		.edgtf-side-menu {
+			padding: 60px 42px 0 41px;
+		}
+	}
+}
+
+/* ==========================================================================
+# Side area style - end
+========================================================================== */

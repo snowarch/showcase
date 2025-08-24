@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Header Vertical - Closed widget style - begin
+   ========================================================================== */
+
+.edgtf-header-vertical-closed {
+
+    .edgtf-vertical-area-widget-holder {
+        @include edgtfRelativeHolderLayout();
+        margin: 10px 0 0;
+        z-index: 100;
+
+		.edgtf-social-icons-group-widget .edgtf-social-icon-widget-holder {
+			margin: 0 23px 0 0;
+			font-size: 15px;
+		}
+    }
+
+    .edgtf-vertical-alignment-center{
+
+        .edgtf-vertical-area-widget-holder {
+            position: absolute;
+	        bottom: 0;
+	        left: 0;
+	        width: 100%;
+        }
+    }
+}
+/* ==========================================================================
+   Header Vertical - Closed widget style - end
+   ========================================================================== */

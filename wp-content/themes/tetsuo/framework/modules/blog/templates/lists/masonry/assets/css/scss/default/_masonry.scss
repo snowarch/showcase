@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Blog List - Masonry style - begin
+   ========================================================================== */
+
+.edgtf-blog-holder {
+	
+    &.edgtf-blog-masonry {
+
+        article {
+            margin: 0 0 20px;
+            padding: 0 0 30px;
+	        
+	        @include phone-landscape {
+		        &.edgtf-item-space {
+			        padding: 0;
+		        }
+	        }
+	        
+	        .edgtf-post-info-top {
+		        margin-top: 17px;
+	        }
+    
+            .edgtf-post-content {
+                border: 2px solid $default-border-color;
+	
+	            .edgtf-post-text {
+		            padding: 0 7% 32px;
+		            text-align: center;
+		            
+		            @include phone-landscape {
+				        padding-left:10px;
+			            padding-right: 10px;
+		            }
+	            }
+            }
+	
+	        &.format-quote {
+		
+		        .edgtf-post-text {
+			        padding: 40px;
+		        }
+		        
+		        .edgtf-post-mark {
+			        bottom: -30px;
+			        right: -20px;
+			        
+			        .edgtf-quote-mark {
+				        padding: 0;
+				        font-size: 20px;
+			        }
+		        }
+	        }
+	
+	        &.format-link {
+		        .edgtf-post-text {
+		            padding: 37px 20px 37px 60px;
+			        
+			        .edgtf-post-text-inner {
+			            text-align: left;
+			        }
+			        
+			        .edgtf-post-mark {
+				        left:-43px;
+				        .edgtf-link-mark {
+				            font-size:23px
+				        }
+			        }
+		        }
+	        }
+
+            &.edgtf-post-has-media {
+                
+                .edgtf-post-heading {
+                    margin-bottom: 25px;
+                }
+	
+	            &.format-audio {
+		            .edgtf-post-heading {
+			            margin: 0;
+		            }
+		
+		            .mejs-volume-button, .mejs-horizontal-volume-slider {
+			            display: none;
+		            }
+		            
+		            iframe {
+			            display: block;
+		            }
+	            }
+            }
+	        
+	        .edgtf-tags {
+		        * {
+			        opacity: .5;
+			        @include edgtfTransition(color .25s ease-in-out, opacity .25s ease-in-out);
+		        }
+		        
+		        span {
+			        padding: 0 11px;
+		        }
+		        
+		        a:hover {
+			        opacity: 1;
+		        }
+	        }
+	
+	        .edgtf-post-info-author-link:after {
+		        content: ', ';
+		        display: inline-block;
+	        }
+        }
+    }
+}
+/* ==========================================================================
+   Blog List - Masonry style - end
+   ========================================================================== */

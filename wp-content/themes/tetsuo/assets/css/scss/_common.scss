@@ -1,0 +1,1226 @@
+@import 'variables';
+@import 'mixins';
+
+/* ==========================================================================
+   #Comments styles - start
+   ========================================================================== */
+
+.edgtf-comment-holder {
+    @include edgtfRelativeHolderLayout();
+    padding: 0;
+    box-sizing: border-box;
+
+    .edgtf-comment-holder-inner {
+        border-top: 2px solid $default-border-color;
+        padding: 55px 0 60px;
+    }
+
+    .edgtf-comment {
+
+        &.edgtf-pingback-comment {
+
+            .edgtf-comment-text {
+                padding: 0;
+            }
+        }
+    }
+
+    .edgtf-comment-list {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        z-index: 150;
+
+        li {
+            @include edgtfRelativeHolderLayout();
+            margin: 25px 0 0;
+            padding: 20px 0 0;
+        }
+
+        > li:first-child {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .children {
+            padding: 0 0 0 81px;
+        }
+    }
+
+    .edgtf-comments-title {
+        margin-bottom: 36px;
+
+        > * {
+            margin: 0;
+        }
+    }
+
+    .edgtf-comment-image {
+        position: relative;
+        top: 10px;
+        left: 0;
+        width: 75px;
+        height: 75px;
+        display: block;
+        float: left;
+
+        img {
+            display: block;
+        }
+    }
+
+    .edgtf-comment-text {
+        padding: 0 0 0 103px;
+        min-height: 75px;
+
+        .edgtf-comment-info {
+	        position: relative;
+	        display: inline-block;
+	        font-size: 20px;
+            line-height: 21px;
+        }
+
+        .replay,
+        .comment-reply-link,
+        .comment-edit-link {
+            float: right;
+            margin-left: 10px;
+	        font-family: $default-heading-font;
+	        font-weight: 700;
+	        text-transform: uppercase;
+            font-size: 17px;
+	        letter-spacing: .12em;
+            color: #fff;
+
+            &:hover {
+                color: $first-main-color;
+            }
+        }
+
+        .edgtf-comment-name {
+            float: left;
+            margin: 0;
+        }
+
+        .edgtf-comment-date {
+            margin: 0 0 12px;
+            font-size: 16px;
+	        opacity: .5;
+        }
+
+        .edgtf-text-holder p {
+            margin: 7px 0;
+        }
+
+        .comment-respond {
+            margin: 20px 0;
+
+            .comment-reply-title {
+                margin: 0 0 10px;
+                font-size: 14px;
+            }
+
+            .logged-in-as {
+                margin: 0 0 8px;
+            }
+        }
+
+        #cancel-comment-reply-link {
+            margin-left: 10px;
+            font-size: 14px;
+            color: $first-main-color;
+
+            &:hover {
+                color: $default-heading-color;
+            }
+        }
+
+        ul, ol {
+
+            li {
+                display: list-item;
+            }
+        }
+
+        li {
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+        }
+    }
+}
+
+.edgtf-comment-form {
+    padding: 0;
+    clear: both;
+    box-sizing: border-box;
+    border-top: 2px solid $default-border-color;
+
+    .edgtf-comment-form-inner {
+        padding: 54px 0 62px;
+    }
+
+    .comment-reply-title {
+        margin: 0 0 31px;
+    }
+
+    .logged-in-as {
+        margin: 0 0 8px;
+    }
+}
+
+@include ipad-portrait {
+
+    .edgtf-comment-holder {
+
+        .edgtf-comment-list {
+
+            .children {
+                padding: 0 0 0 40px;
+            }
+        }
+    }
+}
+
+@include phone-landscape {
+
+    .edgtf-comment-holder {
+
+        .edgtf-comment-list {
+
+            .children {
+                padding: 0;
+            }
+        }
+
+        .edgtf-comment-text {
+
+            .edgtf-comment-date,
+            .edgtf-comment-name {
+                float: none;
+            }
+
+            .replay,
+            .comment-reply-link,
+            .comment-edit-link {
+                float: none;
+                margin: 0 10px 0 0;
+            }
+        }
+    }
+}
+
+@include phone-portrait {
+
+    .edgtf-comment-holder {
+
+        .edgtf-comment-image {
+            float: none;
+        }
+
+        .edgtf-comment-text {
+            padding: 20px 0 0;
+            min-height: inherit;
+        }
+    }
+}
+
+/* ==========================================================================
+   #Comments styles - end
+   ========================================================================== */
+
+.edgtf-theme-light-skin {
+	#respond textarea,
+	.edgtf-style-form textarea,
+	#respond input[type='text'],
+	input[type='text'],
+	input[type='email'],
+	input[type='password'],
+	.post-password-form input[type='password'] {
+		color: $default-text-color-light;
+
+		&:focus {
+			color: $default-text-color-light;
+		}
+	}
+
+	.wpcf7-form-control {
+		&.wpcf7-text,
+		&.wpcf7-number,
+		&.wpcf7-date,
+		&.wpcf7-textarea,
+		&.wpcf7-select,
+		&.wpcf7-quiz {
+			color: $default-text-color-light;
+
+			&:focus {
+				color: $default-text-color-light;
+			}
+		}
+	}
+}
+
+#respond textarea,
+.edgtf-style-form textarea,
+#respond input[type='text'],
+input[type='text'],
+input[type='email'],
+input[type='password'],
+.post-password-form input[type='password'] {
+    @extend %input-style;
+}
+
+.post-password-form input[type='password'] {
+    margin-top: 10px;
+}
+
+.comment-form-cookies-consent {
+	margin-top: 6px;
+	
+	input#wp-comment-cookies-consent {
+		margin: 0 12px 0 0;
+		vertical-align: middle;
+	}
+}
+
+.wpcf7-form-control {
+    &.wpcf7-text,
+    &.wpcf7-number,
+    &.wpcf7-date,
+    &.wpcf7-textarea,
+    &.wpcf7-select,
+    &.wpcf7-quiz {
+        @extend %input-style;
+
+        footer & {
+            margin: 0;
+        }
+    }
+}
+
+.edgtf-transparent-border-form {
+	.wpcf7-form-control {
+		&.wpcf7-text,
+		&.wpcf7-number,
+		&.wpcf7-date,
+		&.wpcf7-textarea,
+		&.wpcf7-select,
+		&.wpcf7-quiz {
+			border-color: rgba(#fff,.2);
+			
+			&:focus {
+				border-bottom-color: $first-main-color;
+			}
+		}
+	}
+	
+	.edgtf-grid-tiny-gutter>div {
+		padding:0 2px
+	}
+}
+
+#submit_comment,
+.post-password-form input[type='submit'],
+input.wpcf7-form-control.wpcf7-submit {
+    @include edgtfFormSubmitBtn();
+    font-size: 17px;
+    cursor: pointer;
+    @include edgtfTransition(.3s);
+
+    &:hover {
+        color: #fff;
+        background-color: $first-main-color;
+    }
+}
+
+p.form-submit,
+.wpcf7-form p {
+    margin: 0;
+}
+
+#respond textarea,
+.edgtf-style-form textarea,
+.wpcf7-form textarea {
+    display: block;
+}
+
+.edgtf-two-columns-form-without-space {
+    .wpcf7-form .ajax-loader {
+        display: none;
+    }
+}
+
+.edgtf-newsletter-form {
+	
+	span.your-email {
+		position: relative;
+		display: block;
+		
+		input:focus {
+			border-bottom-color: $default-border-color;
+		}
+		
+		&:after {
+			content: '';
+			position: absolute;
+			width:100%;
+			height: 2px;
+			bottom: 4px;
+			left: 0;
+			background: $first-main-color;
+			transform-origin: left;
+			@include edgtfTransform (scaleX(0));
+			@include edgtfTransitionTransform(.4s ease-in-out);
+		}
+		&:focus-within {
+			&:after {
+				@include edgtfTransform (scaleX(1));
+			}
+		}
+		
+		@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+			
+			// IE10+ specific styles go here
+			input:focus {
+				border-bottom-color: $first-main-color;
+			}
+		}
+		
+		@supports (-ms-ime-align: auto) {
+			
+			//Targets Microsoft Edge only
+			input:focus {
+				border-bottom-color: $first-main-color;
+			}
+		}
+	}
+
+	input[type=submit] {
+
+	}
+}
+
+@media (min-width: $ipad-landscape-plus-pixel) {
+	.edgtf-newsletter-form {
+		display: table;
+		width:100%;
+		
+		> div {
+			padding: 0;
+		}
+		
+		.edgtf-grid-col-10 {
+			display: table-cell;
+			vertical-align: top;
+			width: auto;
+			float:none;
+		}
+		.edgtf-grid-col-2 {
+			display:table-cell;
+			vertical-align: top;
+			float:none;
+			width:177px;
+			text-align: right;
+			
+			.edgtf-btn.edgtf-btn-small {
+				padding: 8px 36px;
+				width: auto;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   #Comments styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Global Owl Slider - begin
+   ========================================================================== */
+.edgtf-owl-slider {
+    visibility: hidden;
+
+    .owl-stage-outer {
+        z-index: 1;
+    }
+
+    &.edgtf-slider-is-moving {
+        .owl-item {
+            .edgtf-block-drag-link {
+                z-index: -1 !important;
+            }
+        }
+    }
+
+    &.edgtf-slider-has-both-nav {
+        .owl-nav {
+            .owl-prev,
+            .owl-next {
+                $pos: calc(-50% - 21px); // 21 is is half height of pagination control + top margin
+                @include edgtfTransform(translateY($pos));
+            }
+        }
+    }
+
+    &.edgtf-slider-hide-pagination .owl-dots {
+        display: none;
+    }
+
+    .owl-nav {
+
+        .owl-prev,
+        .owl-next {
+            position: absolute;
+            top: 50%;
+            padding: 0;
+            margin: 0;
+            color: $default-heading-color;
+            background: none;
+            border: 0;
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+            z-index: 3;
+
+            @include edgtfTransform(translateY(-50%));
+            @include edgtfTransition(color .2s ease-out);
+
+            &:hover {
+                color: $first-main-color;
+            }
+
+            > span {
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 28px;
+                line-height: 1;
+
+                &:before {
+                    display: block;
+                    line-height: inherit;
+                }
+            }
+        }
+
+        .owl-prev {
+            left: 30px;
+	        
+	        span svg {
+		        @include edgtfTransform(rotate(180deg));
+	        }
+        }
+
+        .owl-next {
+            right: 30px;
+        }
+    }
+
+    .owl-dots {
+        text-align: center;
+        margin: 16px 0 0;
+        height: 30px;
+	    line-height: 30px;
+
+        .owl-dot {
+            display: inline-block;
+            vertical-align: bottom;
+            padding: 0;
+            margin: 0 2px;
+            background: none;
+            border: 0;
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+
+            span {
+                display: inline-block;
+                vertical-align: bottom;
+                position: relative;
+                height: 19px;
+                width: 2px;
+                margin-right: 11px;
+                background-color: #fff;
+                @include edgtfTransition(background-color .2s ease-in-out, height .2s ease-in-out);
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    position: absolute;
+                    right: 4px;
+                    bottom: 0;
+                    height: 0px;
+                    width: 2px;
+                    background-color: inherit;
+                }
+            }
+
+            &:hover,
+            &.active {
+
+                span {
+                    height: 30px;
+                    background-color: $first-main-color;
+                    left: 2px;
+                    @include edgtfTransition(background-color .2s ease-in-out, height .2s ease-in-out);
+
+                    &:before {
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .owl-carousel .owl-item img {
+        -webkit-transform: translateZ(0); //chrome text cut off fix
+    }
+
+    + .edgtf-slider-thumbnail {
+        display: inline-block;
+        vertical-align: middle;
+        list-style: none;
+        margin: 20px -10px 0;
+
+        > .edgtf-slider-thumbnail-item {
+            float: left;
+            padding: 0 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            line-height: 0;
+            cursor: pointer;
+
+            img {
+                border: 2px solid transparent;
+
+                @include edgtfTransition(border-color 0.2s ease-out);
+            }
+
+            &.active {
+                img {
+                    border: 2px solid $first-main-color;
+                }
+            }
+        }
+
+        $thumbnail_columns_number: ('two', 'three', 'four', 'five', 'six');
+
+        @for $i from 0 to length($thumbnail_columns_number) {
+            &.edgtf-slider-columns-#{nth($thumbnail_columns_number,$i+1)} {
+
+                .edgtf-slider-thumbnail-item {
+                    width: 100% / ($i+2);
+
+                    @include ipad-landscape {
+                        width: 33.3333%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   #Global Owl Slider - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #404 styles - start
+   ========================================================================== */
+
+.error404 {
+    .edgtf-wrapper {
+        padding: 0 !important;
+    }
+
+    .edgtf-content {
+        height: 100vh;
+    }
+
+    &.admin-bar {
+        .edgtf-content {
+            height: calc(100vh - 32px);
+        }
+    }
+
+    .edgtf-content-inner {
+        @include edgtfTableLayout();
+    }
+
+    .edgtf-page-not-found {
+        @include edgtfTableCellLayout();
+        padding: 0 18%;
+        text-align: center;
+
+        .edgtf-404-title {
+            margin: 0;
+            font-size: 16em;
+        }
+
+        .edgtf-404-subtitle {
+            margin: 6px 0 0;
+        }
+
+        .edgtf-404-text {
+            margin: 10px 0 0;
+        }
+
+        .edgtf-btn {
+            margin: 40px 0 0;
+            color: #fff;
+            background-color: $first-main-color;
+
+            &.edgtf-btn-dark-style {
+                color: #fff;
+                background-color: $default-text-color-light;
+                border-color: $default-text-color-light;
+
+                &:hover {
+                    color: $default-text-color-light !important;
+                    background-color: #fff !important;
+                    border-color: #fff !important;
+                }
+            }
+        }
+    }
+
+    @include ipad-landscape {
+        .edgtf-content {
+            height: 100%;
+            min-height: 100vh;
+        }
+
+        .edgtf-page-not-found {
+            padding: 20%;
+        }
+
+        &.admin-bar {
+            .edgtf-content {
+                height: 100%;
+                min-height: calc(100vh - 32px);
+            }
+        }
+    }
+
+    @include ipad-portrait {
+        .edgtf-page-not-found {
+            padding: 40% 20%;
+        }
+    }
+
+    @include phone-portrait {
+        .edgtf-page-not-found {
+            padding: 60% 10%;
+
+            .edgtf-404-title {
+                font-size: 6em;
+            }
+
+            .edgtf-404-subtitle {
+                font-size: 44px;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   #404 styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Back to Top styles - start
+   ========================================================================== */
+#edgtf-back-to-top {
+    border: 1px solid $first-main-color;
+    background-color: rgba(0,0,0,.9);
+    position: fixed;
+    width: 41px;
+    right: 25px;
+    bottom: 25px;
+    margin: 0;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    &.off {
+        opacity: 0;
+        visibility: hidden;
+
+        @include edgtfTransition(opacity 0.15s ease, visibility .0s .15s);
+    }
+
+    &.on {
+        opacity: 1;
+        visibility: visible;
+
+        @include edgtfTransition(opacity 0.3s ease);
+    }
+
+    .edgtf-icon-stack {
+        position: relative;
+        display: block;
+        margin-bottom: 0;
+        line-height: 40px;
+        font-size: 24px;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+        @include edgtfTransition(.2s);
+    }
+
+    .edgtf-btt-text {
+        font-family: $default-heading-font;
+        font-weight: 400;
+        font-size: 14px;
+        position: absolute;
+        display: block;
+        height: 25px;
+        width: 100px;
+        bottom: -13px;
+        left: 9px;
+        @include edgtfTransform(rotate(-90deg));
+        @include edgtfTransformOrigin(0 0);
+        @include edgtfTransition(.2s);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+    }
+
+    span span {
+        display: block;
+        line-height: inherit;
+    }
+
+    &:hover {
+        .edgtf-icon-stack {
+            margin-bottom: 89px;
+        }
+
+        .edgtf-btt-text {
+            opacity: 1;
+            color: #fff;
+        }
+    }
+
+    .edgtf-theme-light-skin & {
+        background-color: rgba(255,255,255,.9);
+
+        .edgtf-icon-stack {
+            color: #000;
+        }
+
+        &:hover {
+            .edgtf-btt-text {
+                color: #000;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   #Back to Top styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Self Hosted Video styles - begin
+   ========================================================================== */
+.edgtf-self-hosted-video-holder {
+    .edgtf-video-wrap {
+        .mejs-poster,
+        .mejs-container,
+        .mejs-overlay-play {
+            height: 100% !important; /*!important because of the inline style*/
+            width: 100% !important; /*!important because of the inline style*/
+        }
+    }
+}
+
+/* ==========================================================================
+   #Self Hosted Video styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Search tweak begin
+   ========================================================================== */
+
+// WEBKIT
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+// IE
+input[type="search"]::-ms-clear {
+    display: none;
+}
+
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* ==========================================================================
+   #Search tweak end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Fixed video styles - start
+   ========================================================================== */
+
+.edgtf-fixed-video-background {
+    .edgtf-content {
+        background-color: transparent !important;
+    }
+
+    .edgtf-container {
+        background-color: transparent !important;
+    }
+
+    .edgtf-page-footer {
+        .edgtf-footer-top-holder,
+        .edgtf-footer-bottom-holder {
+            background-color: transparent !important;
+        }
+    }
+
+    .edgtf-fixed-video-background-holder {
+        position: fixed;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        width: 100vw;
+        z-index: 0;
+
+        video {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-size: cover;
+            height: auto;
+            min-height: 100%;
+            min-width: 100%;
+            width: auto;
+
+            @include edgtfTransform(translate(-50%, -50%));
+        }
+
+        .edgtf-shader {
+            background-size: cover;
+            display: block;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+    }
+    
+    &.edgtf-fvb-animate-overlay .edgtf-shader {
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   #Fixed video styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   #Row Vertical text styles - begin
+   ========================================================================== */
+.edgtf-row-has-vertical-text {
+    position: relative;
+}
+
+.edgtf-row-vertical-text-holder {
+    position: absolute;
+    left: 100px;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+    @include edgtfTransform(rotate(-90deg) translateX(-100%) translateY(-100%));
+
+    @include ipad-landscape {
+        display: none;
+    }
+
+    .edgtf-row-vertical-text-holder-inner {
+        position: absolute;
+        display: inline-block;
+        margin: 0;
+        width: 250px;
+        text-align: right;
+
+        .edgtf-row-vertical-text {
+            position: relative;
+            font-family: $default-heading-font;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            color: #fff;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 3px;
+                bottom: -14px;
+                width: 22px;
+                height: 2px;
+                background-color: $first-main-color;
+            }
+        }
+    }
+
+    &.edgtf-row-vertical-text-align-right {
+        left: calc(100% - 124px);
+
+        .edgtf-row-vertical-text-holder-inner {
+
+            .edgtf-row-vertical-text {
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 3px;
+                    bottom: auto;
+                    top: -17px;
+                    width: 22px;
+                    height: 2px;
+                    background-color: $first-main-color;
+                }
+
+                &:after {
+                    content: none;
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   #Row Vertical Text styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+    #Global Split Trim effect for menu - start
+    ========================================================================== */
+li {
+    .edgtf-split-item-prim {
+        display: block;
+        @include edgtfTransitionTransform(.2s cubic-bezier(0.86, 0, 0.07, 1));
+    }
+    
+    .edgtf-split-item-sec {
+        position: absolute !important;
+        bottom: 0;
+        left: 0;
+        opacity:0;
+        -webkit-transition: -webkit-clip-path .2s, -webkit-transform .2s cubic-bezier(0.86, 0, 0.07, 1), opacity .2s;
+        transition: clip-path .2s, transform .2s cubic-bezier(0.86, 0, 0.07, 1), opacity .2s;
+    }
+    
+    &:not(.open_sub):hover {
+        .edgtf-split-item-prim {
+            -webkit-clip-path: inset(0 0 54% 0);
+            clip-path: inset(0 0 54% 0);
+            @include edgtfTransform(translateX(-3%) translateY(-3%));
+        }
+        
+        .edgtf-split-item-sec {
+            -webkit-clip-path: inset(50% 0 0 0);
+            clip-path: inset(50% 0 0 0);
+            @include edgtfTransform(translateY(3%));
+            opacity: 1;
+            -webkit-transition: -webkit-clip-path .2s, -webkit-transform .2s cubic-bezier(0.86, 0, 0.07, 1);
+            transition: clip-path .2s, transform .2s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+    } 
+}
+  
+/* ==========================================================================
+    #Global Split Trim effect for menu - end
+    ========================================================================== */
+
+/* ==========================================================================
+    #SVG Burger animation - start
+    ========================================================================== */
+
+    .edgtf-tetsuo-burger {
+
+        &:hover {
+            path {
+                @include edgtfTransform(scaleY(1));
+            }
+        }
+
+        path {
+            @include edgtfTransform(scaleY(0));
+            @include edgtfTransition(transform .3s ease);
+        }
+          
+        path:nth-of-type(1), path:nth-of-type(4) {
+            @include edgtfTransition(transform .3s .2s ease);
+        }
+          
+        path:nth-of-type(1), path:nth-of-type(2) {
+            @include edgtfTransformOrigin(12% 32%);
+        }
+        
+        path:nth-of-type(3), path:nth-of-type(4) {
+            @include edgtfTransformOrigin(12% 69%);
+        }
+        
+        rect:nth-of-type(1) {
+            @include edgtfTransform(translateY(7px));
+        }
+
+        rect:nth-of-type(2) {
+            @include edgtfTransform(translateY(7px) translateX(20px));
+        }
+
+        rect:nth-of-type(3) {
+            @include edgtfTransform(translateY(21px));
+        }
+        
+        rect:nth-of-type(4) {
+            @include edgtfTransform(translateY(21px) translateX(20px));
+        }
+    }
+
+/* ==========================================================================
+    #SVG Burger animation - end
+    ========================================================================== */
+
+/* ==========================================================================
+   Website Song styles - start
+   ========================================================================== */
+
+.edgtf-website-song {
+    display: block;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid $first-main-color;
+    position: fixed;
+    width: 39px;
+    height: 39px;
+    left: 25px;
+    top: auto;
+    bottom: 25px;
+    margin: 0;
+    z-index: 10000;
+    cursor: pointer;
+    @include edgtfTransition(all .4s cubic-bezier(0.23, 1, 0.32, 1));
+
+    .edgtf-song-play-icon {
+        font-size: 14px;
+        @include edgtfAbsoluteHolderLayout();
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    &.edgtf-track-in-progress .edgtf-song-play-icon {
+        visibility: hidden;
+    }
+    
+    .edgtf-equalizer {
+        overflow: hidden;
+        height: 29px;
+        width: 15px;
+        margin: 0 auto;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .edgtf-equalizer-bar {
+        height: 6px;
+        width: 1px;
+        display: inline-block;
+        background-color: #fff;
+        bottom: 0px;
+        top: auto;
+        position: absolute;
+    
+    &.noAnim {
+        -webkit-animation: none;
+        -webkit-animation-name: none;
+    }
+    
+    &#edgtf-equalizer-bar-1{ 
+        left: 0px;
+        -webkit-animation-name: danceHeight1;
+        -webkit-animation-delay: 100ms;
+    }
+    &#edgtf-equalizer-bar-2 { 
+        left: 6px; 
+        -webkit-animation-name: danceHeight2; 
+        -webkit-animation-delay: 0ms;
+    }
+    &#edgtf-equalizer-bar-3 { 
+        left: 12px;
+        -webkit-animation-name: danceHeight3;
+        -webkit-animation-delay: 300ms;
+    }
+    
+    -webkit-animation-duration: 300ms;
+    -webkit-animation-play-state: running;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    }
+
+    &.edgtf-track-paused .edgtf-equalizer-bar {
+        background-color: #fff;
+        visibility: hidden;
+    }
+
+    @-webkit-keyframes danceHeight1 {
+        from { height: 1px; }
+        to { height: 22px; }
+    }
+    @-webkit-keyframes danceHeight2 {
+        from { height: 1px; }
+        to { height: 15px; }
+    }
+    @-webkit-keyframes danceHeight3 {
+        from { height: 1px; }
+        to { height: 17px; }
+    }
+
+	.edgtf-theme-light-skin & {
+		background-color: rgba(255,255,255,.9);
+
+		&:hover {
+			.edgtf-song-play-icon {
+				color: $first-main-color;
+			}
+		}
+
+		.edgtf-song-play-icon {
+			color: #000;
+		}
+
+		.edgtf-equalizer-bar {
+			background-color: #000;
+		}
+
+		&.edgtf-track-paused .edgtf-equalizer-bar  {
+			background-color: #000;
+		}
+	}
+}
+
+/* ==========================================================================
+   #Website Song styles - end
+   ========================================================================== */

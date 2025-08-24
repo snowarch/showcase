@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Vertical Carousel shortcode responsive style - begin
+   ========================================================================== */
+#edgtf-vertical-carousel {
+
+    @include laptop-landscape-mac {
+
+        .edgtf-vc-item-title {
+            font-size: 60px !important;
+        }
+
+        .edgtf-vc-item-description {
+            font-size: 14px !important;
+        }
+    }
+
+    @include ipad-landscape {
+        .edgtf-separator-holder,
+        .edgtf-vc-item-description,
+        .edgtf-vc-btns {
+            display: none;
+        }
+    }
+
+    @include ipad-portrait {
+        padding: 0 25%;
+
+        .edgtf-vc-content-holder {
+            display: none;
+        }
+
+        .edgtf-vc-nav {
+            right: 75%;
+        }
+    }
+
+    /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+	/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+	/* ----------- iPhone X ----------- */
+	@media only screen 
+	and (min-device-width: 375px) 
+	and (max-device-width: 667px) 
+	and (-webkit-min-device-pixel-ratio: 2),
+	only screen 
+	and (min-device-width: 414px) 
+	and (max-device-width: 736px) 
+	and (-webkit-min-device-pixel-ratio: 3),
+	only screen 
+	and (min-device-width: 375px) 
+	and (max-device-width: 812px) 
+	and (-webkit-min-device-pixel-ratio: 3),
+	only screen and (max-device-width: 600px) {
+        .edgtf-vc-counter {
+            display: none;
+        }
+    }
+}
+/* ==========================================================================
+   Vertical Carousel shortcode responsive style - end
+   ========================================================================== */

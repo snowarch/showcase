@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Breadcrumbs Title type style - begin
+   ========================================================================== */
+
+.edgtf-title-holder {
+	
+	&.edgtf-breadcrumbs-type {
+		
+		.edgtf-breadcrumbs {
+			@include edgtfRelativeHolderLayout();
+			color: $default-text-color;
+			
+			&.edgtf-has-inline-style {
+				
+				a {
+					opacity: 1;
+					@include edgtfTransition(opacity .2s ease-out);
+					
+					&:hover {
+						color: inherit;
+						opacity: 0.9;
+					}
+				}
+			}
+			
+			a,
+			span {
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				color: inherit;
+			}
+			
+			a:hover {
+				color: $default-heading-color;
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Breadcrumbs Title type style - end
+   ========================================================================== */

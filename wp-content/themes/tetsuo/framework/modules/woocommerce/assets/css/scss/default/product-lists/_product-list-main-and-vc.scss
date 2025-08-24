@@ -1,0 +1,313 @@
+/* ==========================================================================
+   WooCommerce Product List page styles - begin
+   ========================================================================== */
+
+.edgtf-pl-main-holder,
+.related.products,
+.upsells.products,
+.cross-sells,
+.edgtf-content .woocommerce {
+    @include edgtfRelativeHolderLayout();
+}
+
+.edgtf-pl-main-holder {
+    margin: 0 0 22px;
+    
+    .edgtf-woo-pl-info-on-image-hover & {
+        margin: 0 0 50px;
+    }
+}
+
+ul.products {
+    list-style: none;
+	margin: 0 -15px;
+    clear: both;
+    
+    > .product {
+        position: relative;
+        display: inline-block;
+	    vertical-align: middle;
+	    float: left;
+	    margin: 0 0 30px;
+	    padding: 0 15px;
+	    box-sizing: border-box;
+        
+        .touch & {
+            cursor: pointer;
+        }
+        
+        &:hover {
+            
+            .edgtf-pl-inner {
+
+                .edgtf-pl-text {
+                    opacity: 1;
+                }
+
+                .edgtf-pl-image {
+
+                    img {
+                        border-color: $first-main-color;
+                    }
+                }
+            }
+
+        }
+        
+        .edgtf-product-list-title {
+            margin: 0;
+        }
+        
+        .edgtf-pl-rating-holder {
+            @include edgtfRelativeHolderLayout();
+            line-height: 1;
+            margin: 10px 0 3px;
+            display: none;
+        }
+        
+        .price {
+            @include edgtfWooCommercePriceStyle();
+        }
+        
+        .button,
+        .added_to_cart {
+            margin: 25px 0 0;
+    
+            .edgtf-woo-pl-info-below-image & {
+                margin: 0;
+            }
+        }
+        
+        .button.added {
+            display: none;
+        }
+        
+        .edgtf-pl-inner {
+            @include edgtfRelativeHolderLayout();
+            overflow: hidden;
+            
+            .edgtf-pl-image {
+                @include edgtfRelativeHolderLayout();
+                overflow: hidden;
+                
+                img {
+                    display: block;
+                    width: 100%;
+                    border: 2px solid $default-border-color;
+                    box-sizing: border-box;
+                    @include edgtfTransition(border-color .2s ease-out);
+                }
+            }
+            
+            .edgtf-pl-text {
+                position: absolute;
+                display: block;
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                top: 2px;
+                left: 2px;
+                padding: 10px;
+                opacity: 0;
+                background-color: rgba(#000, 0.75);
+                box-sizing: border-box;
+                @include edgtfTransition(opacity .2s ease-out);
+
+                body.edgtf-theme-light-skin & {
+                    background-color: rgba(#fff, 0.75);
+                }
+
+            }
+            
+            .edgtf-pl-text-outer {
+                @include edgtfTableLayout();
+                text-align: center;
+            }
+            
+            .edgtf-pl-text-inner {
+                @include edgtfTableCellLayout();
+                
+                .edgtf-product-list-title,
+                .price,
+                .star-rating {
+                    color: #fff;
+                }
+                
+                .price del {
+                    color: rgba(#fff, .8);
+                }
+            }
+            
+            > a {
+                @include edgtfAbsoluteHolderLayout();
+            }
+        }
+        
+        .edgtf-pl-text-wrapper {
+            @include edgtfRelativeHolderLayout();
+            margin: 17px 0 0;
+
+            .edgtf-pl-text-left{
+                float: left;
+                width: 65%;
+
+                .edgtf-pl-category{
+                    letter-spacing: -0.02em;
+                    font-size: 16px;
+                    line-height: 26px;
+                    display: block;
+
+                    a{
+                        color: #797979;
+
+                        &:hover{
+                            color: $first-main-color;
+                        }
+                    }
+                }
+            }
+
+            .edgtf-pl-text-right{
+                float: right;
+                width: 35%;
+                text-align: right;
+
+                .price{
+                    display:flex;
+                    flex-direction: column-reverse;
+                    margin:0;
+
+                    del, ins{
+                        margin: 0;
+                    }
+
+                    del{
+                        display: block;
+                        color: #797979;
+                    }
+                }
+            }
+        }
+    }
+}
+
+$columns_space_label: ('no', 'tiny', 'small', 'normal', 'medium', 'large');
+$columns_space_width: (0, 5, 10, 15, 20, 25);
+
+@for $i from 0 to length($columns_space_label) {
+    &.edgtf-woo-#{nth($columns_space_label,$i+1)}-space {
+        $column_width: nth($columns_space_width,$i+1);
+        $column_width_margin: $column_width * 2;
+        
+        ul.products {
+            @if($column_width == 0) {
+                margin: 0;
+            } @else {
+                margin: 0 -#{$column_width}px;
+            }
+            
+            > .product {
+                padding: 0 #{$column_width}px;
+                margin: 0 0 #{$column_width_margin}px;
+            }
+        }
+    }
+}
+
+.edgtf-pl-main-holder,
+.related.products,
+.upsells.products,
+.cross-sells {
+    
+    $product_list_columns: ('columns-3', 'columns-4');
+    
+    @for $i from 0 to length($product_list_columns) {
+        $column_width: 100%/($i+3);
+        
+        > .products {
+            
+            > .product {
+                
+                @media only screen and (min-width: $ipad-landscape-plus-pixel) {
+                    
+                    .edgtf-woocommerce-#{nth($product_list_columns,$i+1)} & {
+                        width: $column_width;
+                        
+                        &:nth-child(#{$i+3}n+1) {
+                            clear: both;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.woocommerce {
+    
+    &.columns-1 {
+        
+        > .products {
+            
+            > .product {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+    
+    $product_list_vc_columns: ('columns-2', 'columns-3', 'columns-4', 'columns-5', 'columns-6');
+    
+    @for $i from 0 to length($product_list_vc_columns) {
+        &.#{nth($product_list_vc_columns,$i+1)} {
+            $column_vc_width: 100%/($i+2);
+            
+            > .products {
+                
+                > .product {
+                    width: $column_vc_width;
+                    $product_list_vc_columns_label: #{nth($product_list_vc_columns,$i+1)};
+                    
+                    @if $product_list_vc_columns_label == 'columns-5' {
+                        @media only screen and (min-width: $laptop-landscape-plus-pixel) {
+                            
+                            &:nth-child(#{$i+2}n+1) {
+                                clear: both;
+                            }
+                        }
+                    } @else if $product_list_vc_columns_label == 'columns-6' {
+                        @media only screen and (min-width: $laptop-landscape-large-plus-pixel) {
+                            
+                            &:nth-child(#{$i+2}n+1) {
+                                clear: both;
+                            }
+                        }
+                    } @else if $product_list_vc_columns_label == 'columns-3' {
+                        @media only screen and (min-width: $ipad-portrait-plus-pixel) {
+                            
+                            &:nth-child(#{$i+2}n+1) {
+                                clear: both;
+                            }
+                        }
+                    } @else if $product_list_vc_columns_label == 'columns-2' {
+                        @media only screen and (min-width: $phone-landscape-plus-pixel) {
+                            
+                            &:nth-child(#{$i+2}n+1) {
+                                clear: both;
+                            }
+                        }
+                    } @else {
+                        @media only screen and (min-width: $ipad-landscape-plus-pixel) {
+                            
+                            &:nth-child(#{$i+2}n+1) {
+                                clear: both;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* ==========================================================================
+   WooCommerce Product List page styles - end
+   ========================================================================== */

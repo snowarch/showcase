@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Pricing Tables shortcode style - begin
+   ========================================================================== */
+
+.edgtf-pricing-tables {
+    @include edgtfRelativeHolderLayout();
+    
+    &.edgtf-grid-list {
+        @include ipad-landscape {
+	        .edgtf-item-space {
+		        width: 50%;
+		        
+		        &:nth-child(2n+1) {
+			        clear: both;
+		        }
+	        }
+        }
+    }
+}
+
+.edgtf-price-table {
+
+    .edgtf-pt-inner {
+        @include edgtfRelativeHolderLayout();
+        background-color: $default-background-color;
+        box-sizing: border-box;
+        border: 2px solid #404040;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0;
+                padding: 15px 30px;
+                text-align: center;
+
+                &.edgtf-pt-title-holder {
+                    position: relative;
+                    color: $default-heading-color;
+                    font-family: $default-heading-font;
+                    font-size: 25px;
+                    line-height: 26px;
+                    font-weight: 700;
+	                letter-spacing: -.04em;
+                    text-transform: uppercase;
+	                
+                    .edgtf-pt-title {
+                        display: block;
+	                    padding: 28px 0 0;
+	                    box-sizing: border-box;
+                    }
+                }
+
+                &.edgtf-pt-prices {
+                    position: relative;
+					padding: 0px 15px 0;
+                    font-family: $default-heading-font;
+
+                    .edgtf-pt-price,
+                    .edgtf-pt-value {
+                        position: relative;
+                        font-size: 35px;
+                        line-height: 1em;
+                        font-weight: 700;
+                        letter-spacing: -.04em;
+                        color: $default-heading-color;
+                    }
+                }
+
+                &.edgtf-pt-content {
+                    padding: 26px 15px;
+
+                    ul {
+                        li {
+                            padding: 6px 0px;
+                        }
+                    }
+                }
+
+                &.edgtf-pt-button {
+                    padding: 11px 15px 48px;
+                }
+            }
+        }
+    }
+
+     &.edgtf-dark-skin {
+         .edgtf-pt-inner {
+             background-color: $default-background-color-light;
+             border: 2px solid $default-background-color;
+
+             ul {
+
+                 li {
+
+                     &.edgtf-pt-title-holder {
+                         color: $default-text-color-light;
+                     }
+
+                     &.edgtf-pt-prices {
+
+                         .edgtf-pt-price,
+                         .edgtf-pt-value {
+                             color: $default-text-color-light;
+                         }
+                     }
+
+                     &.edgtf-pt-content {
+                         color: $default-text-color-light;
+                     }
+
+                     body:not(.edgtf-theme-light-skin) & {
+
+                         &.edgtf-pt-button {
+                             .edgtf-btn {
+                                 color: $default-background-color-light;
+                                 background-color: $default-text-color-light;
+
+                                 &:hover {
+                                     color: $default-text-color-light !important;
+                                     background-color: $default-text-color !important;
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+     }
+}
+/* ==========================================================================
+   Pricing Tables shortcode style - end
+   ========================================================================== */

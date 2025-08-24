@@ -1,0 +1,111 @@
+/* Single posts navigation styles - begin
+    ====================================================================== */
+
+.edgtf-blog-single-navigation {
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    padding: 0;
+    box-sizing: border-box;
+
+    .edgtf-blog-single-navigation-inner {
+        padding: 0 0 42px;
+	    display: flex;
+    }
+
+    .edgtf-blog-single-prev,
+    .edgtf-blog-single-next {
+	    display: flex;
+        color: $default-text-color;
+	    width: 50%;
+
+        .edgtf-blog-single-nav-label {
+            color: inherit;
+            opacity: .5;
+            @include edgtfTransition(color .25s ease-in-out, opacity .25s ease-in-out)
+        }
+
+        &:hover {
+            color: $first-main-color;
+	
+	        .edgtf-blog-single-nav-label {
+		        opacity: 1;
+	        }
+        }
+
+        body.edgtf-theme-light-skin & {
+            color: $default-text-color-light;
+
+            &:hover {
+                color: $first-main-color;
+
+                .edgtf-blog-single-nav-label {
+                    opacity: 1;
+                }
+            }
+        }
+	
+	    .edgtf-blog-single-navigation-holder {
+		    vertical-align: top;
+		    
+		    h5 {
+			    margin: 0 0 5px;
+		    }
+	    }
+	
+	    .edgtf-blog-single-navigation-thumb {
+		    vertical-align: middle;
+		    flex: 90px 0 0;
+		    
+		    img {
+			    border: 1px solid $default-border-color;
+			    width:70px;
+			    height: 70px;
+		    }
+	    }
+	    
+	    
+    }
+
+    .edgtf-blog-single-prev {
+	
+	    .edgtf-blog-single-navigation-thumb {
+		    padding-left: 0;
+	    }
+    }
+
+    .edgtf-blog-single-next {
+        text-align: right;
+	    
+	    flex-direction: row-reverse;
+    }
+}
+
+.edgtf-single-links-pages {
+    clear: both;
+    margin: 20px 0 5px;
+
+    .edgtf-single-links-pages-inner {
+
+        > a,
+        > span {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 14px 5px;
+			font-size: 20px;
+        }
+
+        > span {
+            color: $first-main-color;
+        }
+
+        > a {
+            &:hover {
+                color: $first-main-color;
+            }
+        }
+    }
+}
+/* Single posts navigation styles - end
+    ====================================================================== */

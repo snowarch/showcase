@@ -1,0 +1,308 @@
+/* ==========================================================================
+   Blog Common style - begin
+   ========================================================================== */
+
+.edgtf-blog-holder {
+    @include edgtfRelativeHolderLayout();
+    margin: 0 0 40px;
+    clear: both;
+    box-sizing: border-box;
+    
+    article {
+        @include edgtfRelativeHolderLayout();
+        box-sizing: border-box;
+
+        &.sticky {
+
+            .edgtf-post-title a {
+                color: $first-main-color;
+            }
+        }
+
+        .edgtf-post-content {
+            @include edgtfRelativeHolderLayout();
+        }
+
+        .edgtf-post-image {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+
+            img {
+                display: block;
+            }
+        }
+    
+        .edgtf-post-image-background {
+            @include edgtfRelativeHolderLayout();
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+        
+            a {
+                @include edgtfAbsoluteHolderLayout();
+            }
+        }
+    
+        .edgtf-post-image-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .edgtf-post-text {
+            @include edgtfRelativeHolderLayout();
+            box-sizing: border-box;
+            padding: 20px;
+
+        }
+    
+        .edgtf-post-title {
+            margin: 0;
+            word-wrap: break-word;
+        }
+    
+        .edgtf-post-excerpt-holder {
+            @include edgtfRelativeHolderLayout();
+            margin: 26px 0 0;
+        
+            p {
+                margin: 0;
+            }
+        }
+    
+        .edgtf-post-excerpt {
+        
+            &:after {
+                content: '...';
+            }
+        }
+    
+        .edgtf-more-link-container {
+            @include edgtfRelativeHolderLayout();
+            margin: 15px 0 0;
+        }
+
+        .edgtf-post-info {
+            @include edgtfRelativeHolderLayout();
+
+            > * {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                color: currentColor;
+
+                a {
+                    color: inherit;
+                }
+            }
+        }
+    
+        .edgtf-post-info-bottom {
+            @include edgtfRelativeHolderLayout();
+            padding-top: 28px;
+        
+            .edgtf-post-info-bottom-left,
+            .edgtf-post-info-bottom-right,
+            .edgtf-post-info-bottom-below {
+                @include edgtfRelativeHolderLayout();
+            }
+    
+            .edgtf-post-info-bottom-left {
+        
+                > div {
+                    display: inline-block;
+                    color: grey;
+                
+		            a, span {
+                        color: #fff;
+			            opacity: .5;
+			            @include edgtfTransition(all .25s);
+
+                        .edgtf-theme-light-skin & {
+                            color: $default-text-color-light;
+                            opacity: .5;
+                        }
+
+		            }
+		
+		            a span {
+			            opacity: 1;
+		            }
+		
+		            a:hover {
+                        color: $first-main-color;
+			            opacity: 1;
+		            }
+	            }
+            }
+    
+            .edgtf-post-info-bottom-right {
+        
+                > div {
+	                display: inline-block;
+                    margin-left: 17px;
+            
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+	
+	        .edgtf-post-info-comments-holder,
+	        .edgtf-blog-like {
+		
+		        a {
+			        vertical-align: bottom;
+			        font-size: 16px;
+			
+			        i {
+				        margin-right: 6px;
+			        }
+		        }
+	        }
+        }
+    
+        //Link post style
+        &.format-link {
+        
+            .edgtf-post-text{
+                padding: 50px 53px;
+	            background: url('../../../../../assets/img/noisebg.jpg') no-repeat center;
+	            background-size: cover;
+
+                body.edgtf-theme-light-skin & {
+                    background: url('../../../../../assets/img/noisebg_light.jpg') no-repeat center;
+                    background-size: cover;
+                }
+
+            }
+            
+	        .edgtf-post-text-inner {
+		        text-align: center;
+		        
+	            .edgtf-post-text-main {
+		            position: relative;
+		            vertical-align: top;
+		            display: inline-block;
+	            }
+	        }
+        
+            .edgtf-post-mark {
+	            position: absolute;
+	            top:4px;
+	            left: -45px;
+            
+                .edgtf-link-mark {
+                    font-size: 20px;
+                    color: $first-main-color;
+                }
+            }
+        }
+    
+        //Quote post style
+        &.format-quote {
+        
+            .edgtf-post-text {
+                padding: 50px 53px;
+	            background: url('../../../../../assets/img/noisebg.jpg') no-repeat center;
+	            background-size: cover;
+
+                body.edgtf-theme-light-skin & {
+                    background: url('../../../../../assets/img/noisebg_light.jpg') no-repeat center;
+                    background-size: cover;
+                }
+            }
+        
+            .edgtf-post-text-main {
+	            position: relative;
+	            text-align: center;
+            }
+        
+            .edgtf-post-mark {
+                position: absolute;
+                bottom: -30px;
+                right: -38px;
+            
+                .edgtf-quote-mark {
+                    font-size: 19px;
+                    color: $first-main-color;
+                }
+            }
+        
+            .edgtf-post-link-holder {
+                @include edgtfTableCellLayout();
+                vertical-align: top;
+                text-align: left;
+            }
+        
+            .edgtf-post-author {
+                display: inline-block;
+                margin-bottom: 23px;
+                font-size: 13px;
+                line-height: 20px;
+            }
+        }
+
+        //Gallery post style
+        &.format-gallery {
+
+            .edgtf-post-image {
+                width: 100%;
+            }
+
+            .owl-carousel .owl-item {
+                z-index: 2;
+
+                &.active {
+                    z-index: 3;
+                }
+            }
+        }
+
+        //Audio post style
+        &.format-audio {
+    
+            &.has-post-thumbnail {
+        
+                .edgtf-post-heading {
+                    position: relative;
+                }
+        
+                .edgtf-blog-audio-holder {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+    
+            .edgtf-post-image {
+                width: 100%;
+                max-width: inherit;
+        
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        // video post style
+        &.format-video {
+            
+            .edgtf-self-hosted-video {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Blog Common style - end
+   ========================================================================== */

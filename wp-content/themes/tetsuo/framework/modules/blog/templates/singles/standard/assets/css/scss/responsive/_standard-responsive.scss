@@ -1,0 +1,27 @@
+.edgtf-blog-holder.edgtf-blog-single {
+
+    @include ipad-portrait {
+    
+        article {
+        
+            .edgtf-post-info-bottom {
+            
+                .edgtf-post-info-bottom-left,
+                .edgtf-post-info-bottom-right {
+                    width: 100%;
+                    float: none;
+                }
+            
+                .edgtf-post-info-bottom-right {
+                    text-align: inherit;
+                    margin: 10px 0 0;
+                }
+	
+	            > div.edgtf-post-info-comments-holder,
+	            > div.edgtf-blog-like{
+		            margin: 20px 0;
+	            }
+            }
+        }
+    }
+}

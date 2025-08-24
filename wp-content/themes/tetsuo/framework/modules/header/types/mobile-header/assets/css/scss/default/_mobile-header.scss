@@ -1,0 +1,328 @@
+/* ==========================================================================
+   Mobile header style - begin
+   ========================================================================== */
+
+.edgtf-mobile-header {
+	position: relative;
+	display: none;
+    z-index: 110;
+
+    /* #General mobile header styles
+    ========================================================================== */
+    .edgtf-mobile-header-inner {
+        position: relative;
+        height: 70px;
+        background-color: #111;
+        border-bottom: 1px solid $default-border-color;
+        box-sizing: border-box;
+
+        .edgtf-mobile-header-holder {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+        }
+    }
+
+    .edgtf-grid {
+        height: 100%;
+    }
+	
+	.edgtf-vertical-align-containers {
+		padding: 0;
+		
+		.edgtf-position-right {
+			max-width: 80%;
+		}
+	}
+
+    /* #End of general mobile header styles
+   ========================================================================== */
+
+    /* #Mobile logo styles
+    ========================================================================== */
+    .edgtf-mobile-logo-wrapper {
+        
+        a {
+            display: block;
+        }
+    
+        img {
+	        display: block;
+            height: 100%;
+            width: auto;
+        }
+
+		.edgtf-mobile-logo-text {
+			vertical-align: middle;
+			display: inline-block;
+			line-height: 1em;
+			font-family: $additional-font;
+			letter-spacing: -0.04em;
+			font-size: 42px;
+			text-transform: uppercase;
+			font-weight: 400;
+			color: $default-text-color;
+		}
+    }
+    /* #End of mobile logo styles
+    ========================================================================== */
+
+    /* #Mobile menu opener styles
+    ========================================================================== */
+    .edgtf-mobile-menu-opener {
+	    position: relative;
+	    height: 100%;
+	    float: left;
+	    z-index: 2;
+
+        a {
+            display: table;
+            height: 100%;
+            padding-right: 10px;
+			color: $default-text-color;
+
+			&:hover {
+				color: $first-main-color;
+			}
+    
+            > * {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+                line-height: 1em;
+            }
+
+            .edgtf-mobile-menu-text {
+	            @include edgtfTypographyLayout();
+	            padding-left: 5px;
+            }
+        }
+	
+	    &.edgtf-mobile-menu-opened {
+		
+		    a {
+			    color: $first-main-color;
+		    }
+	    }
+	
+	    &.edgtf-mobile-menu-opener-icon-pack {
+		
+		    .edgtf-mobile-menu-icon {
+			    font-size: 20px;
+			
+			    * {
+				    display: block;
+				    line-height: inherit;
+				
+				    &:before {
+					    display: block;
+					    line-height: inherit;
+				    }
+			    }
+		    }
+	    }
+	
+	    &.edgtf-mobile-menu-opener-svg-path {
+		
+		    .edgtf-mobile-menu-icon {
+			
+			    > * {
+				    vertical-align: middle;
+			    }
+			
+			    > *,
+			    path {
+				    fill: currentColor;
+			    }
+		    }
+	    }
+	
+	    &.edgtf-mobile-menu-opener-predefined {
+		    line-height: 1;
+		
+		    .edgtf-hm-lines {
+			    position: relative;
+			    display: block;
+			    width: 23px;
+			    height: 17px;
+			
+			    .edgtf-hm-line {
+				    position: absolute;
+				    left: 0;
+				    height: 3px;
+				    width: 100%;
+				    background-color: currentColor;
+				    border-radius: 12px;
+				    @include edgtfTransition(width .3s ease);
+				
+				    &.edgtf-line-1 {
+					    top: 0;
+				    }
+				
+				    &.edgtf-line-2 {
+					    top: 7px;
+				    }
+				
+				    &.edgtf-line-3 {
+					    bottom: 0;
+				    }
+			    }
+		    }
+	    }
+    }
+    /* #End of mobile menu opener styles
+    ========================================================================== */
+	
+	/* #Mobile menu navigation styles
+    ========================================================================== */
+	.edgtf-mobile-nav {
+		display: none;
+		width: 100%;
+		background-color: #111;
+		border-bottom: 1px solid $default-border-color;
+		
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			
+			li {
+				position: relative;
+				padding: 0;
+				margin: 0;
+				-webkit-transform: translateZ(0);
+				
+				a, h6 { //h6 is here because of no link option in navigation
+					position: relative;
+					display: block;
+					padding: 9px 0;
+					margin: 0;
+					color: $default-text-color;
+					border-bottom: 1px solid $default-border-color;
+					cursor: pointer;
+					font-size: 17px;
+					line-height: 21px;
+					font-family: $default-heading-font;
+					font-weight: 500;
+					text-transform: uppercase;
+					letter-spacing: .12em;
+					
+					&:hover {
+						color: $first-main-color;
+					}
+				}
+			}
+			
+			//dropdowns
+			ul {
+				display: none;
+				margin-left: 15px;
+				
+				li {
+					
+					&.current-menu-ancestor > a,
+					&.current-menu-item > a,
+					&.current-menu-ancestor > h6,
+					&.current-menu-item > h6 {
+						color: $first-main-color;
+					}
+				}
+			}
+		}
+		
+		.edgtf-grid > ul {
+			
+			> li {
+				
+				> a,
+				> h6 {
+					padding-left: 4px;
+					font-size: 17px;
+					line-height: 23px;
+					box-sizing: border-box;
+					font-weight: 700;
+				}
+				
+				&.edgtf-active-item > a,
+				&.edgtf-active-item > h6 {
+					color: $first-main-color;
+				}
+				
+				&.edgtf-active-item > .mobile_arrow > .edgtf-sub-arrow {
+					@include edgtfTransform(rotate(90deg));
+				}
+			}
+		}
+		
+		.mobile_arrow {
+			
+			&:after {
+				position: absolute;
+				display: inline-block;
+				vertical-align: middle;
+				padding: 7px 15px;
+				top: 0;
+				right: 0;
+				content: '\f3d3';
+				font-family: 'Ionicons';
+				font-size: 17px;
+				font-weight: normal;
+				font-style: normal;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				
+				@include edgtfTransitionTransform(.25s ease-in-out)
+			}
+			
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		
+		
+		li.edgtf-opened > .mobile_arrow:after {
+			@include edgtfTransform(rotate(90deg));
+		}
+		
+		& > ul > li:last-child > a,
+		& > .edgtf-grid > ul > li:last-child > a {
+			border-bottom: none;
+		}
+	}
+	/* #End of mobile menu navigation styles
+	========================================================================== */
+}
+/* ==========================================================================
+   Mobile header style - end
+   ========================================================================== */
+
+/* ==========================================================================
+   Sticky Mobile header style - begin
+   ========================================================================== */
+.edgtf-sticky-up-mobile-header {
+	
+    .edgtf-animate-mobile-header {
+	    
+        .edgtf-mobile-header-inner {
+            width: 100%;
+            //Added left and right transition values because of sidearea transitions on open/close
+            @include edgtfTransform(translateY(-100%));
+	        @include edgtfTransitionTransform(.4s ease-in-out, left 0.2s ease, right 0.2s ease);
+        }
+    }
+
+    .mobile-header-appear {
+	    
+        .edgtf-mobile-header-inner {
+	        position: fixed;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+            @include edgtfTransform(translateY(0));
+        }
+    }
+}
+/* ==========================================================================
+   Sticky Mobile header style - end
+   ========================================================================== */

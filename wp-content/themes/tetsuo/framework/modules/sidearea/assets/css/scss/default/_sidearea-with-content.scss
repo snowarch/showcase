@@ -1,0 +1,45 @@
+/* ==========================================================================
+# Side area slides with content style - begin
+========================================================================== */
+
+.edgtf-side-menu-slide-with-content {
+	overflow-x: hidden;
+	position: relative;
+	left: 0;
+	-webkit-overflow-scrolling: auto !important;
+	@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+
+	.edgtf-side-menu {
+		visibility: visible;
+	}
+
+	footer.edgtf-footer-uncover,
+	.edgtf-wrapper {
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+	}
+
+	.edgtf-sticky-header,
+	.edgtf-fixed-wrapper.fixed,
+	.edgtf-mobile-header-inner {
+		@include edgtfTransition(all .6s cubic-bezier(.77,0,.175,1));
+	}
+}
+
+.edgtf-side-menu-slide-with-content.edgtf-side-menu-open {
+
+	.edgtf-wrapper,
+	footer.edgtf-footer-uncover,
+	.edgtf-sticky-header,
+	.edgtf-fixed-wrapper,
+	.edgtf-mobile-header-inner {
+		left: -530px;
+	}
+
+	.edgtf-side-menu {
+		right: 0;
+	}
+}
+
+/* ==========================================================================
+# Side area slides with content style - end
+========================================================================== */

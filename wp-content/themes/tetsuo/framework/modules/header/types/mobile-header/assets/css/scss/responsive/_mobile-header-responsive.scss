@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Mobile header responsive style - begin
+   ========================================================================== */
+
+@include ipad-landscape {
+	
+	.edgtf-mobile-header {
+		display: block;
+	}
+}
+
+@include ipad-portrait {
+	
+	.edgtf-mobile-header {
+		
+		.edgtf-grid {
+			
+			.edgtf-paspartu-enabled & {
+				width: 90%;
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   Mobile header responsive style - end
+   ========================================================================== */

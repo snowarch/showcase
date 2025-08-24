@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Top header style - begin
+   ========================================================================== */
+
+.edgtf-top-bar {
+    @include edgtfRelativeHolderLayout();
+    height: 46px;
+    font-size: 12px;
+    line-height: 1;
+    color: #fff;
+    background-color: $default-heading-color;
+    box-sizing: border-box;
+    z-index: 110;
+
+    > .edgtf-vertical-align-containers {
+        padding: 0 4.7%;
+    }
+
+    .edgtf-vertical-align-containers {
+        
+        .edgtf-position-left,
+        .edgtf-position-right {
+            
+            &:before {
+                display: none;
+            }
+        }
+
+        .edgtf-position-left-inner,
+        .edgtf-position-right-inner {
+            display: -webkit-flex; /* Safari */
+            display: flex;
+            height: 100%;
+            -webkit-align-items: center; /* Safari 7.0+ */
+            align-items: center;
+        }
+    }
+
+    .edgtf-grid {
+        height: 100%;
+
+        .edgtf-vertical-align-containers {
+            padding-left: 0;
+            padding-right: 0;
+
+            .edgtf-top-bar-in-grid-padding & {
+                padding: 0 40px;
+            }
+        }
+    }
+
+    .widget {
+        margin: 0;
+    }
+}
+
+/* ==========================================================================
+   Top header style - end
+   ========================================================================== */

@@ -1,0 +1,21 @@
+/* ==========================================================================
+   Blog List shortcode - Boxed type style - begin
+   ========================================================================== */
+
+.edgtf-blog-list-holder {
+	
+	&.edgtf-bl-boxed {
+		
+		.edgtf-bli-content {
+			padding: 40px 30px;
+			background-color: $additional-background-color;
+		}
+		
+		.edgtf-post-image {
+			margin: 0;
+		}
+	}
+}
+/* ==========================================================================
+   Blog List shortcode - Boxed type style - end
+   ========================================================================== */

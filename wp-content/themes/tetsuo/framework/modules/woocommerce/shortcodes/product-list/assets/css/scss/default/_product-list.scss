@@ -1,0 +1,333 @@
+/* ==========================================================================
+   Product List shortcode styles - begin
+   ========================================================================== */
+
+.edgtf-pl-holder {
+    @include edgtfRelativeHolderLayout();
+
+	&.edgtf-info-on-image {
+
+		.edgtf-pli {
+
+			.edgtf-pli-add-to-cart {
+				margin: 25px 0 0;
+			}
+		}
+	}
+
+    .edgtf-pli {
+        padding: 0;
+        z-index: 100;
+
+	    .edgtf-pli-title {
+		    margin: 0 0 4px;
+	    }
+
+	    .edgtf-pli-category {
+		    margin: 11px 0 3px;
+	    }
+
+        .edgtf-pli-excerpt {
+            color: $default-heading-color;
+	        line-height: 1.3em;
+            margin: 11px 0 3px;
+        }
+
+	    .edgtf-pli-rating-holder {
+		    @include edgtfRelativeHolderLayout();
+		    line-height: 1;
+		    margin: 10px 0 3px;
+	    }
+
+	    .edgtf-pli-rating {
+		    @include edgtfWooCommerceRatingsStyle();
+	    }
+
+        .edgtf-pli-price {
+	        @include edgtfWooCommercePriceStyle();
+        }
+
+		&:hover {
+
+			.edgtf-pli-text {
+				opacity: 1;
+			}
+
+			.edgtf-pli-image {
+
+				img {
+					border-color: $first-main-color;
+				}
+			}
+		}
+    }
+
+    .edgtf-pli-inner {
+		@include edgtfRelativeHolderLayout();
+		overflow: hidden;
+
+        .touch & {
+            cursor: pointer;
+        }
+
+        .edgtf-pli-image {
+			@include edgtfRelativeHolderLayout();
+			overflow: hidden;
+
+			img {
+				display: block;
+				width: 100%;
+				border: 2px solid $default-border-color;
+				box-sizing: border-box;
+				@include edgtfTransition(border-color .2s ease-out);
+			}
+
+            .edgtf-pli-onsale,
+            .edgtf-pli-out-of-stock,
+            .edgtf-pli-new-product {
+				@include edgtfWooCommerceMarksGeneralStyle();
+
+				> div{
+					@include edgtfWooCommerceMarksGeneralStyleInside();
+				}
+            }
+
+            .edgtf-pli-onsale {
+				@include edgtfWooCommerceSaleStyle();
+
+				> div{
+					@include edgtfTransform( rotate(-45deg));
+					left: -35px;
+				}
+            }
+
+            .edgtf-pli-out-of-stock {
+				@include edgtfWooCommerceOutOfStockStyle();
+
+				> div{
+					@include edgtfTransform( rotate(45deg));
+					right: -35px;
+				}
+            }
+
+	        .edgtf-pli-new-product {
+				@include edgtfWooCommerceNewProductStyle();
+
+				> div{
+					@include edgtfTransform( rotate(45deg));
+					right: -35px;
+				}
+	        }
+        }
+
+        .edgtf-pli-text {
+			position: absolute;
+			display: block;
+			width: calc(100% - 4px);
+			height: calc(100% - 4px);
+			top: 2px;
+			left: 2px;
+			padding: 10px;
+			opacity: 0;
+			background-color: rgba(#000, 0.75);
+			box-sizing: border-box;
+			@include edgtfTransition(opacity .2s ease-out);
+        }
+
+        .edgtf-pli-text-outer {
+	        @include edgtfTableLayout();
+	        text-align: center;
+        }
+
+        .edgtf-pli-text-inner {
+            @include edgtfTableCellLayout();
+
+            .edgtf-pli-title,
+            .edgtf-pli-category a,
+            .edgtf-pli-excerpt,
+            .edgtf-pli-rating,
+            .edgtf-pli-price {
+                color: #fff;
+            }
+
+	        .edgtf-pli-category a:hover {
+		        color: rgba(#fff, .8);
+	        }
+
+	        .edgtf-pli-add-to-cart {
+
+		        &.edgtf-default-skin {
+
+			        .button,
+			        .added_to_cart {
+				        @include edgtfButtonSolidColor();
+
+				        &:hover {
+				            @include edgtfButtonSolidHoverColor();
+							background-color: $first-main-color;
+				        }
+			        }
+		        }
+
+		        &.edgtf-light-skin {
+
+			        .button,
+			        .added_to_cart {
+				        color: $default-heading-color;
+				        background-color: #fff;
+
+				        &:hover {
+					        color: #fff;
+					        background-color: $first-main-color;
+				        }
+			        }
+		        }
+
+		        &.edgtf-dark-skin {
+
+			        .button,
+			        .added_to_cart {
+				        color: #fff;
+				        background-color: $default-heading-color;
+
+				        &:hover {
+					        color: #fff;
+					        background-color: $first-main-color;
+				        }
+			        }
+		        }
+	        }
+
+            .button,
+            .added_to_cart {
+	            @include edgtfButtonDefaultStyle();
+	            @include edgtfButtonSize();
+	            white-space: nowrap;
+	            z-index: 3;
+            }
+
+            .button.added {
+                display: none;
+            }
+        }
+
+	    .edgtf-pli-link {
+		    @include edgtfAbsoluteHolderLayout();
+	    }
+    }
+
+    .edgtf-pli-text-wrapper {
+        @include edgtfRelativeHolderLayout();
+        margin: 17px 0 0;
+
+		.edgtf-pli-text-left{
+			float: left;
+			width: 65%;
+
+			.edgtf-pli-title{
+				margin: 0;
+			}
+
+			.edgtf-pli-category{
+				letter-spacing: -0.02em;
+				font-size: 16px;
+				line-height: 26px;
+				display: block;
+				margin: 0;
+
+				a{
+					color: #797979;
+
+					&:hover{
+						color: $first-main-color;
+					}
+				}
+			}
+		}
+
+		.edgtf-pli-text-right{
+			float: right;
+			width: 35%;
+			text-align: right;
+
+			.edgtf-pli-price{
+				display:flex;
+				flex-direction: column-reverse;
+				margin:0;
+
+				del, ins{
+					margin: 0;
+				}
+
+				del{
+					letter-spacing: -0.02em;
+					font-size: 16px;
+					line-height: 26px;
+					display: block;
+					color: #797979;
+				}
+			}
+		}
+    }
+
+	&.edgtf-product-info-light {
+
+		.edgtf-pli-inner {
+
+			.edgtf-pli-text-inner {
+
+				.edgtf-pli-title,
+				.edgtf-pli-category a,
+				.edgtf-pli-excerpt,
+				.edgtf-pli-rating,
+				.edgtf-pli-price {
+					color: #fff;
+				}
+
+				.edgtf-pli-category a:hover {
+					color: rgba(#fff, .8);
+				}
+			}
+		}
+	}
+
+	&.edgtf-product-info-dark {
+
+		.edgtf-pli-inner {
+
+			.edgtf-pli-text-inner {
+
+				.edgtf-pli-title,
+				.edgtf-pli-category a,
+				.edgtf-pli-excerpt,
+				.edgtf-pli-rating,
+				.edgtf-pli-price {
+					color: $default-heading-color;
+				}
+
+				.edgtf-pli-category a:hover {
+					color: rgba($default-heading-color, .8);
+				}
+			}
+		}
+	}
+
+	/*************** Masonry Layout - begin ***************/
+
+	&.edgtf-masonry-layout {
+
+		.edgtf-pli-inner {
+			width: 100%;
+			height: 100%;
+
+			.edgtf-pli-image {
+				height: 100%;
+			}
+		}
+	}
+
+	/*************** Masonry Layout - end ***************/
+}
+/* ==========================================================================
+   Product List shortcode styles - end
+   ========================================================================== */

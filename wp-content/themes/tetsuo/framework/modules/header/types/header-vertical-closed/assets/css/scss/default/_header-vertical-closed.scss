@@ -1,0 +1,271 @@
+/* ==========================================================================
+   Header Vertical - Closed style - begin
+   ========================================================================== */
+$vertical-menu-width: 458px;
+$closed-vertical-menu-width: 88px;
+
+@import 'blocks/header-vertical-closed-navigation.scss';
+@import 'blocks/header-vertical-closed-widgets.scss';
+
+.edgtf-header-vertical-closed {
+	
+    .edgtf-content,
+    footer{
+        padding-left: $closed-vertical-menu-width;
+        box-sizing: border-box;
+    }
+
+	.edgtf-vertical-menu-area {
+        position: fixed;
+		top: 0;
+		left: calc(#{$closed-vertical-menu-width} - #{$vertical-menu-width});
+		height: 100%;
+		width: $vertical-menu-width;
+		padding: 60px 45px;
+	    box-sizing: border-box;
+		outline: none;
+		z-index: 101;
+		-webkit-backface-visibility: hidden;
+		@include edgtfTransition(left .35s ease-out);
+		
+		&.edgtf-with-scroll {
+			overflow: hidden;
+		}
+
+		.edgtf-vertical-area-opener {
+			position: fixed;
+			left: 0;
+			top: 0px; /*same as padding of vertical menu area */
+			display: inline-block;
+			vertical-align: middle;
+			width: $closed-vertical-menu-width;
+			height: $closed-vertical-menu-width;
+			line-height: $closed-vertical-menu-width;
+			text-align: center;
+			z-index: 1000;
+
+		    &.edgtf-vertical-area-opener-icon-pack {
+		        font-size: 20px;
+		            
+		        span {
+		            position: relative;
+		            display: inline-block;
+		            line-height: inherit;
+		            
+		            &:before {
+		                display: inline-block;
+		                line-height: inherit;
+		            }
+		        }
+		    }
+
+		    &.edgtf-vertical-area-opener-svg-path {
+			    
+		        span {
+		            position: relative;
+
+		            > * {
+		            	vertical-align: middle;
+		            }
+
+		            > *,
+					path,
+					polygon,
+					rect {
+		                fill: currentColor;
+		            }
+		        } 
+		    }
+			
+			&.edgtf-vertical-area-opener-predefined {
+				
+				.edgtf-hm-lines {
+					position: relative;
+					display: block;
+					width: 23px;
+					height: 17px;
+					margin: 0 auto;
+					
+					.edgtf-hm-line {
+						position: absolute;
+						left: 0;
+						height: 3px;
+						width: 100%;
+						background-color: currentColor;
+						border-radius: 12px;
+						@include edgtfTransition(width .3s ease);
+						
+						&.edgtf-line-1 {
+							top: 0;
+						}
+						
+						&.edgtf-line-2 {
+							top: 7px;
+						}
+						
+						&.edgtf-line-3 {
+							bottom: 0;
+						}
+					}
+				}
+				
+				.edgtf-vertical-area-opener-icon {
+					display: block;
+					padding: 26px 0;
+				}
+				
+				.edgtf-vertical-area-close-icon {
+					font-size: 32px;
+					
+					span {
+						display: block;
+						line-height: inherit;
+						
+						&:before {
+							display: inline-block;
+							line-height: inherit;
+						}
+					}
+				}
+			}
+			
+			.edgtf-vertical-area-opener-icon {
+				visibility: visible;
+			}
+			
+			.edgtf-vertical-area-close-icon {
+				position: absolute !important;
+				top: 0;
+				left: 0;
+				width: 100%;
+				visibility: hidden;
+			}
+		}
+
+		.edgtf-vertical-menu {
+			opacity: 0;
+			@include edgtfTransition(opacity .35s ease-out);
+		}
+
+	    &.active {
+		    left: 0;
+		    
+		    .edgtf-vertical-area-opener {
+			    
+			    .edgtf-vertical-area-opener-icon {
+				    visibility: hidden;
+		        }
+			    
+		        .edgtf-vertical-area-close-icon {
+			        visibility: visible;
+		        }
+		    }
+
+		    .edgtf-vertical-menu {
+			    opacity: 1;
+		    }
+	    }
+    }
+
+    .edgtf-vertical-menu-area-inner {
+        @include edgtfRelativeHolderLayout();
+        height: 100%;
+    }
+
+    &.admin-bar .edgtf-vertical-menu-area {
+        top: 32px;
+    }
+	
+	.edgtf-logo-wrapper {
+		@include edgtfRelativeHolderLayout();
+		z-index: 100;
+		text-align: center;
+		margin-left: 5px;
+		
+		a {
+			display: block;
+			position: relative;
+			height: 100%;
+		}
+		
+		img {
+			display: block;
+			height: auto;
+			max-height: 100%;
+			@include edgtfTransition(opacity 0.3s ease);
+		}
+	}
+
+    .edgtf-vertical-area-background {
+        position: fixed;
+	    top: 0;
+	    left: calc(#{$closed-vertical-menu-width} - #{$vertical-menu-width});
+	    width: $vertical-menu-width;
+	    height: 100%;
+	    background-position: right top;
+	    background-repeat: no-repeat;
+	    background-color: $default-background-color;
+		border-right: 2px solid #5e5e5e;
+	    background-size: cover;
+        z-index: 0;
+        opacity: 1;
+        @include edgtfTransition(opacity 0.5s ease, background-color 0.5s ease, left .35s ease);
+    }
+
+	.active .edgtf-vertical-area-background {
+		left: 0;
+	}
+
+	.edgtf-vertical-area-bottom-logo {
+		position: fixed;
+		top: $closed-vertical-menu-width;
+		left:0;
+		bottom: 25px;
+		width: $closed-vertical-menu-width;
+		height: 100%;
+		text-align: center;
+		z-index: 1000;
+		@include edgtfTransition(left .25s ease-in-out);
+
+		@include ipad-landscape {
+			display: none;
+		}
+
+		.edgtf-vertical-area-bottom-logo-inner {
+			position: absolute;
+			bottom: 170px;
+			width: 100%;
+			padding: 0 10px;
+			text-align: center;
+			box-sizing: border-box;
+
+			.edgtf-logo-wrapper {
+				@include edgtfRelativeHolderLayout();
+				z-index: 100;
+
+				a {
+					display: block;
+					position: relative;
+					height: 100%;
+
+					.edgtf-logo-text {
+						@include edgtfTransform(rotate(-90deg));
+						@include edgtfTransformOrigin(50% 100%);
+					}
+				}
+			}
+		}
+
+		&.active {
+			left: - $closed-vertical-menu-width;;
+		}
+	}
+}
+
+.edgtf-dark-header.edgtf-header-vertical-closed .edgtf-vertical-area-bottom-logo .edgtf-vertical-area-bottom-logo-inner .edgtf-logo-wrapper a {
+	color: $default-text-color-light;
+}
+
+/* ==========================================================================
+   Header Vertical - Closed style - end
+   ========================================================================== */

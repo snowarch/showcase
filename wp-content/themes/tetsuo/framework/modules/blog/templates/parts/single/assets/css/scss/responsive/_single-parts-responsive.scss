@@ -1,0 +1,38 @@
+@include ipad-portrait {
+    
+    .edgtf-related-posts-holder {
+        
+        .edgtf-related-post {
+            width: 50% !important;
+        }
+    }
+	
+	.edgtf-blog-single-navigation {
+		
+		.edgtf-blog-single-navigation-inner {
+			display: block;
+			margin-bottom: 20px;
+		}
+  
+		.edgtf-blog-single-prev {
+            width: 100%;
+        }
+		
+		.edgtf-blog-single-next {
+			margin-top: 20px;
+			width: 100%;
+			text-align: left;
+			flex-direction: row;
+		}
+    }
+}
+
+@include phone-portrait {
+    
+    .edgtf-related-posts-holder {
+        
+        .edgtf-related-post {
+            width: 100% !important;
+        }
+    }
+}

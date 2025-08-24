@@ -1,0 +1,117 @@
+.edgtf-faq-widgets {
+
+	&.wpb_widgetised_column {
+		// widgets spacing
+		$widget-bottom-margin: 40px;
+		$widget-bottom-padding: 26px;
+		$widget-inner-padding: 36px 22px;
+
+		// widget color
+		$widget-background-color: transparent;
+
+		// list items dimensions
+		$widget-list-item-height: 21px;
+		$widget-list-item-padding: 10px;
+
+		// list items color
+		$widget-list-item-background-color: #ffffff;
+
+		// list items border
+		$widget-list-item-border-color: $default-border-color;
+		$widget-list-item-border-width: 2px;
+		$widget-list-item-border-style: solid;
+
+		// text
+		$widget-text-color: inherit;
+		$widget-heading-color: inherit;
+
+		// links
+		$widget-link-color: $default-text-color;
+		$widget-link-hover-color: $first-main-color;
+
+		// specific widgets
+		$widget-search-form-height: $input-height;
+		$widget-tag-cloud-height: 16px;
+
+		@import 'widgets/default-wordpress-widgets-flat';
+
+		.widget {
+			border: none;
+
+			&.widget_search .input-holder {
+				position: relative;
+				border-bottom-color: $first-main-color;
+			}
+		}
+
+		&.edgtf-dark-skin {
+			.widget.widget_nav_menu ul li a {
+				color: $default-text-color-light;
+
+				&:hover {
+					color: $first-main-color;
+				}
+			}
+		}
+
+	}
+}
+
+.edgtf-theme-light-skin .edgtf-faq-widgets {
+
+	&.wpb_widgetised_column {
+		// widgets spacing
+		$widget-bottom-margin: 40px;
+		$widget-bottom-padding: 26px;
+		$widget-inner-padding: 36px 22px;
+
+		// widget color
+		$widget-background-color: transparent;
+
+		// list items dimensions
+		$widget-list-item-height: 21px;
+		$widget-list-item-padding: 10px;
+
+		// list items color
+		$widget-list-item-background-color: #ffffff;
+
+		// list items border
+		$widget-list-item-border-color: $default-border-color;
+		$widget-list-item-border-width: 2px;
+		$widget-list-item-border-style: solid;
+
+		// text
+		$widget-text-color: inherit;
+		$widget-heading-color: inherit;
+
+		// links
+		$widget-link-color: $default-text-color-light;
+		$widget-link-hover-color: $first-main-color;
+
+		// specific widgets
+		$widget-search-form-height: $input-height;
+		$widget-tag-cloud-height: 16px;
+
+		@import 'widgets/default-wordpress-widgets-flat';
+
+		.widget {
+			border: none;
+
+			&.widget_search .input-holder {
+				position: relative;
+				border-bottom-color: $first-main-color;
+			}
+		}
+
+		&.edgtf-dark-skin {
+			.widget.widget_nav_menu ul li a {
+				color: $default-text-color-light;
+
+				&:hover {
+					color: $first-main-color;
+				}
+			}
+		}
+
+	}
+}

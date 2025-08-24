@@ -1,0 +1,155 @@
+/* ==========================================================================
+# Search covers header - start
+========================================================================== */
+
+.edgtf-search-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    background-color: $default-heading-color;
+    z-index: 115;
+
+    &.edgtf-opener-in-top-header {
+        top: auto;
+        bottom: 100%;
+    }
+
+    .edgtf-container,
+    .edgtf-container-inner {
+        height: 100%;
+    }
+
+    .edgtf-fixed-header-appear &,
+    .edgtf-sticky-header-appear &,
+    .edgtf-mobile-header.mobile-header-appear & {
+        position: fixed;
+    }
+
+    .edgtf-fixed-header-appear.admin-bar &,
+    .edgtf-sticky-header-appear.admin-bar &,
+    .admin-bar .edgtf-mobile-header.mobile-header-appear & {
+        top: 32px;
+    }
+
+    .edgtf-form-holder-outer {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+
+    .edgtf-form-holder {
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 40px;
+    }
+
+    .edgtf-form-holder-inner {
+        @include edgtfRelativeHolderLayout();
+    }
+
+    .edgtf-container-inner {
+        
+        .edgtf-form-holder {
+            padding: 0;
+        }
+
+        .edgtf-search-close {
+            right: 0;
+        }
+    }
+
+    input {
+        display: inline-block;
+        vertical-align: middle;
+        float: left;
+        width: 90%;
+        padding: 0;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: #fff;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        outline-offset: 0;
+
+        &:focus {
+            color: inherit;
+        }
+
+        @include edgtfPlaceholder {
+            color: inherit;
+        }
+    }
+
+    input[type="submit"] {
+        position: absolute;
+        height: 1px;
+        width: 1px;
+        padding: 0;
+        margin: -1px;
+        border: 0 none;
+        clip: rect(0px, 0px, 0px, 0px);
+        visibility: hidden;
+    }
+
+    .edgtf-search-close {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        display: inline-block;
+        vertical-align: middle;
+        color: #fff;
+        @include edgtfTransform(translateY(-50%));
+
+        &:hover {
+            color: $first-main-color;
+        }
+
+        &.edgtf-search-close-icon-pack {
+            font-size: 20px;
+            line-height: 1em;
+
+            * {
+                display: block;
+                line-height: inherit;
+
+                &:before {
+                    display: block;
+                    line-height: inherit;
+                }
+            }
+        }
+
+        &.edgtf-search-close-svg-path {
+            
+            > * {
+                vertical-align: middle;
+            }
+
+            > *,
+            path {
+                fill: currentColor;
+                stroke: currentColor;
+            }
+        }
+    }
+}
+
+.edgtf-search-cover.disabled {
+    
+    input,
+    input:focus {
+        font-weight: normal;
+    }
+}
+
+/* ==========================================================================
+# Search covers header - end
+========================================================================== */

@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Portfolio Item Layout - Gallery Overlay Split style - begin
+   ========================================================================== */
+
+   .edgtf-portfolio-list-holder {
+	
+	&.edgtf-pl-gallery-overlay-zoom {
+		
+		&.edgtf-pl-has-shadow {
+			
+			.edgtf-pl-item-inner {
+				box-shadow: $default-box-shadow;
+			}
+		}
+		
+		article {	
+			.edgtf-pl-item-inner {
+				overflow: hidden;
+            }
+            
+            .edgtf-pli-text-holder {
+                @include edgtfAbsoluteHolderLayout();
+                padding: 20px;
+                // background-color: rgba(0,0,0,0.8);
+                opacity: 0;
+                text-align: center;
+                box-sizing: border-box;
+                @include edgtfTransition(opacity .2s);
+
+                &:after {
+                    content:'';
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    height: calc(100% - 20px);
+                    width: calc(100% - 20px);
+                    border: $first-main-color 10px solid;
+                }
+            }
+		
+			.edgtf-pli-text {
+				.edgtf-pli-title,
+				.edgtf-pli-excerpt {
+					color: #fff;
+				}
+                
+                .edgtf-pli-title {
+                    &:hover {
+                        color: $first-main-color;
+                    }
+                }
+
+				.edgtf-pli-category-holder {
+					
+					a {
+                        color: #fff;
+						opacity: .7;
+                        @include edgtfTransition(opacity .2s);
+						
+						&:hover {
+							opacity: 1;
+						}
+					}
+				}
+            }
+            
+            &:hover {
+				
+				.edgtf-pli-text-holder {
+					opacity: 1;
+                }
+
+                img {
+                    @include edgtfTransform(scale(1.16));
+                    @include edgtfTransitionTransform(4s cubic-bezier(0.215, 0.61, 0.355, 1));
+                }
+                
+			}
+		}
+	}
+}
+/* ==========================================================================
+   Portfolio Item Layout - Gallery Overlay Split style - end
+   ========================================================================== */

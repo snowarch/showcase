@@ -1,0 +1,24 @@
+.edgtf-header-vertical {
+
+    .edgtf-vertical-area-widget-holder {
+        @include edgtfRelativeHolderLayout();
+        margin: 10px 0 0;
+        z-index: 100;
+        text-align: center;
+
+        .edgtf-social-icons-group-widget .edgtf-social-icon-widget-holder {
+            margin: 0 23px 0 0;
+            font-size: 15px;
+        }
+    }
+
+    .edgtf-vertical-alignment-center{
+
+        .edgtf-vertical-area-widget-holder {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0px;
+        }
+    }
+}

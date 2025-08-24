@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Product List - Simple shortcode styles - begin
+   ========================================================================== */
+
+.edgtf-pls-holder {
+	@include edgtfRelativeHolderLayout();
+
+	> ul {
+		@include edgtfRelativeHolderLayout();
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		> li {
+			@include edgtfRelativeHolderLayout();
+			padding: 0;
+			margin: 0 0 20px;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+	
+	.edgtf-pls-image {
+		display: table-cell;
+		vertical-align: top;
+		width: 84px;
+
+		a, img {
+			display: block;
+		}
+
+		a {
+			position: relative;
+			@include edgtfImageOverlayHoverStyle();
+		}
+	}
+	
+	.edgtf-pls-text {
+		display: table-cell;
+		vertical-align: top;
+		padding: 0 0 0 20px;
+		
+		.edgtf-pls-title {
+			margin: 0 0 4px;
+		}
+		
+		.edgtf-pls-rating-holder {
+			@include edgtfRelativeHolderLayout();
+			line-height: 1;
+			margin: 5px 0 3px;
+		}
+		
+		.edgtf-pls-rating {
+			@include edgtfWooCommerceRatingsStyle();
+		}
+		
+		.edgtf-pls-price {
+			@include edgtfWooCommercePriceStyle();
+		}
+	}
+}
+/* ==========================================================================
+   Product List - Simple shortcode styles - end
+   ========================================================================== */

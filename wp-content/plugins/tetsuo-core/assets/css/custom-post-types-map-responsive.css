@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Global partials
+   ========================================================================== */
+/* ==========================================================================
+   Custom Post Types responsive styles
+   ========================================================================== */
+/* ==========================================================================
+   Portfolio Single page responsive style - begin
+   ========================================================================== */
+.edgtf-portfolio-single-holder .edgtf-ps-image-holder.edgtf-ps-gallery-images {
+  /***** Columns Layout - end *****/
+}
+
+@media only screen and (max-width: 680px) {
+  .edgtf-portfolio-single-holder .edgtf-ps-image-holder.edgtf-ps-gallery-images .edgtf-ps-image {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .edgtf-portfolio-single-holder .edgtf-ps-info-holder {
+    margin: 30px 0 !important;
+  }
+}
+
+/* ==========================================================================
+   Portfolio Single page responsive style - end
+   ========================================================================== */
+/* ==========================================================================
+   Portfolio list tooltip shortcode style - begin
+   ========================================================================== */
+@media only screen and (max-width: 680px) {
+  .edgtf-portfolio-list-tooltip-holder .edgtf-plt-inner {
+    font-size: 30px;
+  }
+}
+
+/* ==========================================================================
+   Portfolio list tooltip shortcode style - end
+   ========================================================================== */
+
+/*# sourceMappingURL=../../../../plugins/tetsuo-core/assets/css/custom-post-types-map-responsive.css.map */
